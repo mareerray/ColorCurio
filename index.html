@@ -22,6 +22,10 @@
                 <!-- Color palettes will be dynamically added here -->
             </div>
             <button id="add-palette">+ Add New Palette</button>
+            <button id="save-json">Export as JSON</button>
+            <input type="file" id="import-json" accept="application/json" style="display:none;">
+            <button id="import-json-btn">Import JSON</button>
+
         </section>
 
         <section id="moodboard" class="tab-content">
@@ -32,7 +36,12 @@
             <button id="add-mood-item">+ Add Inspiration</button>
         </section>
     </main>
-
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" style="display: none;">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Mood Board Full Image">
+    <div id="lightbox-caption"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

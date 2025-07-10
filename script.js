@@ -13,29 +13,23 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
-// Sample color palettes
-const samplePalettes = [
-    {
-        name: "Ocean Breeze",
-        colors: ["#0077be", "#00a8cc", "#40e0d0", "#87ceeb", "#f0f8ff", "#e6f3ff"]
-    },
-    {
-        name: "Sunset Vibes",
-        colors: ["#ff6b35", "#f7931e", "#ffd23f", "#06ffa5", "#118ab2", "#073b4c"]
-    },
-    {
-        name: "Warm Retro Palette",
-        colors: ["#01204E", "#028391", "#F6DCAC", "#FAA968", "#F85525"]
-    },
-    {
-        name: "Classic 80s Retro",
-        colors: ["#270245", "#871A85", "#FF2941", "#FEFF38", "#FE18D3"]
-    },
-    {
-        name: "Vintage Americana",
-        colors: ["#272324", "#83B799", "#E2CD6D", "#C2B28F", "#E4D8B4", "#E86F68"]
-    }
-];
+let samplePalettes = [];
+let moodBoardItems = loadMoodBoardItems(); // Load from storage or initialize as empty
+
+function loadSamplePalettes() {
+    return fetch('assets/palettes/samplePalettes.json')
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to load sample palettes');
+        return response.json();
+    })
+    .then(data => {
+        samplePalettes = data;
+    })
+    .catch(error => {
+        console.error(error);
+      samplePalettes = []; // fallback to empty if loading fails
+    });
+}
 
 // Local storage functions
 function savePalettes(palettes) {
@@ -151,7 +145,11 @@ function deletePalette(paletteName) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
+    loadSamplePalettes().then(() => {
     loadPalettes();
+    });
+    renderMoodBoard();
+    document.getElementById('save-json').addEventListener('click', saveDataAsJSON);
 });
 
 // Add new palette functionality with saving
@@ -193,4 +191,158 @@ document.getElementById('add-palette').addEventListener('click', () => {
             alert(`Palette "${name}" saved successfully!`);
         }
     }
+});
+
+function getExportData() {
+    // Example: adjust to your actual data structure
+    const palettes = getAllPalettes(); // Function that returns palette array
+    const moodboard = getMoodBoardItems(); // Function that returns mood board array
+
+    return { palettes, moodboard };
+}
+
+function saveDataAsJSON() {
+    const data = getExportData();
+    const json = JSON.stringify(data, null, 2); // Pretty print
+
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "palette_moodboard.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+document.getElementById('import-json-btn').addEventListener('click', function() {
+    document.getElementById('import-json').click();
+});
+
+document.getElementById('import-json').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+
+            // Import palettes
+            if (data.palettes && Array.isArray(data.palettes)) {
+                // Only import custom palettes, avoid overwriting samples
+                const sampleNames = (window.samplePalettes || []).map(p => p.name);
+                const customPalettes = data.palettes.filter(p => !sampleNames.includes(p.name));
+                localStorage.setItem('colorPalettes', JSON.stringify(customPalettes));
+            }
+
+            // Import mood board
+            if (data.moodboard && Array.isArray(data.moodboard)) {
+                localStorage.setItem('moodBoardItems', JSON.stringify(data.moodboard));
+            }
+
+            // Reload UI to reflect imported data
+            if (typeof loadPalettes === 'function') loadPalettes();
+            if (typeof renderMoodBoard === 'function') renderMoodBoard();
+
+            alert('Import successful!');
+        } catch (err) {
+            alert('Invalid JSON file.');
+        }
+    };
+    reader.readAsText(file);
+});
+
+
+function saveMoodBoardItems(items) {
+    localStorage.setItem('moodBoardItems', JSON.stringify(items));
+}
+
+function loadMoodBoardItems() {
+    const saved = localStorage.getItem('moodBoardItems');
+    return saved ? JSON.parse(saved) : [];
+}
+function renderMoodBoard() {
+    const moodGrid = document.querySelector('.mood-grid');
+    moodGrid.innerHTML = '';
+    moodBoardItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'mood-item';
+        div.innerHTML = `
+            <img class="mood-image" src="assets/images/${item.filename}" alt="${item.caption || ''}">
+            <div class="mood-content">${item.caption || ''}</div>
+        `;
+        moodGrid.appendChild(div);
+    });
+}
+
+document.getElementById('add-mood-item').addEventListener('click', () => {
+    const filename = prompt('Enter image filename in assets/images/ (e.g., mood1.jpg):');
+    if (!filename) return;
+    const caption = prompt('Enter a caption for this inspiration (optional):');
+    moodBoardItems.push({ filename, caption });
+    saveMoodBoardItems(moodBoardItems);
+    renderMoodBoard();
+});
+
+// function getMoodBoardItems() {
+//     return loadMoodBoardItems();
+// }
+
+function imageToBase64(imgElement) {
+    const canvas = document.createElement('canvas');
+    canvas.width = imgElement.width;
+    canvas.height = imgElement.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(imgElement, 0, 0);
+    return canvas.toDataURL('image/png');
+}
+
+// Lightbox functionality
+function setupLightbox() {
+  const overlay = document.getElementById('lightbox-overlay');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  // Event delegation for mood images
+  document.querySelector('.mood-grid').addEventListener('click', function(e) {
+    if (e.target.classList.contains('mood-image')) {
+      lightboxImg.src = e.target.src;
+      lightboxCaption.textContent = e.target.closest('.mood-item').querySelector('.mood-content').textContent || '';
+      overlay.style.display = 'flex';
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    lightboxImg.src = '';
+    lightboxCaption.textContent = '';
+  });
+
+  // Close on overlay click (but not image)
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.style.display = 'none';
+      lightboxImg.src = '';
+      lightboxCaption.textContent = '';
+    }
+  });
+
+  // Optional: close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      overlay.style.display = 'none';
+      lightboxImg.src = '';
+      lightboxCaption.textContent = '';
+    }
+  });
+}
+
+// Call this after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // ...existing code...
+  setupLightbox();
 });

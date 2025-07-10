@@ -39,7 +39,7 @@ nav {
 }
 
 .tab-btn.active {
-    background: #E86F68;
+    background: #DE5D83;
     color: white;
 }
 
@@ -92,7 +92,7 @@ main {
 
 .mood-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
 }
@@ -103,6 +103,8 @@ main {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .mood-item:hover {
@@ -111,16 +113,20 @@ main {
 
 .mood-image {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Show the full image without cropping */
+    border-bottom: 1px solid #ddd;
 }
 
 .mood-content {
     padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
 }
 
 button {
-    background: #F85525;
+    background: #DE5D83;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -131,6 +137,49 @@ button {
 }
 
 button:hover {
-    background: #E86F68;
+    background: #BFA2DB;
     transform: translateY(-2px);
+}
+
+#lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1010;
+    transition: color 0.2s;
+}
+
+#lightbox-close:hover {
+    color: #BFA2DB;
+}
+
+#lightbox-caption {
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 80vw;
 }
