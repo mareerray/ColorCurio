@@ -31,9 +31,11 @@ A creative hub for organizing color palettes and mood board inspirations.
 ├── style.css
 ├── script.js
 ├── assets/
-│ ├── images/ # Mood board images
-│ └── palettes/ # JSON files for palettes (including samplePalettes.json)
-│ └── samplePalettes.json
+│   ├── images/                # Mood board images
+│   ├── palettes/              # JSON files for palettes
+│   │   └── samplePalettes.json
+│   └── moodboard/             # Mood board JSON files
+│       └── sampleMoodBoard.json
 └── README.md
 ```
 
@@ -42,6 +44,7 @@ A creative hub for organizing color palettes and mood board inspirations.
 - `script.js` – JavaScript logic and interactivity
 - `assets/images/` – Folder for all mood board image files
 - `assets/palettes/` – Folder for palette JSON files, including `samplePalettes.json`
+- `assets/moodboard/` – Folder for moodboard JSON files, including `sampleMoodBoard.json`
 - `README.md` – Project documentation
 
 ---
