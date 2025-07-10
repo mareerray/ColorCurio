@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Color Palette & Mood Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Maire Design Inspiration Hub</h1>
+        <nav>
+            <button class="tab-btn active" data-tab="palettes">Color Palettes</button>
+            <button class="tab-btn" data-tab="moodboard">Mood Board</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="palettes" class="tab-content active">
+            <h2>Color Palettes</h2>
+            <div class="palette-grid">
+                <!-- Color palettes will be dynamically added here -->
+            </div>
+            <button id="add-palette">+ Add New Palette</button>
+        </section>
+
+        <section id="moodboard" class="tab-content">
+            <h2>Mood Board</h2>
+            <div class="mood-grid">
+                <!-- Mood board items will be added here -->
+            </div>
+            <button id="add-mood-item">+ Add Inspiration</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
