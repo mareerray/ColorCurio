@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +6,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins','Arial', sans-serif;
+    font-weight: 600;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
 }
@@ -19,6 +21,7 @@ header {
 
 h1 {
     color: whitesmoke;
+    font-size: 4rem;
     margin-bottom: 1rem;
 }
 
@@ -90,6 +93,25 @@ main {
     cursor: pointer;
 }
 
+.delete-palette-btn {
+    background: #DE5D83;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    transition: background 0.2s;
+}
+.delete-palette-btn:hover {
+    background: #BFA2DB;
+}
+
 .mood-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -124,6 +146,36 @@ main {
     font-size: 1rem;
     color: #333;
 }
+
+.delete-mood-item {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: #DE5D83;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.6;
+    transition: background 0.2s;
+}
+
+.delete-mood-item:hover {
+    background: #BFA2DB;
+}
+
+.mood-item {
+    position: relative; /* Needed for absolute positioning of delete button */
+}
+
 
 button {
     background: #DE5D83;

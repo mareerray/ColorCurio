@@ -86,16 +86,9 @@ function createPaletteCard(palette) {
     if (isCustomPalette) {
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '×';
-        deleteBtn.style.background = '#ff4757';
-        deleteBtn.style.color = 'white';
-        deleteBtn.style.border = 'none';
-        deleteBtn.style.borderRadius = '50%';
-        deleteBtn.style.width = '25px';
-        deleteBtn.style.height = '25px';
-        deleteBtn.style.cursor = 'pointer';
-        deleteBtn.style.fontSize = '16px';
+        deleteBtn.className = 'delete-palette-btn';
         deleteBtn.title = 'Delete palette';
-        
+                
         deleteBtn.addEventListener('click', () => {
             if (confirm(`Are you sure you want to delete "${palette.name}"?`)) {
                 deletePalette(palette.name);
@@ -267,16 +260,42 @@ function loadMoodBoardItems() {
 function renderMoodBoard() {
     const moodGrid = document.querySelector('.mood-grid');
     moodGrid.innerHTML = '';
-    moodBoardItems.forEach(item => {
+    moodBoardItems.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'mood-item';
         div.innerHTML = `
             <img class="mood-image" src="assets/images/${item.filename}" alt="${item.caption || ''}">
             <div class="mood-content">${item.caption || ''}</div>
+            <button class="delete-mood-item" data-index="${index}" title="Delete this image">&times;</button>
         `;
         moodGrid.appendChild(div);
     });
+
+    // Add event listeners to all delete buttons
+    document.querySelectorAll('.delete-mood-item').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const idx = parseInt(btn.getAttribute('data-index'));
+            moodBoardItems.splice(idx, 1); // Remove the item from the array
+            saveMoodBoardItems(moodBoardItems); // Update local storage
+            renderMoodBoard(); // Re-render the mood board
+            e.stopPropagation(); // Prevent lightbox or other events
+        });
+    });
 }
+
+// function renderMoodBoard() {
+//     const moodGrid = document.querySelector('.mood-grid');
+//     moodGrid.innerHTML = '';
+//     moodBoardItems.forEach(item => {
+//         const div = document.createElement('div');
+//         div.className = 'mood-item';
+//         div.innerHTML = `
+//             <img class="mood-image" src="assets/images/${item.filename}" alt="${item.caption || ''}">
+//             <div class="mood-content">${item.caption || ''}</div>
+//         `;
+//         moodGrid.appendChild(div);
+//     });
+// }
 
 document.getElementById('add-mood-item').addEventListener('click', () => {
     const filename = prompt('Enter image filename in assets/images/ (e.g., mood1.jpg):');
