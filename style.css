@@ -22,7 +22,13 @@ header {
 h1 {
     color: whitesmoke;
     font-size: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 nav {
@@ -234,4 +240,31 @@ button:hover {
     font-size: 1.2rem;
     text-align: center;
     max-width: 80vw;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #555;
+    background: #f0f0f0;
+    opacity: 0.5;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+}
+
+footer p {
+    color: #333;
+    margin: 0;
+}
+
+footer a {
+    color: #028391;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+footer a:hover {
+    color: #DE5D83;
+    text-decoration: underline;
 }
