@@ -29,7 +29,7 @@ header {
 h1 {
     font-size: 4rem;
     margin-bottom: 0.5rem;
-     background: linear-gradient(90deg, #fff600 0%, #39ff14 40%, #00d4ff 80%, #ff64f9 100%);
+    background: linear-gradient(90deg, #fff600 0%, #39ff14 40%, #00d4ff 80%, #ff64f9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -37,13 +37,13 @@ h1 {
 }
 
 h1 {
-  font-size: 4rem;
-  margin-bottom: 0.5rem;
-  color: #00D4FF; /* bright cyan */
-  text-shadow:
-    0 0 1px #00d4ff,
-    0 0 2px #00d4ff,
-    0 0 4px #39ff14;
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    color: #00D4FF; /* bright cyan */
+    text-shadow:
+        0 0 1px #00d4ff,
+        0 0 2px #00d4ff,
+        0 0 4px #39ff14;
 }
 
 /* h1 {
@@ -333,6 +333,12 @@ h3 {
     position: relative; /* Needed for absolute positioning of delete button */
 }
 
+.palette-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
 
 button {
     background: #DE5D83;
@@ -423,3 +429,113 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Tablets and small laptops */
+@media (max-width: 900px) {
+    header {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    .page-decription {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    .palette-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .harmony-display {
+        gap: 1rem;
+    }
+    }
+
+    /* Phones */
+    @media (max-width: 600px) {
+    header {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+        line-height: 1.1;
+    }
+
+    .page-decription {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tab-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        max-width: 100px;
+        ;
+    }
+
+    main {
+        margin: 1.5rem auto;
+        padding: 0 0.75rem;
+    }
+
+    .color-lab-grid {
+        gap: 16px;
+    }
+
+    .harmony-display {
+        flex-direction: column;
+    }
+
+    .palette-grid {
+        grid-template-columns: 1fr;      /* One card per row */
+    }
+
+    .mood-grid {
+            grid-template-columns: 1fr;      /* One mood item per row */
+    }
+
+    .color-row {
+        height: 50px;
+    }
+
+    button {
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-width: 120px;
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        justify-content: center;
+    }
+
+    .lightbox-close {
+        top: 16px;
+        right: 20px;
+        font-size: 2.2rem;
+    }
+
+    .lightbox-caption {
+        font-size: 1rem;
+        max-width: 90vw;
+    }
+
+    footer {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
