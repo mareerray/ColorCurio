@@ -10,24 +10,68 @@
 <body>
     <header>
         <h1>Color Curio</h1>
-        <p>A creative hub for organizing color palettes and mood board inspirations.</p>
+        <p class="page-decription">A creative hub for organizing color palettes and mood board inspirations.</p>
         <nav>
+            <button class="tab-btn" data-tab="colorlab">Color Lab</button> 
             <button class="tab-btn active" data-tab="palettes">Color Palettes</button>
             <button class="tab-btn" data-tab="moodboard">Mood Board</button>
         </nav>
     </header>
 
     <main>
-        <section id="palettes" class="tab-content active">
-            <h2>Color Palettes</h2>
-            <div class="palette-grid">
-                <!-- Color palettes will be dynamically added here -->
-            </div>
-            <button id="add-palette">+ Add New Palette</button>
-            <button id="save-json">Export as JSON</button>
-            <input type="file" id="import-json" accept="application/json" style="display:none;">
-            <button id="import-json-btn">Import JSON</button>
+        <section id="colorlab" class="tab-content"> 
+            <h2>Color Lab - Color Harmonies</h2>
+            <div class="color-lab-grid">
+                <p class="color-lab-text">Explore color harmonies (complementary and analogous) to find balanced palettes.</p>
+                <label for="color-range">Select Hue:</label>
+                <input type="range" id="color-range" min="0" max="360" step="1" value="210" />
 
+                <label for="base-color">Select Base Color:</label>
+                <input type="color" id="base-color" value="#3498db">
+                <div class="harmony-display">
+                    <div>
+                        <h3>Base Color</h3>
+                        <div id="color-base" class="color-box"></div>
+                        <p id="hex-base"></p>
+                    </div>
+                    <div>
+                        <h3>Complementary Color</h3>
+                        <div id="color-complementary" class="color-box"></div>
+                        <p id="hex-complementary"></p>
+                    </div>
+                    <div>
+                        <h3>Analogous Colors</h3>
+                        <div style="display: flex; justify-content: center;">
+                        <div class="color-hex-pair">
+                            <div id="color-analogous1" class="color-box"></div>
+                            <p id="hex-analogous1"></p>
+                        </div>
+                        <div class="color-hex-pair">
+                            <div id="color-analogous2" class="color-box"></div>
+                            <p id="hex-analogous2"></p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <section id="color-harmony-notes" style="margin-top: 2rem; max-width: 600px; font-family: Arial, sans-serif; color: #333;">
+                    <h3>About Color Harmonies</h3>
+                    <p><strong>Complementary:</strong> Colors opposite each other on the wheel, offering strong contrast for vibrant accents.</p>
+                    <p><strong>Analogous:</strong> Colors next to each other on the wheel, creating serene and harmonious palettes.</p>
+                    <!-- <p><strong>Triadic:</strong> Three colors evenly spaced around the wheel forming a triangle, balancing vibrancy and harmony.</p>
+                    <p><strong>Split-Complementary:</strong> One base color and two colors adjacent to its complement, less tension than complementary.</p>
+                    <p><strong>Monochromatic:</strong> Variations in lightness and saturation of a single color, subtle and elegant.</p> -->
+                </section>
+            </section>
+            <section id="palettes" class="tab-content active">
+                <h2>Color Palettes</h2>
+                <div class="palette-grid">
+                    <!-- Color palettes will be dynamically added here -->
+                </div>
+                <button id="add-palette">+ Add New Palette</button>
+                <button id="save-json">Export as JSON</button>
+                <input type="file" id="import-json" accept="application/json" style="display:none;">
+                <button id="import-json-btn">Import JSON</button>
+            </div>
         </section>
 
         <section id="moodboard" class="tab-content">

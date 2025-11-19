@@ -9,6 +9,133 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
+// ---------- COLOR LAB ----------
+const container = document.getElementById('color-wheel-container');
+const baseColorInput = document.getElementById('base-color');
+const colorRange = document.getElementById('color-range');
+
+if (baseColorInput) {
+    const colorBase = document.getElementById('color-base');
+    const colorComplementary = document.getElementById('color-complementary');
+    const colorAnalogous1 = document.getElementById('color-analogous1');
+    const colorAnalogous2 = document.getElementById('color-analogous2');
+
+    const hexBaseText = document.getElementById('hex-base');
+    const hexComplementaryText = document.getElementById('hex-complementary');
+    const hexAnalogous1Text = document.getElementById('hex-analogous1');
+    const hexAnalogous2Text = document.getElementById('hex-analogous2');
+
+    function hslFromHue(hue) {
+        return { h: hue, s: 100, l: 50 };
+    }
+    // Hex to HSL function (unchanged)
+    function hexToHSL(hex) {
+        let r = 0, g = 0, b = 0;
+        if (hex.length === 4) {
+            r = "0x" + hex[1] + hex[1];
+            g = "0x" + hex[2] + hex[2];
+            b = "0x" + hex[3] + hex[3];
+        } else if (hex.length === 7) {
+            r = "0x" + hex[1] + hex[2];
+            g = "0x" + hex[3] + hex[4];
+            b = "0x" + hex[5] + hex[6];
+        }
+        r /= 255; g /= 255; b /= 255;
+
+        const cmin = Math.min(r, g, b);
+        const cmax = Math.max(r, g, b);
+        const delta = cmax - cmin;
+
+        let h = 0, s = 0, l = 0;
+
+        if (delta === 0) h = 0;
+        else if (cmax === r) h = ((g - b) / delta) % 6;
+        else if (cmax === g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
+
+        h = Math.round(h * 60);
+        if (h < 0) h += 360;
+
+        l = (cmax + cmin) / 2;
+        s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
+
+        return { h, s, l };
+    }
+
+    // HSL to hex function (unchanged)
+    function hslToHex(h, s, l) {
+        s /= 100; l /= 100;
+        const c = (1 - Math.abs(2 * l - 1)) * s;
+        const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+        const m = l - c / 2;
+        let r = 0, g = 0, b = 0;
+
+        if (h >= 0 && h < 60) { r = c; g = x; b = 0; }
+        else if (h < 120) { r = x; g = c; b = 0; }
+        else if (h < 180) { r = 0; g = c; b = x; }
+        else if (h < 240) { r = 0; g = x; b = c; }
+        else if (h < 300) { r = x; g = 0; b = c; }
+        else { r = c; g = 0; b = x; }
+
+        r = Math.round((r + m) * 255);
+        g = Math.round((g + m) * 255);
+        b = Math.round((b + m) * 255);
+
+        const toHex = v => v.toString(16).padStart(2, '0');
+        return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    }
+
+    // Calculate complementary and analogous hues 
+    function calculateHarmonies(h) {
+        const complementary = (h + 180) % 360;
+        const analogous1 = (h + 30) % 360;
+        const analogous2 = (h - 30 + 360) % 360;
+        return { complementary, analogous1, analogous2 };
+    }
+
+    // Update colors in UI and on the color wheel
+    function updateColors(baseHex) {
+        const baseHSL = hexToHSL(baseHex);
+        const { complementary, analogous1, analogous2 } = calculateHarmonies(baseHSL.h);
+
+        // Update color boxes and hex text
+        colorBase.style.backgroundColor = baseHex;
+        hexBaseText.textContent = baseHex;
+
+        const compHex = hslToHex(complementary, baseHSL.s, baseHSL.l);
+        colorComplementary.style.backgroundColor = compHex;
+        hexComplementaryText.textContent = compHex;
+
+        const analHex1 = hslToHex(analogous1, baseHSL.s, baseHSL.l);
+        colorAnalogous1.style.backgroundColor = analHex1;
+        hexAnalogous1Text.textContent = analHex1;
+
+        const analHex2 = hslToHex(analogous2, baseHSL.s, baseHSL.l);
+        colorAnalogous2.style.backgroundColor = analHex2;
+        hexAnalogous2Text.textContent = analHex2;
+    }
+
+    function updateFromHue(hue) {
+        const hsl = hslFromHue(hue);
+        const hex = hslToHex(hsl.h, hsl.s, hsl.l);
+        updateColors(hex);
+    }
+
+    colorRange.addEventListener('input', () => {
+        updateFromHue(+colorRange.value);
+    });
+
+    // Initialize colors with default input value
+    updateColors(baseColorInput.value);
+    updateFromHue(colorRange.value);
+
+    // Update colors and wheel on color input change
+    baseColorInput.addEventListener('input', e => updateColors(e.target.value));
+}
+
+
 // ---------- PALETTES ----------
 
 let samplePalettes = [];
