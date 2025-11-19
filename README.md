@@ -6,6 +6,11 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 ## Features
 
+### Color Lab
+- Find complementary and analogous colors based on an input color
+- Quickly explore harmonious color combinations
+- Input a color and get suggested matching colors for design inspiration 
+
 ### Color Palette Organizer
 - Add, view, and manage custom color palettes (up to 6 colors per palette)
 - Copy hex codes to clipboard with a click
@@ -63,6 +68,7 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 - **Add Palette:** Click "+ Add New Palette", enter a name and up to 6 hex color codes (without the `#`).
 - **Add Inspiration:** Click "+ Add Inspiration", enter the image filename (from `assets/images/`) and an optional caption.
+- **Use Color Lab:** Experiment with colors interactively and save your favorite experiments.
 - **Delete:** Use the "×" button on palettes or mood board images to remove them.
 - **Export/Import:** Save your palettes and mood board as a JSON file, or load them on another device.
 
