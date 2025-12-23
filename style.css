@@ -16,6 +16,8 @@ body {
     min-height: 100vh;
 }
 
+/* ----------- HEADER & NAV BAR ------------- */
+
 header {
     /* background: #028391; */
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
@@ -101,6 +103,13 @@ main {
 .tab-content.active {
     display: block;
 }
+
+/* ----------- HOME SECTION ------------- */
+
+
+
+
+/* ----------- COLOR LAB SECTION ------------- */
 
 .color-lab-grid {
     display: flex;
@@ -227,9 +236,11 @@ h3 {
     line-height: 1.4;
 }
 
+/* ----------- PALETTE SECTION ------------- */
+
 .palette-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));    
     gap: 2rem;
     margin: 2rem 0;
 }
@@ -243,14 +254,16 @@ h3 {
 
 .color-row {
     display: flex;
+    flex-wrap: nowrap;
     height: 60px;
     border-radius: 10px;
     overflow: hidden;
     margin: 1rem 0;
+    width: 100%;
 }
 
 .color-swatch {
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,6 +271,7 @@ h3 {
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     cursor: pointer;
+    min-height: 40px;
 }
 
 .delete-palette-btn {
@@ -278,6 +292,8 @@ h3 {
 .delete-palette-btn:hover {
     background: #BFA2DB;
 }
+
+/* ----------- MOOD BORD SECTION ------------- */
 
 .mood-grid {
     display: grid;
@@ -393,6 +409,8 @@ h3 {
     max-width: 80vw;
 }
 
+/* ----------- FOOTER ------------- */
+
 footer {
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
     linear-gradient(180deg, #0f172a 0%, #051b40 50%, #0f172a 100%);
@@ -423,8 +441,9 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Tablets and small laptops */
-@media (max-width: 900px) {
+/* ---------- Tablets and small laptops ----------- */
+
+@media (min-width: 900px) {
     header {
         padding: 1.5rem;
     }
@@ -443,7 +462,7 @@ footer a:hover {
     }
 
     .palette-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 
     .mood-grid {
@@ -455,8 +474,8 @@ footer a:hover {
     }
     }
 
-    /* Phones */
-    @media (max-width: 600px) {
+    /* --------- Phones --------- */
+    @media (max-width: 700px) {
     header {
         padding: 1rem;
     }
@@ -497,15 +516,17 @@ footer a:hover {
     }
 
     .palette-grid {
-        grid-template-columns: 1fr;      /* One card per row */
+        grid-template-columns: repeat(1, 1fr);    /* One card per row */
+        gap: 1.5rem;
     }
 
     .mood-grid {
-            grid-template-columns: 1fr;      /* One mood item per row */
+        grid-template-columns: 1fr;      /* One mood item per row */
     }
 
     .color-row {
-        height: 50px;
+        flex-wrap: wrap;
+        height: auto;
     }
 
     button {
