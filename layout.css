@@ -72,16 +72,36 @@ nav {
 .container-fluid {
     display: flex;
     flex-wrap: nowrap !important;
+    justify-content: center !important;
 }
 
-.tab-btn, .btn.btn-link, .action-btn {
+.navbar-brand {
+    border-radius: 6px;
+    padding: 6px 12px !important;
+    margin-right: 5px !important;
+    color: #333 !important;
+}
+
+.tab-btn, .btn.btn-link {
+    background: #DE5D83;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.action-btn {
     background: #DE5D83;
     color: #333;
     border: none;
     padding: 0.6rem 0.8rem;
-    border-radius: 25px;
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 600;
     transition: all 0.3s ease;
     text-decoration: none;
 }
@@ -168,7 +188,7 @@ footer a:hover {
         gap: 0.4rem;
     }
     .tab-btn {
-        padding: 0.3rem 0,6rem;
+        padding: 0.3rem 0.6rem;
         font-size: 0.8rem;
     }
     main {
