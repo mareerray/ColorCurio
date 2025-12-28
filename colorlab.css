@@ -13,6 +13,73 @@
     margin: 1rem 0 2rem 0;
 }
 
+.color-controls {
+  display: flex;
+  gap: 2rem;
+  align-items: end;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.control-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.control-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+/* Base Color Circle */
+.color-circle-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#base-color {
+    position: absolute;
+    opacity: 0;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.color-circle-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid rgba(255,255,255,0.8);
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.4);
+    transition: all 0.3s ease;
+    background: #3498db; /* Default */
+}
+
+#base-color:hover + .color-circle-preview,
+.color-circle-preview:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 12px 35px rgba(0,0,0,0.4),
+        inset 0 3px 6px rgba(255,255,255,0.5);
+}
+
+/* Hue Slider */
+
 #color-range {
     width: 300px;
     height: 20px;
@@ -42,6 +109,17 @@
     margin-top: -5px; /* center thumb */
 }
 
+/* #color-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border: 3px solid rgba(255,255,255,0.8);
+  border-radius: 50%;
+} */
+
 .color-hex-pair {
     display: inline-block;
     text-align: center;
@@ -65,6 +143,10 @@
 
 /* Each harmony group container */
 .harmony-display > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;      /* Push content to bottom */
+    align-items: center;
     flex: 1 1 200px;
     text-align: center;
     border-radius: 8px;
@@ -115,15 +197,24 @@
     user-select: text;
 }
 
-h3 {
+.color-lab-palettes h3 {
     color: #333;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
-#color-harmony-notes p {
-    margin-bottom: 0.5rem;
+.color-desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.5rem 0 1rem 0;
+    font-style: italic;
+    text-align: center;
     line-height: 1.4;
 }
+
+/* #color-harmony-notes p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+} */
 
 /* ========== HARMONY PALETTES (CLEAN) ========== */
 .color-lab-palettes .input-group {
@@ -135,16 +226,16 @@ h3 {
 }
 
 .color-lab-palettes .scheme-row {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(0,0,0,0.1);
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-  flex: 1 1 200px;  /* Matches harmony-display > div */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    flex: 1 1 200px;  /* Matches harmony-display > div */
 }
 
 .color-lab-palettes .scheme-row:hover {
