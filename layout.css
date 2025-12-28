@@ -65,6 +65,10 @@ nav {
     gap: 1rem;
 }
 
+/* .navbar-expand-sm {
+    margin-right: 20px;
+} */
+
 .container-fluid {
     display: flex;
     flex-wrap: nowrap !important;
@@ -198,3 +202,5 @@ footer a:hover {
         font-size: 0.9rem;
     }
 }
+
+

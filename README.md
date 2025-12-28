@@ -38,7 +38,13 @@ A creative hub for organizing color palettes and mood board inspirations.
 ├── colorlab.css
 ├── palettes.css
 ├── moodboard.css
-├── script.js
+├── app.js
+├── modules/
+│   ├── layout.js              
+│   ├── home.js
+│   ├── colorlab.js             
+│   ├── palettes.js
+│   └── moodboard.js  
 ├── assets/
 │   ├── images/                # Mood board images
 │   ├── palettes/              # JSON files for palettes
