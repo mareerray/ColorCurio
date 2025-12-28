@@ -1,12 +1,5 @@
 /* ----------- COLOR LAB SECTION ------------- */
 
-/* .color-lab-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-} */
-
 .color-lab-text {
     color: #333;
     font-size: 1.1rem;
@@ -21,7 +14,6 @@
     gap: 2rem;
     align-items: end;
     margin: 2rem 0;
-    padding: 1.5rem;
     background: rgba(255,255,255,0.1);
     border-radius: 16px;
     backdrop-filter: blur(10px);
