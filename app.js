@@ -119,7 +119,8 @@ export function generateAllSchemes(baseColor = '#0066cc') {
 export function displayAllSchemes(schemes) {
     const container = document.getElementById('paletteSwatches');
     if (!container) return;
-        
+    
+    
     container.innerHTML = Object.entries(schemes).map(([name, colors]) => `
         <div class="scheme-row">
         <h4>${name}</h4>
