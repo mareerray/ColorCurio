@@ -27,24 +27,21 @@
             <nav class="navbar navbar-expand-sm navbar-light">
                 <div class="container-fluid">
                     <button class="navbar-brand tab-btn" data-tab="home" aria-label="Home">
-                        <i class="bi bi-house-heart-fill fs-3"></i>
+                        <i class="bi bi-house-heart-fill fs-4"></i>
                     </button>
-                    <!-- <button class="navbar-brand tab-btn active" data-tab="home">
-                    🏠
-                    </button> -->
-
-                    <div class="d-flex gap-2 ms-auto">
+                    <!-- <div class="d-flex gap-2 ms-auto"> -->
+                    <div class="tab-btn-group">
                     <button class="btn btn-link tab-btn" data-tab="colorlab">
-                        Color Lab
-                        <i class="bi bi-eyedropper fs-5"></i>
+                        <!-- Lab -->
+                        <i class="bi bi-eyedropper fs-4"></i>
                     </button>
                     <button class="btn btn-link tab-btn active" data-tab="palettes">
-                        Color Palettes
-                        <i class="bi bi-palette fs-5"></i>
+                        <!-- Palettes -->
+                        <i class="bi bi-palette fs-4"></i>
                     </button>
                     <button class="btn btn-link tab-btn" data-tab="moodboard">
-                        Mood Board
-                        <i class="bi bi-palette2 fs-5"></i>
+                        <!-- Board -->
+                        <i class="bi bi-palette2 fs-4"></i>
                     </button>
                     </div>
                 </div>
@@ -53,6 +50,31 @@
         </header>
 
         <main>
+            <!-- HOME -->
+            <section id="home" class="tab-content active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>ColorCurio</h1>
+                            <p class="hero-motto">"Harmony in Every Hue" 🌈</p>
+                                <p class="hero-subtitle">
+                                    Design palettes that feel magical.<br>
+                                    Generate harmonies in one click.<br>
+                                    <span class="highlight">Create faster. Save forever.</span>
+                            </p>                        
+                            <div class="hero-buttons">
+                            <button class="btn btn-primary-link btn-lg tab-btn" data-tab="colorlab">
+                                <i class="bi bi-eyedropper"></i> Color Lab
+                            </button>
+                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="palettes">
+                                <i class="bi bi-palette"></i> Color Palettes
+                            </button>
+                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="moodboard">
+                                <i class="bi bi-palette2"></i> Mood Board
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- COLOR LAB -->
             <section id="colorlab" class="tab-content"> 
                 <h2>Color Lab - Color Harmonies</h2>
