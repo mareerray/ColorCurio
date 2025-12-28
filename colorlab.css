@@ -1,0 +1,232 @@
+/* ----------- COLOR LAB SECTION ------------- */
+
+/* .color-lab-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+} */
+
+.color-lab-text {
+    color: #333;
+    font-size: 1.1rem;
+    margin: 1rem 0 2rem 0;
+}
+
+#color-range {
+    width: 300px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, 
+    red 0%, 
+    #ff0 17%, 
+    #0f0 33%, 
+    #0ff 50%, 
+    #00f 67%, 
+    #f0f 83%, 
+    red 100%);
+    appearance: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+#color-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #666;
+    margin-top: -5px; /* center thumb */
+}
+
+.color-hex-pair {
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px; /* Small space between box and hex */
+}
+
+.harmony-display {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Each harmony group container */
+.harmony-display > div {
+    flex: 1 1 200px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.harmony-display > div:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.harmony-display h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Color box styling */
+.color-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    margin: 0 auto 10px auto;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+    transition: border-color 0.3s ease;
+}
+
+.color-box:hover {
+    border-color: #888;
+}
+
+/* For the analogous colors container */
+.color-hex-pair {
+    display: inline-block;
+    margin: 0 8px;
+    width: 120px;
+}
+
+.hex-code {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #555;
+    user-select: text;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#color-harmony-notes p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* ========== HARMONY PALETTES (CLEAN) ========== */
+.color-lab-palettes .input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.color-lab-palettes .scheme-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+  flex: 1 1 200px;  /* Matches harmony-display > div */
+}
+
+.color-lab-palettes .scheme-row:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.color-lab-palettes .scheme-row h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+.color-lab-palettes .scheme-swatches {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.color-lab-palettes .swatch {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+    cursor: pointer;
+    position: relative;
+}
+
+.color-lab-palettes .swatch span {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: whitesmoke;
+    text-shadow: 
+        0 1px 1px rgba(0,0,0,0.9),
+        0 -1px 1px rgba(0,0,0,0.9),
+        1px 0 1px rgba(0,0,0,0.9),
+        -1px 0 1px rgba(0,0,0,0.9),
+        0 0 3px rgba(0,0,0,0.7);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.color-lab-palettes .swatch:hover {
+    transform: scale(1.02);
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+ /* --------- Phones --------- */
+
+@media (max-width: 700px) {
+    .color-lab-grid { 
+        gap: 16px; 
+    }
+    .harmony-display { 
+        flex-direction: column; 
+    }
+    .color-lab-palettes .scheme-row {
+        flex: 1 1 100%;    
+        margin-bottom: 1rem;
+    }
+    .palette-grid {
+        grid-template-columns: repeat(1, 1fr);   
+        gap: 1.5rem;
+    }
+}
+
+/* ---------- Tablets and small laptops ----------- */
+
+@media (min-width: 900px) {
+    .harmony-display {
+        gap: 1rem;
+    }
+}

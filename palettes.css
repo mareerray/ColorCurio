@@ -1,0 +1,82 @@
+/* ----------- PALETTE SECTION ------------- */
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));    
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.palette-card {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.color-row {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.color-swatch {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: whitesmoke;
+    text-shadow: 
+    0 1px 1px rgba(0,0,0,0.9),
+    0 -1px 1px rgba(0,0,0,0.9),
+    1px 0 1px rgba(0,0,0,0.9),
+    -1px 0 1px rgba(0,0,0,0.9),
+    0 0 3px rgba(0,0,0,0.7);
+    cursor: pointer;
+    min-height: 40px;
+}
+
+.delete-palette-btn {
+    background: #DE5D83;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+    transition: background 0.2s;
+}
+.delete-palette-btn:hover {
+    background: #BFA2DB;
+}
+
+ /* --------- Phones --------- */
+
+@media (max-width: 700px) {
+    .palette-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem; 
+    }
+    .color-row {
+        flex-wrap: wrap;
+        height: auto;
+    }
+}
+
+/* ---------- Tablets and small laptops ----------- */
+
+@media (min-width: 900px) {
+    .palette-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
+    }
+}

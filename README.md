@@ -34,6 +34,10 @@ A creative hub for organizing color palettes and mood board inspirations.
 ```
 ├── index.html
 ├── style.css
+├── home.css
+├── colorlab.css
+├── palettes.css
+├── moodboard.css
 ├── script.js
 ├── assets/
 │   ├── images/                # Mood board images

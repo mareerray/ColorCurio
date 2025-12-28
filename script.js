@@ -224,6 +224,7 @@ function createPaletteCard(palette) {
         swatch.className = 'color-swatch';
         swatch.style.backgroundColor = color;
         swatch.textContent = color;
+        
         swatch.addEventListener('click', () => {
             navigator.clipboard.writeText(color);
             const originalText = swatch.textContent;
@@ -436,12 +437,108 @@ function setupLightbox() {
     });
 }
 
+// ---------- HARMONY PALETTES ----------
+
+function generateSoftPalette(baseHex) {
+  const hsl = hexToHSL(baseHex);
+  const baseHue = hsl.h;
+  
+  return [
+    hslToHex(baseHue, hsl.s * 0.5, hsl.l * 0.9),
+    hslToHex((baseHue + 30) % 360, hsl.s * 0.4, hsl.l * 0.85),
+    hslToHex((baseHue - 30 + 360) % 360, hsl.s * 0.4, hsl.l * 0.85),
+    hslToHex((baseHue + 180) % 360, hsl.s * 0.3, hsl.l * 0.88),
+    hslToHex(baseHue, hsl.s * 0.6, hsl.l * 0.95)
+  ];
+}
+
+function generateAllSchemes() {
+  const baseColor = document.getElementById('baseColor').value;
+  const hsl = hexToHSL(baseColor);
+  const baseHue = hsl.h;
+  
+  const schemes = {
+    'Analogous': [
+      baseColor,
+      hslToHex((baseHue + 30) % 360, hsl.s, hsl.l),
+      hslToHex((baseHue - 30 + 360) % 360, hsl.s, hsl.l),
+      hslToHex(baseHue, hsl.s * 0.8, hsl.l * 1.1)
+    ],
+    'Complementary': [
+      baseColor,
+      hslToHex((baseHue + 180) % 360, hsl.s, hsl.l)
+    ],
+    'Triadic': [
+      baseColor,
+      hslToHex((baseHue + 120) % 360, hsl.s, hsl.l),
+      hslToHex((baseHue + 240) % 360, hsl.s, hsl.l)
+    ],
+    'Tetradic': [
+      baseColor,
+      hslToHex((baseHue + 90) % 360, hsl.s, hsl.l),
+      hslToHex((baseHue + 180) % 360, hsl.s, hsl.l),
+      hslToHex((baseHue + 270) % 360, hsl.s, hsl.l)
+    ],
+    'Monochromatic': [
+      baseColor,
+      hslToHex(baseHue, hsl.s * 0.7, hsl.l * 0.7),
+      hslToHex(baseHue, hsl.s * 0.5, hsl.l * 0.5),
+      hslToHex(baseHue, hsl.s * 0.3, hsl.l * 1.2)
+    ],
+    'Soft': generateSoftPalette(baseColor)
+  };
+  
+  displayAllSchemes(schemes);
+}
+
+function displayAllSchemes(schemes) {
+  const container = document.getElementById('paletteSwatches');
+  if (!container) return;
+  
+  // Pad schemes to same length (5 colors max)
+  const maxLength = 5;
+  const paddedSchemes = {};
+  for (const [name, colors] of Object.entries(schemes)) {
+    paddedSchemes[name] = [...colors, ...Array(maxLength - colors.length).fill('#f0f0f0')];
+  }
+  
+  container.innerHTML = Object.entries(paddedSchemes).map(([name, colors]) => `
+    <div class="scheme-row">
+      <h4>${name}</h4>
+      <div class="scheme-swatches">
+        ${colors.map(color => 
+          `<div class="swatch" style="background: ${color};" 
+                 onclick="navigator.clipboard.writeText('${color}')">
+            <span>${color}</span>
+          </div>`
+        ).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
 // ---------- INITIALIZATION ----------
 
+// Replace FINAL DOMContentLoaded with:
 document.addEventListener('DOMContentLoaded', () => {
-    loadSamplePalettes().then(() => {
-        loadPalettes();
+  // Tab switching works immediately
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      
+      // Load content AFTER tab switch
+      if (tabId === 'palettes') loadSamplePalettes().then(() => loadPalettes());
+      if (tabId === 'moodboard') loadMoodBoard();
     });
-    loadMoodBoard();
-    setupLightbox();
+  });
+  
+  // Load active tab (Palettes)
+  loadSamplePalettes().then(() => loadPalettes());
+  setupLightbox();
 });
+
+

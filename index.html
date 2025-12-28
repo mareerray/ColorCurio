@@ -1,140 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Palette & Mood Board</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/palette.ico">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-</head>
-<body>
-    <header>
-        <h1 class="title">Color Curio</h1>
-        <p class="page-decription">A creative hub for organizing color palettes and mood board inspirations.</p>
-        <div class="creator">
-            <p class="creator-name">By Mayuree Reunsati</p>
-            <a href="https://github.com/mareerray" target="_blank" aria-label="GitHub">
-                <i class="bi bi-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/mayuree-reunsati" target="_blank" aria-label="LinkedIn">
-                <i class="bi bi-linkedin"></i>
-            </a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Palette & Mood Board</title>
+        <link rel="icon" type="image/x-icon" href="assets/images/palette.ico">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet">
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <header>
+            <h1 class="title">Color Curio</h1>
+            <p class="page-decription">A creative hub for organizing color palettes and mood board inspirations.</p>
+            <div class="creator">
+                <p class="creator-name">By Mayuree Reunsati</p>
+                <a href="https://github.com/mareerray" target="_blank" aria-label="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mayuree-reunsati" target="_blank" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <div class="container-fluid">
+                    <button class="navbar-brand tab-btn" data-tab="home" aria-label="Home">
+                        <i class="bi bi-house-heart-fill fs-3"></i>
+                    </button>
+                    <!-- <button class="navbar-brand tab-btn active" data-tab="home">
+                    🏠
+                    </button> -->
+
+                    <div class="d-flex gap-2 ms-auto">
+                    <button class="btn btn-link tab-btn" data-tab="colorlab">
+                        Color Lab
+                        <i class="bi bi-eyedropper fs-5"></i>
+                    </button>
+                    <button class="btn btn-link tab-btn active" data-tab="palettes">
+                        Color Palettes
+                        <i class="bi bi-palette fs-5"></i>
+                    </button>
+                    <button class="btn btn-link tab-btn" data-tab="moodboard">
+                        Mood Board
+                        <i class="bi bi-palette2 fs-5"></i>
+                    </button>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <main>
+            <!-- COLOR LAB -->
+            <section id="colorlab" class="tab-content"> 
+                <h2>Color Lab - Color Harmonies</h2>
+                <div class="color-lab-grid">
+                    <p class="color-lab-text">Explore color harmonies (complementary and analogous) to find balanced palettes.</p>
+                    <label for="color-range">Select Hue:</label>
+                    <input type="range" id="color-range" min="0" max="360" step="1" value="210" />
+
+                    <label for="base-color">Select Base Color:</label>
+                    <input type="color" id="base-color" value="#3498db">
+                    <div class="harmony-display">
+                        <div>
+                            <h3>Base Color</h3>
+                            <div id="color-base" class="color-box"></div>
+                            <p id="hex-base"></p>
+                        </div>
+                        <div>
+                            <h3>Complementary Color</h3>
+                            <div id="color-complementary" class="color-box"></div>
+                            <p id="hex-complementary"></p>
+                        </div>
+                        <div>
+                            <h3>Analogous Colors</h3>
+                            <div style="display: flex; justify-content: center;">
+                            <div class="color-hex-pair">
+                                <div id="color-analogous1" class="color-box"></div>
+                                <p id="hex-analogous1"></p>
+                            </div>
+                            <div class="color-hex-pair">
+                                <div id="color-analogous2" class="color-box"></div>
+                                <p id="hex-analogous2"></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="color-harmony-notes" style="margin-top: 2rem; max-width: 600px; font-family: Arial, sans-serif; color: #333;">
+                        <h3>About Color Harmonies</h3>
+                        <p><strong>Complementary:</strong> Colors opposite each other on the wheel, offering strong contrast for vibrant accents.</p>
+                        <p><strong>Analogous:</strong> Colors next to each other on the wheel, creating serene and harmonious palettes.</p>
+                        <!-- <p><strong>Triadic:</strong> Three colors evenly spaced around the wheel forming a triangle, balancing vibrancy and harmony.</p>
+                        <p><strong>Split-Complementary:</strong> One base color and two colors adjacent to its complement, less tension than complementary.</p>
+                        <p><strong>Monochromatic:</strong> Variations in lightness and saturation of a single color, subtle and elegant.</p> -->
+                    </section>
+                    <section class="color-lab-palettes">
+                        <h3>Harmony Palettes</h3>
+                        <div class="input-group">
+                            <input type="color" id="baseColor" value="#0066cc">
+                            <button onclick="generateAllSchemes()">Generate All Schemes</button>
+                        </div>
+                        <div id="paletteSwatches" class="harmony-grid"></div>
+                    </section>
+                </div>
+            </section>
+            
+            <!-- COLOR PALETTES -->
+            <section id="palettes" class="tab-content active">
+                <h2>Color Palettes</h2>
+                <div class="palette-grid">
+                    <!-- Color palettes will be dynamically added here -->
+                </div>
+                <div class="palette-controls">
+                    <button class="action-btn" id="add-palette">+ Add New Palette</button>
+                    <button class="action-btn" id="save-json">Export as JSON</button>
+                    <input type="file" id="import-json" accept="application/json" style="display:none;">
+                    <button class="action-btn" id="import-json-btn">Import JSON file</button>
+                </div>
+            </section>
+
+            <!-- MOOD BOARD -->
+            <section id="moodboard" class="tab-content">
+                <h2>Mood Board</h2>
+                <div class="mood-grid">
+                    <!-- Mood board items will be added here -->
+                </div>
+                <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
+            </section>
+
+        </main>
+
+        <!-- Lightbox Overlay -->
+        <div id="lightbox-overlay" style="display: none;">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Mood Board Full Image">
+        <div id="lightbox-caption"></div>
         </div>
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <button class="navbar-brand tab-btn" data-tab="home" aria-label="Home">
-                    <i class="bi bi-house-heart-fill fs-3"></i>
-                </button>
-                <!-- <button class="navbar-brand tab-btn active" data-tab="home">
-                🏠
-                </button> -->
-
-                <div class="d-flex gap-2 ms-auto">
-                <button class="btn btn-link tab-btn" data-tab="colorlab">
-                    Color Lab
-                    <i class="bi bi-eyedropper fs-5"></i>
-                </button>
-                <button class="btn btn-link tab-btn active" data-tab="palettes">
-                    Color Palettes
-                    <i class="bi bi-palette fs-5"></i>
-                </button>
-                <button class="btn btn-link tab-btn" data-tab="moodboard">
-                    Mood Board
-                    <i class="bi bi-palette2 fs-5"></i>
-                </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- <nav>
-            <button class="tab-btn" data-tab="colorlab">Color Lab</button> 
-            <button class="tab-btn active" data-tab="palettes">Color Palettes</button>
-            <button class="tab-btn" data-tab="moodboard">Mood Board</button>
-        </nav> -->
-    </header>
-
-    <main>
-        <section id="colorlab" class="tab-content"> 
-            <h2>Color Lab - Color Harmonies</h2>
-            <div class="color-lab-grid">
-                <p class="color-lab-text">Explore color harmonies (complementary and analogous) to find balanced palettes.</p>
-                <label for="color-range">Select Hue:</label>
-                <input type="range" id="color-range" min="0" max="360" step="1" value="210" />
-
-                <label for="base-color">Select Base Color:</label>
-                <input type="color" id="base-color" value="#3498db">
-                <div class="harmony-display">
-                    <div>
-                        <h3>Base Color</h3>
-                        <div id="color-base" class="color-box"></div>
-                        <p id="hex-base"></p>
-                    </div>
-                    <div>
-                        <h3>Complementary Color</h3>
-                        <div id="color-complementary" class="color-box"></div>
-                        <p id="hex-complementary"></p>
-                    </div>
-                    <div>
-                        <h3>Analogous Colors</h3>
-                        <div style="display: flex; justify-content: center;">
-                        <div class="color-hex-pair">
-                            <div id="color-analogous1" class="color-box"></div>
-                            <p id="hex-analogous1"></p>
-                        </div>
-                        <div class="color-hex-pair">
-                            <div id="color-analogous2" class="color-box"></div>
-                            <p id="hex-analogous2"></p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <section id="color-harmony-notes" style="margin-top: 2rem; max-width: 600px; font-family: Arial, sans-serif; color: #333;">
-                    <h3>About Color Harmonies</h3>
-                    <p><strong>Complementary:</strong> Colors opposite each other on the wheel, offering strong contrast for vibrant accents.</p>
-                    <p><strong>Analogous:</strong> Colors next to each other on the wheel, creating serene and harmonious palettes.</p>
-                    <!-- <p><strong>Triadic:</strong> Three colors evenly spaced around the wheel forming a triangle, balancing vibrancy and harmony.</p>
-                    <p><strong>Split-Complementary:</strong> One base color and two colors adjacent to its complement, less tension than complementary.</p>
-                    <p><strong>Monochromatic:</strong> Variations in lightness and saturation of a single color, subtle and elegant.</p> -->
-                </section>
-            </div>
-        </section>
-        <section id="palettes" class="tab-content active">
-            <h2>Color Palettes</h2>
-            <div class="palette-grid">
-                <!-- Color palettes will be dynamically added here -->
-            </div>
-            <div class="palette-controls">
-                <button class="action-btn" id="add-palette">+ Add New Palette</button>
-                <button class="action-btn" id="save-json">Export as JSON</button>
-                <input type="file" id="import-json" accept="application/json" style="display:none;">
-                <button class="action-btn" id="import-json-btn">Import JSON file</button>
-            </div>
-        </section>
-
-        <section id="moodboard" class="tab-content">
-            <h2>Mood Board</h2>
-            <div class="mood-grid">
-                <!-- Mood board items will be added here -->
-            </div>
-            <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
-        </section>
-    </main>
-    <!-- Lightbox Overlay -->
-    <div id="lightbox-overlay" style="display: none;">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="Mood Board Full Image">
-    <div id="lightbox-caption"></div>
-    </div>
-    <footer>
-        <p>© 2025 Color Curio. All rights reserved. Created by <a href="https://github.com/mareerray" target="_blank" rel="noopener">Mayuree Reunsati</a>.</p>
-    </footer>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-…" crossorigin="anonymous">
-    </script>
-</body>
+        <footer>
+            <p>© 2025 Color Curio. All rights reserved. Created by <a href="https://github.com/mareerray" target="_blank" rel="noopener">Mayuree Reunsati</a>.</p>
+        </footer>
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
