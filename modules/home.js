@@ -23,7 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (targetElement) {
                 targetElement.classList.add('active');
                 targetElement.style.display = 'block';  // Force show
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const headerHeight = 22 * 16;  // 22rem = 352px (adjust if needed)
+                window.scrollTo({
+                    top: targetElement.offsetTop - headerHeight,
+                    behavior: "smooth"
+                });
             }
             
             // Update active buttons
