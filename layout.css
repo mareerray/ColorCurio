@@ -1,6 +1,8 @@
 /* ----------- HEADER & NAV BAR ------------- */
 
 header {
+    top: 0;
+    z-index: 1000;
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
     linear-gradient(180deg, #0f172a 0%, #051b40 50%, #0f172a 100%);
     background-size: 20px 20px, 100% 100%;
@@ -65,10 +67,6 @@ nav {
     gap: 1rem;
 }
 
-/* .navbar-expand-sm {
-    margin-right: 20px;
-} */
-
 .container-fluid {
     display: flex;
     flex-wrap: nowrap !important;
@@ -119,21 +117,42 @@ nav {
 }
 
 main {
+    position: relative;
+    min-height: auto !important;;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
+    padding-top: 22rem;
 }
 
 .tab-content {
-    display: none;
-    max-width: 80vw;
-    margin: 0 auto;
-    padding: 0 1rem;
-    width: 100%;
+    position: static;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: block; /* Always block, just hidden with opacity */
 }
 
 .tab-content.active {
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
     display: block;
+    height: auto ;
+    animation: smoothFadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 
@@ -143,11 +162,8 @@ footer {
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
     linear-gradient(180deg, #0f172a 0%, #051b40 50%, #0f172a 100%);
     background-size: 20px 20px, 100% 100%;
-
     text-align: center;
     padding: 1.5rem 0;
-    /* background: #f0f0f0; */
-    /* opacity: 0.5; */
     font-size: 1rem;
     letter-spacing: 1px;
     margin-top: 2rem;
@@ -202,6 +218,10 @@ footer a:hover {
         padding: 0.4rem 1rem;
         font-size: 0.9rem;
         justify-content: center;
+    }
+    footer {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
     }
 }
 
