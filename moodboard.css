@@ -1,4 +1,11 @@
 /* ----------- MOOD BORD SECTION ------------- */
+.mood-item[data-is-sample] .delete-mood-item {
+  display: none !important;  /* Hide delete button for samples */
+}
+
+.mood-item:not([data-is-sample]) .delete-mood-item {
+  display: flex;  /* Show only for custom */
+}
 
 .mood-grid {
     display: grid;

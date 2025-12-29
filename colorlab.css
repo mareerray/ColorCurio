@@ -105,17 +105,6 @@
     margin-top: -5px; /* center thumb */
 }
 
-/* #color-range::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  border: 3px solid rgba(255,255,255,0.8);
-  border-radius: 50%;
-} */
-
 .color-hex-pair {
     display: inline-block;
     text-align: center;
@@ -135,6 +124,7 @@
     gap: 2rem;
     flex-wrap: wrap;
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* Each harmony group container */
@@ -291,6 +281,91 @@
     box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
 }
 
+/* PERFECT GLASS TOOLTIP - Matches your Color Lab */
+.scheme-header {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-bottom: 1.5rem;
+    gap: 0.75rem;  /* Space between title + icon */
+}
+
+.scheme-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    flex-shrink: 0;
+}
+
+.info-tooltip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Rest of tooltip CSS stays exactly the same */
+.info-btn {
+    background: rgba(107, 114, 128, 0.1);
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-btn:hover {
+    background: rgba(222, 93, 131, 0.2);
+    border-color: rgb(184, 134, 222);
+    color: rgb(184, 134, 222);
+    transform: scale(1.15);
+}
+
+/* Tooltip positioning - appears ABOVE icon */
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;                    /* ← Vertical center */
+    left: calc(100% + 12px);                 /* ← 12px GAP from icon */
+    transform: translateY(-50%); /* ← Perfect center */
+    width: 260px;
+    max-width: 90vw;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #1e293b;
+    font-weight: 500;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+}
+
+.tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;                     /* ← Arrow at LEFT edge of tooltip */
+    margin-left: -12px;          /* ← 12px LEFT of tooltip */
+    margin-top: -6px;
+    border: 6px solid transparent;
+    border-right-color: rgba(255,255,255,0.95); /* ← Right arrow */
+}
+
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+
  /* --------- Phones --------- */
 
 @media (max-width: 700px) {
@@ -316,6 +391,30 @@
     .scheme-swatches:not(.analogous) {
         flex-wrap: wrap;
     }
+      .scheme-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+     .tooltip-text {
+        top: 120%;           /* ← BELOW on mobile */
+        right: auto;
+        left: 0;
+        transform: translateX(0);
+        width: 280px;
+        max-width: 90vw;
+    }
+    
+    .tooltip-text::after {
+        top: 0;
+        left: 20px;
+        margin-top: 0;
+        margin-left: 0;
+        border: 6px solid transparent;
+        border-top-color: rgba(255,255,255,0.95);
+    }
+
 }
 
 /* ---------- Tablets and small laptops ----------- */

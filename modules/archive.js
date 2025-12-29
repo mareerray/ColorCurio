@@ -77,10 +77,22 @@ function updateCount(num) {
   document.getElementById('archive-count').textContent = num;
 }
 
-// Init on tab switch
+// Init - Load when tab clicked OR page loads on archive
 document.addEventListener('DOMContentLoaded', () => {
-  const archiveBtn = document.querySelector('[data-tab="archive"]');
-  if (archiveBtn) {
-    archiveBtn.addEventListener('click', window.loadArchive);
+  // Load archive when tab button clicked
+  document.querySelectorAll('.tab-btn[data-tab="archive"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Small delay to ensure tab is active
+      setTimeout(() => {
+        if (document.querySelector('.tab-content.active')?.id === 'archive') {
+          window.loadArchive();
+        }
+      }, 50);
+    });
+  });
+  
+  // ALSO load if page opens directly on archive
+  if (document.querySelector('.tab-content.active')?.id === 'archive') {
+    window.loadArchive();
   }
 });
