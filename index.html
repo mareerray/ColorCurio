@@ -35,18 +35,22 @@
                     </button>
                     <!-- <div class="d-flex gap-2 ms-auto"> -->
                     <div class="tab-btn-group">
-                    <button class="btn btn-link tab-btn" data-tab="colorlab">
-                        <!-- Lab -->
-                        <i class="bi bi-eyedropper fs-4"></i>
-                    </button>
-                    <button class="btn btn-link tab-btn" data-tab="palettes">
-                        <!-- Palettes -->
-                        <i class="bi bi-palette fs-4"></i>
-                    </button>
-                    <button class="btn btn-link tab-btn" data-tab="moodboard">
-                        <!-- Board -->
-                        <i class="bi bi-palette2 fs-4"></i>
-                    </button>
+                        <button class="btn btn-link tab-btn" data-tab="colorlab">
+                            <!-- Lab -->
+                            <i class="bi bi-eyedropper fs-4"></i>
+                        </button>
+                        <button class="btn btn-link tab-btn" data-tab="palettes">
+                            <!-- Palettes -->
+                            <i class="bi bi-palette fs-4"></i>
+                        </button>
+                        <button class="btn btn-link tab-btn" data-tab="moodboard">
+                            <!-- Board -->
+                            <i class="bi bi-palette2 fs-4"></i>
+                        </button>
+                        <button class="btn btn-link tab-btn" data-tab="archive">
+                            <!-- Archive -->
+                            <i class="bi bi-grid-3x3-gap fs-4"></i> 
+                        </button>
                     </div>
                 </div>
             </nav>
@@ -141,18 +145,18 @@
             </section>
             
             <!-- COLOR PALETTES -->
-            <section id="palettes" class="tab-content">
+            <!-- <section id="palettes" class="tab-content">
                 <h2>Color Palettes</h2>
                 <div class="palette-grid">
                     <!-- Color palettes will be dynamically added here -->
-                </div>
+                <!-- </div>
                 <div class="palette-controls">
                     <button class="action-btn" id="add-palette">+ Add New Palette</button>
                     <button class="action-btn" id="save-json">Export as JSON</button>
                     <input type="file" id="import-json" accept="application/json" style="display:none;">
                     <button class="action-btn" id="import-json-btn">Import JSON file</button>
                 </div>
-            </section>
+            </section> --> 
 
             <!-- MOOD BOARD -->
             <section id="moodboard" class="tab-content">
@@ -163,6 +167,32 @@
                 <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
             </section>
 
+            <!-- Color Palette ARCHIVE (Read-only samples + search)-->
+            <section id="archive" class="tab-content">
+                <div class="section-header">
+                    <div>
+                    <h2>Color Palette Archive</h2>
+                    <p>📊 30+ curated professional palettes</p>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <input 
+                    type="text" 
+                    id="archive-search" 
+                    placeholder="🔍 Search by name, mood, style..." 
+                    class="full-search"
+                >
+                <!-- Archive Grid -->
+                <div class="palette-grid">
+                    <!-- Sample palettes loaded dynamically here -->
+                </div>
+                <!-- Stats Footer -->
+                <div class="archive-stats">
+                    <span>Total: <span id="archive-count">0</span> palettes</span>
+                    <button class="action-btn secondary" id="clear-search">Clear Search</button>
+                </div>
+            </section>
         </main>
 
         <!-- Lightbox Overlay -->

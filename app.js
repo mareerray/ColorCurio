@@ -178,6 +178,7 @@ import './modules/home.js';
 import './modules/colorlab.js';
 import './modules/palettes.js';
 import './modules/moodboard.js';
+import './modules/archive.js';
 // ---------- INITIALIZATION ----------
 
 // Initialize on DOM ready
