@@ -11,6 +11,12 @@ A creative hub for organizing color palettes and mood board inspirations.
 - Quickly explore harmonious color combinations
 - Input a color and get suggested matching colors for design inspiration 
 
+### **Color Palette Archive** *(New!)*
+- Browse 30+ curated professional sample palettes
+- Instant search by name, mood, or style
+- Copy individual colors to clipboard
+- Read-only inspiration library
+
 ### Color Palette Organizer
 - Add, view, and manage custom color palettes (up to 6 colors per palette)
 - Copy hex codes to clipboard with a click
@@ -36,13 +42,15 @@ A creative hub for organizing color palettes and mood board inspirations.
 ├── style.css
 ├── home.css
 ├── colorlab.css
+├── archive.css
 ├── palettes.css
 ├── moodboard.css
 ├── app.js
 ├── modules/
 │   ├── layout.js              
 │   ├── home.js
-│   ├── colorlab.js             
+│   ├── colorlab.js   
+│   ├── archive.js           
 │   ├── palettes.js
 │   └── moodboard.js  
 ├── assets/
@@ -56,7 +64,7 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 - `index.html` – Main webpage
 - `style.css` – Stylesheet for the app
-- `script.js` – JavaScript logic and interactivity
+- `app.js` – JavaScript logic and interactivity
 - `assets/images/` – Folder for all mood board image files
 - `assets/palettes/` – Folder for palette JSON files, including `samplePalettes.json`
 - `assets/moodboard/` – Folder for moodboard JSON files, including `sampleMoodBoard.json`
@@ -76,6 +84,7 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 ## Usage
 
+- **Browse Archive:** Search and copy colors from curated sample palettes
 - **Add Palette:** Click "+ Add New Palette", enter a name and up to 6 hex color codes (without the `#`).
 - **Add Inspiration:** Click "+ Add Inspiration", enter the image filename (from `assets/images/`) and an optional caption.
 - **Use Color Lab:** Experiment with colors interactively and save your favorite experiments.
