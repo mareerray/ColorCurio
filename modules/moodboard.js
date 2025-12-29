@@ -14,6 +14,13 @@ window.loadMoodBoard = async function() {
       moodBoardItems = [];
     }
   }
+  if (!window.moodBoardItems.some(item => item.isSample)) {
+    window.moodBoardItems.slice(0, 3).forEach((item, idx) => {
+      item.isSample = true;
+    });
+    saveMoodBoardItems(window.moodBoardItems);
+  }
+  
   renderMoodBoard();
 };
 
@@ -29,6 +36,9 @@ window.renderMoodBoard = function() {
       <div class="mood-content">${item.caption || ''}</div>
       <button class="delete-mood-item" data-index="${index}" title="Delete this image">&times;</button>
     `;
+    div.className = `mood-item ${item.isSample ? 'sample-item' : 'custom-item'}`;
+    div.setAttribute('data-is-sample', item.isSample || false);
+
     moodGrid.appendChild(div);
   });
 
@@ -36,10 +46,18 @@ window.renderMoodBoard = function() {
   document.querySelectorAll('.delete-mood-item').forEach(btn => {
     btn.addEventListener('click', function(e) {
       const idx = parseInt(btn.getAttribute('data-index'));
-      moodBoardItems.splice(idx, 1);
-      saveMoodBoardItems(moodBoardItems);
+      
+      // CHECK if it's a SAMPLE item (disable delete)
+      if (window.isSampleMoodItem?.(idx)) {
+        e.stopPropagation();
+        alert('Sample images cannot be deleted. Add your own images to edit!');
+        return;
+      }
+      
+      // Normal delete for custom items
+      window.moodBoardItems.splice(idx, 1);
+      saveMoodBoardItems(window.moodBoardItems);
       renderMoodBoard();
-      e.stopPropagation();
     });
   });
 };

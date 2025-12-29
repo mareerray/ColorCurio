@@ -62,13 +62,13 @@
                 <div class="hero">
                     <div class="hero-content">
                         <h1>ColorCurio</h1>
-                            <p class="hero-motto">"Harmony in Every Hue" 🌈</p>
-                                <p class="hero-subtitle">
-                                    Design palettes that feel magical.<br>
-                                    Generate harmonies in one click.<br>
-                                    <span class="highlight">Create faster. Save forever.</span>
-                            </p>                        
-                            <div class="hero-buttons">
+                        <p class="hero-motto">"Harmony in Every Hue" 🌈</p>
+                        <p class="hero-subtitle">
+                            Design palettes that feel magical.<br>
+                            Generate harmonies in one click.<br>
+                            <span class="highlight">Create faster. Save forever.</span>
+                        </p>                        
+                        <div class="hero-buttons">
                             <button class="btn btn-primary-link btn-lg tab-btn" data-tab="colorlab">
                                 <i class="bi bi-eyedropper"></i> Color Lab
                             </button>
@@ -77,6 +77,9 @@
                             </button>
                             <button class="btn btn-outline-light btn-lg tab-btn" data-tab="moodboard">
                                 <i class="bi bi-palette2"></i> Mood Board
+                            </button>
+                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="archive">
+                                <i class="bi bi-grid-3x3-gap"></i> Browse Archive
                             </button>
                         </div>
                     </div>
@@ -138,12 +141,27 @@
                         <p><strong>Monochromatic:</strong> Variations in lightness and saturation of a single color, subtle and elegant.</p> 
                     </section> -->
                     <section class="color-lab-palettes">
-                        <h3>Harmony Palettes</h3>
+                        <h2>Harmony Palettes</h2>
                         <div id="paletteSwatches" class="harmony-grid"></div>
                     </section>
                 </div>
             </section>
-            
+            <!-- MY PALETTES (Coming Soon) -->
+            <section id="palettes" class="tab-content">
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <div class="coming-soon">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #DE5D83); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Custom Palette Creator</h2>
+                <p style="font-size: 1.3rem; color: #64748b; margin-bottom: 2rem; max-width: 500px; margin-inline: auto;">
+                    Build, save, and preview your own palettes with live mockups
+                </p>
+                <div style="font-size: 6rem; margin-bottom: 1rem;">🚧</div>
+                <h3 style="color: #DE5D83; margin-bottom: 1rem;">Coming Soon!</h3>
+                <p style="color: #6b7280; font-size: 1.1rem;">
+                    Check back soon for full palette creation tools ✨
+                </p>
+                </div>
+            </div>
+            </section>
             <!-- COLOR PALETTES -->
             <!-- <section id="palettes" class="tab-content">
                 <h2>Color Palettes</h2>
@@ -164,7 +182,7 @@
                 <div class="mood-grid">
                     <!-- Mood board items will be added here -->
                 </div>
-                <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
+                <!-- <button class="action-btn" id="add-mood-item">+ Add Inspiration</button> -->
             </section>
 
             <!-- Color Palette ARCHIVE (Read-only samples + search)-->
@@ -172,7 +190,7 @@
                 <div class="section-header">
                     <div>
                     <h2>Color Palette Archive</h2>
-                    <p>📊 30+ curated professional palettes</p>
+                    <p><i class="bi bi-grid-3x3-gap fs-4"></i> 30+ curated professional palettes</p>
                     </div>
                 </div>
 
