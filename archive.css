@@ -1,21 +1,41 @@
-/* ----------- PALETTE SECTION ------------- */
-.coming-soon {
-    animation: fadeInUp 1s ease-out;
+/* ----------- PALETTE ARCHIVE SECTION ------------- */
+/* Minimal additions for archive */
+#archive .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#archive .full-search {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+#archive .archive-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.05);
+    border-radius: 12px;
+    margin-top: 2rem;
+}
 
-/* .palette-grid {
+.action-btn.secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.palette-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));    
     gap: 2rem;
@@ -77,7 +97,7 @@
 
  /* --------- Phones --------- */
 
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
     .palette-grid { 
         grid-template-columns: 1fr; 
         gap: 1.5rem; 
@@ -86,12 +106,12 @@
         flex-wrap: wrap;
         height: auto;
     }
-} */
+}
 
 /* ---------- Tablets and small laptops ----------- */
 
-/* @media (min-width: 900px) {
+@media (min-width: 900px) {
     .palette-grid { 
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
     }
-} */ 
+}

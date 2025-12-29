@@ -5,6 +5,8 @@
 @import url('palettes.css');
 @import url('moodboard.css');
 @import url('layout.css');
+@import url('archive.css');
+
 
 
 /* Global resets & base styles */
@@ -37,6 +39,15 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+h2 {
+    background: linear-gradient(135deg, #667eea, #DE5D83);
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem; 
+    margin-bottom: 1rem;
 }
 
 /* Global responsive */

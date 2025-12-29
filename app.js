@@ -1,6 +1,14 @@
 // Color Curio - Main Script
 
 // Global color utilities (available everywhere)
+const schemeDescriptions = {
+    'Analogous': 'Colors next to each other on the color wheel. Creates harmonious, natural-feeling designs perfect for branding and backgrounds.',
+    'Complementary': 'Colors directly opposite each other (180°). Maximum contrast for buttons, calls-to-action, and visual pop.',
+    'Triadic': 'Three colors evenly spaced (120° apart). Balanced, vibrant combinations great for logos and illustrations.',
+    'Tetradic': 'Four colors forming a rectangle. Rich, complex harmonies for detailed designs and multi-section websites.',
+    'Monochromatic': 'Variations of one hue (light/dark). Elegant, cohesive look for minimalist, sophisticated brands.',
+    'Soft': 'Gentle pastel variations. Perfect for calm UIs, wellness apps, and approachable branding.'
+};
 
 // Hex to HSL function
 function hexToHSL(hex) {
@@ -120,21 +128,38 @@ export function displayAllSchemes(schemes) {
     const container = document.getElementById('paletteSwatches');
     if (!container) return;
     
+    container.innerHTML = Object.entries(schemes).map(([name, colors]) => {
+        const tooltip = schemeDescriptions[name] || 'Color harmony scheme';
+        return `
+            <div class="scheme-row">
+                <div class="scheme-header">
+                    <h4>${name}</h4>
+                    <div class="info-tooltip" data-tooltip="${tooltip}">
+                        <button class="info-btn" aria-label="${name} info">
+                            <i class="bi bi-info-circle"></i>
+                        </button>
+                        <span class="tooltip-text">${tooltip}</span>
+                    </div>
+                </div>
+                <div class="scheme-swatches">
+                    ${colors.map(color => 
+                        `<div class="swatch" style="background: ${color}" onclick="window.copyToClipboard(this, '${color}')">
+                            <span>${color}</span>
+                        </div>`
+                    ).join('')}
+                </div>
+            </div>
+        `;
+    }).join('');
     
-    container.innerHTML = Object.entries(schemes).map(([name, colors]) => `
-        <div class="scheme-row">
-        <h4>${name}</h4>
-        <div class="scheme-swatches">
-            ${colors.map(color => 
-            `<div class="swatch" style="background: ${color};" 
-                    onclick="window.copyToClipboard(this,'${color}')">
-                <span>${color}</span>
-            </div>`
-            ).join('')}
-        </div>
-        </div>
-    `).join('');
+    initColorLabTooltips();
 }
+
+function initColorLabTooltips() {
+  // Tooltips already work with CSS hover - no JS needed!
+    console.log('✅ Color Lab tooltips initialized');
+}
+
 
 /**
  * Global copy-to-clipboard for swatches
@@ -178,6 +203,7 @@ import './modules/home.js';
 import './modules/colorlab.js';
 import './modules/palettes.js';
 import './modules/moodboard.js';
+import './modules/archive.js';
 // ---------- INITIALIZATION ----------
 
 // Initialize on DOM ready

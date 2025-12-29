@@ -1,4 +1,3 @@
-
 #home .hero {
     min-height: 100vh;
     display: flex;
@@ -67,11 +66,13 @@
 }
 
 .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* ← 2x2 GRID */
+    gap: 1.5rem;
     justify-content: center;
     margin-top: 3rem;
+    max-width: 700px;  /* ← Container width */
+    width: 100%;
 }
 
 .btn-primary-link {
@@ -97,13 +98,13 @@
 /* Mobile stacking */
 @media (max-width: 768px) {
     .hero-buttons {
-        flex-direction: column;
+        grid-template-columns: 1fr;  /* ← Single column mobile */
         gap: 1rem;
     }
-    
-    .btn-lg {
+
+    .hero-buttons .btn-lg {
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;  /* Slightly wider */
         margin: 0 auto;
     }
     
