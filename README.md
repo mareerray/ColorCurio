@@ -1,37 +1,30 @@
-# Color Curio
+# Color Curio : "Harmony in Every Hue" 🌈
 
-A creative hub for organizing color palettes and mood board inspirations.
+Live demo: [mareerray.github.io/ColorCurio/](http://mareerray.github.io/ColorCurio/)
 
----
+Color Curio is a creative hub for organising color palettes and mood board inspirations. Designed by Mayuree Reunsati, it allows users to design palettes that feel magical and generate harmonious color schemes in a single click
 
 ## Features
 
-### Color Lab
-- Find complementary and analogous colors based on an input color
-- Quickly explore harmonious color combinations
-- Input a color and get suggested matching colors for design inspiration 
+### Color Lab — Color Harmonies
+- Explore Harmonies: Find balanced palettes by exploring complementary (maximum contrast) and analogous (harmonious blends) colors based on a starting base color.
+- Design Inspiration: Input any color to receive immediate suggested matching colors to kickstart your creative process.
 
-### **Color Palette Archive** *(New!)*
-- Browse 30+ curated professional sample palettes
-- Instant search by name, mood, or style
-- Copy individual colors to clipboard
-- Read-only inspiration library
-
-### Color Palette Organizer
-- Add, view, and manage custom color palettes (up to 6 colors per palette)
-- Copy hex codes to clipboard with a click
-- Export and import palettes as JSON files for easy sharing and backup
-- Delete palettes you no longer need
+### Color Palette Archive *(New!)*
+- Curated Library: Browse a collection of 30+ professional sample palettes.
+- Smart Search: Instantly search for inspiration by name, mood, or style.
+- Quick Copy: Click any individual color to copy its hex code directly to your clipboard.
+- Read-Only Library: This section serves as a permanent, curated inspiration source
 
 ### Mood Board
-- Add inspiration images with captions
-- View images in a responsive, clear grid
-- Click any image to view it fullscreen (lightbox)
-- Delete images from your mood board
-- Export and import your mood board as JSON
+- Responsive Grid: Add inspiration images with captions and view them in a clear, organised layout.
+- Lightbox View: Click any image to open it in a fullscreen lightbox for closer inspection.
+- Management: Easily delete images from your board as your project evolves.
 
-### Sample Palettes
-- Curated sample palettes are loaded from a JSON file for inspiration
+### Custom Palette Creator (🚧 Coming Soon!)
+- Build & Preview: Tools to build, save, and preview your own palettes (up to 6 colors) with live mockups are currently under development.
+- Check Back Soon: Look forward to full palette creation tools in a future update ✨
+
 
 ---
 
@@ -75,31 +68,8 @@ A creative hub for organizing color palettes and mood board inspirations.
 ## Getting Started
 
 1. **Clone or Download** this repository.
-2. **Add Images:** Place your mood board images in `assets/images/`.
-3. **Open the App:** Open `index.html` in your browser (use a local server for full functionality).
-4. **Create & Manage:** Add palettes and mood board items using the interface.
-5. **Export/Import:** Use the export/import buttons to back up or transfer your data.
-
----
-
-## Usage
-
-- **Browse Archive:** Search and copy colors from curated sample palettes
-- **Add Palette:** Click "+ Add New Palette", enter a name and up to 6 hex color codes (without the `#`).
-- **Add Inspiration:** Click "+ Add Inspiration", enter the image filename (from `assets/images/`) and an optional caption.
-- **Use Color Lab:** Experiment with colors interactively and save your favorite experiments.
-- **Delete:** Use the "×" button on palettes or mood board images to remove them.
-- **Export/Import:** Save your palettes and mood board as a JSON file, or load them on another device.
-
----
-
-## Notes
-
-- **Local Storage:** Custom palettes and mood board items are saved in your browser. Use export/import to move data between devices.
-- **Sample Palettes:** The app loads sample palettes from `assets/palettes/samplePalettes.json`.
-- **Image Management:** Only images in `assets/images/` can be added to the mood board.
-
----
+2. **Open the App:** Open `index.html` in your browser (use a local server for full functionality).
+3. **Explore:** Use the interface to experiment with the Color Lab, browse the Archive, or build your local Mood Board.
 
 ## Example Palettes
 
@@ -108,6 +78,14 @@ A creative hub for organizing color palettes and mood board inspirations.
 | Ocean Breeze      | #0077be, #00a8cc, #40e0d0, #87ceeb, ...         |
 | Sunset Vibes      | #ff6b35, #f7931e, #ffd23f, #06ffa5, ...         |
 | Modern Metallics  | #D69A6D, #A3A8A3, #F6E7CE, #2F343B, ...         |
+
+---
+
+## Usage
+
+- **Browse Archive:** Search and copy colors from curated sample palettes.
+- **Use Color Lab:** Interactively experiment with color combinations and harmonies.
+
 
 ---
 
@@ -121,4 +99,5 @@ Feel free to customize and expand it for your own inspiration hub!
 **Creator:**
 [Mayuree Reunsati](https://github.com/mareerray) 
 
-[Project Repo](https://github.com/mareerray/MyInspoPage/settings)
+[Project Repo : github.com/mareerray/ColorCurio](https://github.com/mareerray/ColorCurio)
+
