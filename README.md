@@ -11,7 +11,7 @@ A creative hub for organizing color palettes and mood board inspirations.
 - Quickly explore harmonious color combinations
 - Input a color and get suggested matching colors for design inspiration 
 
-### **Color Palette Archive** *(New!)*
+### Color Palette Archive
 - Browse 30+ curated professional sample palettes
 - Instant search by name, mood, or style
 - Copy individual colors to clipboard
@@ -24,11 +24,13 @@ A creative hub for organizing color palettes and mood board inspirations.
 - Delete palettes you no longer need
 
 ### Mood Board
-- Add inspiration images with captions
-- View images in a responsive, clear grid
-- Click any image to view it fullscreen (lightbox)
-- Delete images from your mood board
-- Export and import your mood board as JSON
+- Upload inspiration images with automatic 10-color palette extraction
+- Diverse color detection - finds gold, purple, red, pink, and accents even if small
+- Hex codes displayed on each swatch with click-to-copy
+- Right-click export: Download image with palette OR copy all colors
+- Responsive grid layout with fullscreen lightbox
+- Storage limit: Max 15 custom images with warnings
+- Delete custom images (samples protected)
 
 ### Sample Palettes
 - Curated sample palettes are loaded from a JSON file for inspiration
@@ -84,20 +86,36 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 ## Usage
 
-- **Browse Archive:** Search and copy colors from curated sample palettes
-- **Add Palette:** Click "+ Add New Palette", enter a name and up to 6 hex color codes (without the `#`).
-- **Add Inspiration:** Click "+ Add Inspiration", enter the image filename (from `assets/images/`) and an optional caption.
+- **Browse Archive:** → Search and copy colors from curated sample palettes
+
 - **Use Color Lab:** Experiment with colors interactively and save your favorite experiments.
-- **Delete:** Use the "×" button on palettes or mood board images to remove them.
-- **Export/Import:** Save your palettes and mood board as a JSON file, or load them on another device.
+
+- **Add Image to Mood Board:** → Click "Add Inspiration" button, select image file (< 2MB), add optional caption - auto-generates 10 diverse colors
+
+- **Click swatch** → Copy hex code to clipboard (shows "Copied!" feedback)
+
+- **Right-click image** → Choose "Download image with palette" OR "Copy all colors"
+
+- **Click image** → Fullscreen lightbox view
+- **Storage Counter**: Shows "X/15 images uploaded" - warns when nearing limit
+
+- **Delete:** Use the "×" button on custom palettes or mood board images to remove them. (samples protected)
 
 ---
 
 ## Notes
 
-- **Local Storage:** Custom palettes and mood board items are saved in your browser. Use export/import to move data between devices.
-- **Sample Palettes:** The app loads sample palettes from `assets/palettes/samplePalettes.json`.
-- **Image Management:** Only images in `assets/images/` can be added to the mood board.
+- **Local Storage**: Custom palettes and mood board items saved in browser. Export/import to move between devices.
+
+- **Image Upload**: Supports JPG/PNG (< 2MB). Auto-extracts 10 diverse colors (gold, purple, red/pink, accents detected).
+
+- **Color Diversity**: Algorithm ensures unique colors - no duplicates or similar shades.
+
+- **Sample Content**: Sample palettes from assets/palettes/samplePalettes.json, sample moodboard from assets/moodboard/sampleMoodBoard.json.
+
+- **Storage Limit**: Maximum 15 custom images. Delete to add more.
+
+- **Browser Support**: Works best on modern browsers (Chrome, Firefox, Safari, Edge).
 
 ---
 

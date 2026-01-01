@@ -1,18 +1,14 @@
 [
   {
-    "filename": "RetroTheme1.png",
-    "caption": "Retro Theme 1"
+    "filename": "moodboard-abstract.png",
+    "caption": "Moodboard Abstract"
   },
   {
-    "filename": "RetroThemeColorPaletteSwatches1.png",
-    "caption": "Retro Theme 1 Color Palette Swatches"
+    "filename": "moodboard-Nicola.png",
+    "caption": "Moodboard Nicola"
   },
-  {
-    "filename": "AbstractWatercolor.jpg",
-    "caption": "Abstract Watercolor"
-  },
-   {
-    "filename": "AbstractWatercolorColorPaletteSwatches.png",
-    "caption": "Abstract Watercolor Color Palette Swatches"
+    {
+    "filename": "moodboard-retro-theme.png",
+    "caption": "Moodboard Retro Theme"
   }
 ]
