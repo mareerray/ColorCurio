@@ -1,15 +1,14 @@
-# Color Curio
+# Color Curio : "Harmony in Every Hue" 🌈
 
-A creative hub for organizing color palettes and mood board inspirations.
+Live demo: [mareerray.github.io/ColorCurio/](http://mareerray.github.io/ColorCurio/)
 
----
+Color Curio is a creative hub for organising color palettes and mood board inspirations. Designed by Mayuree Reunsati, it allows users to design palettes that feel magical and generate harmonious color schemes in a single click
 
 ## Features
 
-### Color Lab
-- Find complementary and analogous colors based on an input color
-- Quickly explore harmonious color combinations
-- Input a color and get suggested matching colors for design inspiration 
+### Color Lab — Color Harmonies
+- Explore Harmonies: Find balanced palettes by exploring complementary (maximum contrast) and analogous (harmonious blends) colors based on a starting base color.
+- Design Inspiration: Input any color to receive immediate suggested matching colors to kickstart your creative process.
 
 ### Color Palette Archive
 - Browse 30+ curated professional sample palettes
@@ -129,6 +128,14 @@ A creative hub for organizing color palettes and mood board inspirations.
 
 ---
 
+## Usage
+
+- **Browse Archive:** Search and copy colors from curated sample palettes.
+- **Use Color Lab:** Interactively experiment with color combinations and harmonies.
+
+
+---
+
 
 ## License
 
@@ -139,4 +146,5 @@ Feel free to customize and expand it for your own inspiration hub!
 **Creator:**
 [Mayuree Reunsati](https://github.com/mareerray) 
 
-[Project Repo](https://github.com/mareerray/MyInspoPage/settings)
+[Project Repo : github.com/mareerray/ColorCurio](https://github.com/mareerray/ColorCurio)
+
