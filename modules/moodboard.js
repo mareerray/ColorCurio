@@ -4,8 +4,28 @@ const MAX_IMAGES = 15;
 const STORAGE_LIMIT_MB = 5;
 
 // ========== PUBLIC FUNCTIONS ==========
+// Save to localStorage
+function saveMoodBoardItems(items) {
+  try {
+    localStorage.setItem('moodBoardItems', JSON.stringify(items));
+  } catch (e) {
+    if (e.name === 'QuotaExceededError') {
+      alert('Storage is full! Please delete some images to continue.\n\nTip: Each image takes storage space. Keep your collection under 15 images.');
+    }
+  }
+}
+
+// Load from localStorage
+function loadMoodBoardItems() {
+  const saved = localStorage.getItem('moodBoardItems');
+  return saved ? JSON.parse(saved) : [];
+}
+
 window.loadMoodBoard = async function() {
+  // 1) Try localStorage
   moodBoardItems = loadMoodBoardItems();
+
+  // 2) If empty → load sample JSON once
   if (!moodBoardItems || moodBoardItems.length === 0) {
     try {
       const response = await fetch('assets/moodboard/sampleMoodBoard.json');
@@ -16,17 +36,17 @@ window.loadMoodBoard = async function() {
       moodBoardItems = [];
     }
   }
-  
+
+  // 3) Ensure some items are marked as samples (safe if JSON already has isSample)
   if (!moodBoardItems.some(item => item.isSample)) {
-    moodBoardItems.slice(0, 3).forEach((item, idx) => {
-      item.isSample = true;
-    });
+    moodBoardItems.slice(0, 3).forEach(item => { item.isSample = true; });
     saveMoodBoardItems(moodBoardItems);
   }
-  
+
   renderMoodBoard();
   updateStorageInfo();
 };
+
 
 window.renderMoodBoard = function() {
   const moodGrid = document.querySelector('.mood-grid');
@@ -108,94 +128,114 @@ window.renderMoodBoard = function() {
   });
 };
 
-// NEW: Export image with palette
-function exportImageWithPalette(index) {
+async function exportImageWithPalette(index) {
   const item = moodBoardItems[index];
   if (!item) return;
 
-  // Ask user what they want to do
-  const download = confirm('Download image with palette?\n\nOK = Download\nCancel = Copy colors instead');
+  const download = confirm('Download image with palette?\n\nOK = Download exact display\nCancel = Copy colors');
   
-    if (!download) {
-    // User clicked Cancel - Copy colors to clipboard
-    if (item.colors && item.colors.length > 0) {
-      const colorText = item.colors.join(', ');
-      copyToClipboard(colorText);
-      alert('✓ Colors copied: ' + colorText);
+  if (!download) {
+    if (item.colors?.length > 0) {
+      copyToClipboard(item.colors.join(', '));
+      alert('✓ Colors copied!');
     }
-    return; // Exit function
+    return;
   }
-  
-  // User clicked OK - Continue with download
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  
-  const img = new Image();
-  img.onload = function() {
-    // Canvas dimensions: image + palette bar at bottom
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    const paletteHeight = 120; // Space for colors and hex codes
-    
-    canvas.width = imageWidth;
-    canvas.height = imageHeight + paletteHeight;
-    
-    // Draw the image
-    ctx.drawImage(img, 0, 0, imageWidth, imageHeight);
-    
-    // Draw white background for palette
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, imageHeight, imageWidth, paletteHeight);
-    
-    // Draw color swatches
-    if (item.colors && item.colors.length > 0) {
-      const swatchWidth = imageWidth / item.colors.length;
-      const swatchHeight = 60;
-      
-      item.colors.forEach((color, i) => {
-        const x = i * swatchWidth;
-        const y = imageHeight;
-        
-        // Draw color swatch
-        ctx.fillStyle = color;
-        ctx.fillRect(x, y, swatchWidth, swatchHeight);
-        
-        // Draw hex code below swatch
-        ctx.fillStyle = '#000000';
-        ctx.font = 'bold 12px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText(color, x + swatchWidth / 2, y + swatchHeight + 20);
-      });
+
+  // AUTO-FIND display element (tries common selectors)
+  let displayElement;
+  const selectors = [
+    `[data-item="${index}"]`,
+    `[data-index="${index}"]`,
+    `#item-${index}`,
+    `.item-${index}`,
+    `.moodboard-item:nth-child(${index + 1})`,
+    document.querySelectorAll('.moodboard-item, .item')[index]
+  ];
+
+  for (let sel of selectors) {
+    displayElement = typeof sel === 'string' ? document.querySelector(sel) : sel;
+    if (displayElement) {
+      console.log('Found element with selector:', sel);
+      break;
     }
-    
-    // Add caption if exists
-    if (item.caption) {
-      ctx.fillStyle = '#666666';
-      ctx.font = '14px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText(item.caption, imageWidth / 2, imageHeight + paletteHeight - 15);
-    }
-    
-    // Convert to blob and download
-    canvas.toBlob(function(blob) {
+  }
+
+  if (!displayElement) {
+    alert('No display element! Open console (F12) and check "All mood items" log.');
+    return;
+  }
+
+  // Hide buttons temporarily
+  const buttons = displayElement.querySelectorAll('button, .btn, .export');
+  buttons.forEach(btn => btn.style.opacity = '0');
+
+  try {
+    const canvas = await html2canvas(displayElement, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      backgroundColor: '#ffffff'
+    });
+
+    // Trim white space + exact bounds
+    const trimmedCanvas = trimWhiteSpace(canvas);
+
+    // Download trimmed
+    trimmedCanvas.toBlob(blob => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `moodboard-${item.caption || 'image'}-${Date.now()}.png`;
-      document.body.appendChild(a);
+      a.download = `ColorCurio-${item.caption || index}-${Date.now()}.png`;
       a.click();
-      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      
-      // Show confirmation
-      alert('Image with color palette exported! Check your downloads folder.');
+      // alert('✓ Perfect crop exported!');
     });
-  };
-  
-  img.src = item.imageData || `assets/images/${item.filename}`;
+
+    // alert('✓ Exact display exported!');
+  } catch (err) {
+    alert('Error: ' + err.message);
+  } finally {
+    buttons.forEach(btn => btn.style.opacity = '');
+  }
 }
 
-// NEW: Copy to clipboard helper
+// TRIM HELPER FUNCTION 
+function trimWhiteSpace(canvas) {
+  const ctx = canvas.getContext('2d');
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  const tolerance = 10; // Allow near-white
+
+  // Find crop bounds
+  let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+  
+  for (let y = 0; y < canvas.height; y++) {
+    for (let x = 0; x < canvas.width; x++) {
+      const i = (y * canvas.width + x) * 4;
+      const r = data[i], g = data[i+1], b = data[i+2];
+      if (r > 255-tolerance && g > 255-tolerance && b > 255-tolerance) continue;
+      
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    }
+  }
+  
+  if (minX > maxX) return canvas; // All white
+  
+  // Crop canvas
+  const cropped = document.createElement('canvas');
+  cropped.width = maxX - minX + 1;
+  cropped.height = maxY - minY + 1;
+  cropped.getContext('2d').drawImage(canvas, -minX, -minY);
+  
+  return cropped;
+}
+
+// Copy to clipboard helper
 function copyToClipboard(text) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(() => {
@@ -417,14 +457,73 @@ window.setupLightbox = function() {
   const overlay = document.getElementById('lightbox-overlay');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxContent = document.getElementById('lightbox-content');
   const closeBtn = document.getElementById('lightbox-close');
 
-  if (!overlay || !lightboxImg) return;
+  if (!overlay || !lightboxImg || !lightboxCaption) return;
+
+  // Create palette container if missing
+  if (!lightboxContent) {
+    const contentDiv = document.createElement('div');
+    contentDiv.id = 'lightbox-content';
+    contentDiv.style.cssText = `
+      display: flex; flex-direction: column; align-items: center; 
+      padding: 20px; background: white; border-radius: 12px; 
+      max-width: 90vw; max-height: 90vh; overflow: auto;
+    `;
+    lightboxCaption.parentNode.insertBefore(contentDiv, lightboxCaption.nextSibling);
+  }
 
   document.querySelector('.mood-grid')?.addEventListener('click', function(e) {
     if (e.target.classList.contains('mood-image')) {
+      const moodItem = e.target.closest('.mood-item');
+      const index = Array.from(document.querySelectorAll('.mood-item')).indexOf(moodItem);
+      
+      if (index === -1 || !moodBoardItems[index]) return;
+      
+      const item = moodBoardItems[index];
+      
+      // Set image
       lightboxImg.src = e.target.src;
-      lightboxCaption.textContent = e.target.closest('.mood-item')?.querySelector('.mood-content').textContent || '';
+      lightboxImg.style.maxWidth = '100%';
+      lightboxImg.style.borderRadius = '8px';
+      
+      // Set caption
+      lightboxCaption.textContent = item.caption || '';
+      
+      // NEW: Build palette HTML
+      // Only show palette if NOT a sample and colors exist
+      if (!item.isSample && item.colors?.length) {
+        const paletteHtml = `
+          <div style="margin-top: 40px; padding: 15px; background: #f8f9fa; border-radius: 8px; width: 100%;">
+            <h4 style="margin: 0 0 15px 0; text-align: center; color: #333;">Color Palette</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 400px;">
+              ${item.colors?.map(color => `
+                <div style="
+                  width: 50px; height: 50px; 
+                  background: ${color}; 
+                  border-radius: 8px; 
+                  border: 3px solid white; 
+                  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                  position: relative;
+                ">
+                  <span style="
+                    position: absolute; bottom: -10px; left: 50%; 
+                    transform: translateX(-50%); 
+                    background: white; padding: 2px 6px; 
+                    border-radius: 4px; font-size: 11px; 
+                    font-weight: bold; color: #333; 
+                    white-space: nowrap; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+                  ">${color}</span>
+                </div>
+              `).join('') || '<p style="text-align: center; color: #666;">No colors extracted</p>'}
+            </div>
+          </div>
+        `;
+      lightboxContent.innerHTML = paletteHtml;
+      } else {
+      lightboxContent.innerHTML = '';
+      }
       overlay.style.display = 'flex';
     }
   });
@@ -452,28 +551,17 @@ window.setupLightbox = function() {
   });
 };
 
-// ========== STORAGE FUNCTIONS ==========
-function saveMoodBoardItems(items) {
-  try {
-    localStorage.setItem('moodBoardItems', JSON.stringify(items));
-  } catch (e) {
-    if (e.name === 'QuotaExceededError') {
-      alert('Storage is full! Please delete some images to continue.\n\nTip: Each image takes storage space. Keep your collection under 15 images.');
-    }
-  }
-}
-
-function loadMoodBoardItems() {
-  const saved = localStorage.getItem('moodBoardItems');
-  return saved ? JSON.parse(saved) : [];
-}
-
+// Make sure loadMoodBoard() runs on start
 window.addMoodItem = addMoodItemWithUpload;
 window.moodBoardItems = moodBoardItems;
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('add-mood-item')?.addEventListener('click', addMoodItemWithUpload);
+  document.getElementById('add-mood-item')
+    ?.addEventListener('click', addMoodItemWithUpload);
+  // load items + render grid
+  loadMoodBoard();
 });
+
 
 
 

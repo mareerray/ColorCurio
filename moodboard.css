@@ -155,41 +155,44 @@
 }
 
 .mini-swatch {
-  width: 50px;  /* Wider to fit hex code */
-  height: 50px; /* Taller to fit hex code */
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
+    width: 50px;  /* Wider to fit hex code */
+    height: 50px; /* Taller to fit hex code */
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .mini-swatch:hover {
-  transform: scale(1.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 10;
-  border-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Hex code label */
 .hex-label {
-  font-size: 10px;
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
-  /* color: rgba(0, 0, 0, 0.7); */
-  /* background: rgba(255, 255, 255, 0.9); */
-  padding: 2px 3px;
-  border-radius: 2px;
-  margin-bottom: 2px;
-  color: whitesmoke;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
-  font-weight: bold;
-  pointer-events: none;
+    font-size: .7em;
+    font-family: 'Courier New', monospace;
+    /* color: rgba(0, 0, 0, 0.7); */
+    /* background: rgba(17, 17, 17, 0.283); */
+    padding: 2px 3px;
+    border-radius: 2px;
+    margin-bottom: 2px;
+    color: whitesmoke;
+    text-shadow: 
+        0 1px 1px rgba(0,0,0,0.9),
+        0 -1px 1px rgba(0,0,0,0.9),
+        1px 0 1px rgba(0,0,0,0.9),
+        -1px 0 1px rgba(0,0,0,0.9),
+        0 0 3px rgba(0,0,0,0.7);
+    pointer-events: none;
 }
 
 /* Make text more readable on dark colors */
@@ -197,8 +200,8 @@
 .mini-swatch[data-color^="#1"] .hex-label,
 .mini-swatch[data-color^="#2"] .hex-label,
 .mini-swatch[data-color^="#3"] .hex-label {
-  color: rgba(255, 255, 255, 0.95);
-  /* background: rgba(0, 0, 0, 0.7); */
+    color: rgba(255, 255, 255, 0.95);
+    /* background: rgba(0, 0, 0, 0.7); */
     text-shadow: 
         0 1px 1px rgba(0,0,0,0.9),
         0 -1px 1px rgba(0,0,0,0.9),
@@ -209,40 +212,37 @@
 
 /* Mood item context menu hint */
 .mood-item {
-  position: relative;
-  cursor: context-menu;
+    position: relative;
+    cursor: context-menu;
 }
 
 .mood-item::after {
-  content: 'Right-click to export';
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 5;
+    content: 'Right-click to export';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 5;
 }
 
 .mood-item:hover::after {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Storage info */
 #storage-info {
-  font-size: 0.9em;
-  color: #666;
-  margin-top: 8px;
-  text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+    text-align: center;
 }
-
-
-
 
 /* ---------- Tablets and small laptops ----------- */
 
