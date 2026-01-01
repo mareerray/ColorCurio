@@ -1,18 +1,32 @@
 [
   {
-    "filename": "RetroTheme1.png",
-    "caption": "Retro Theme 1"
+    "filename": "sample-moodboard-abstract.png",
+    "caption": "Sample Moodboard Abstract",
+    "isSample": true
   },
   {
-    "filename": "RetroThemeColorPaletteSwatches1.png",
-    "caption": "Retro Theme 1 Color Palette Swatches"
+    "filename": "sample-moodboard-retro-theme.png",
+    "caption": "Sample Moodboard Retro Theme",
+    "isSample": true
+  },
+    {
+    "filename": "sample-moodboard-abstract-02.png",
+    "caption": "Sample Moodboard Abstract 02",
+    "isSample": true
   },
   {
-    "filename": "AbstractWatercolor.jpg",
-    "caption": "Abstract Watercolor"
+    "filename": "sample-moodboard-nicola.png",
+    "caption": "Sample Moodboard Nicola",
+    "isSample": true
   },
-   {
-    "filename": "AbstractWatercolorColorPaletteSwatches.png",
-    "caption": "Abstract Watercolor Color Palette Swatches"
+  {
+    "filename": "sample-moodboard-nature-01.png",
+    "caption": "Sample Moodboard Nature",
+    "isSample": true
+  },
+  {
+    "filename": "sample-moodboard-sunrise.png",
+    "caption": "Sample Moodboard Sunrise",
+    "isSample": true
   }
 ]
