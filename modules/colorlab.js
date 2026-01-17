@@ -140,25 +140,33 @@ if (baseColorInput && colorCircle && colorRange) {
         // Base color
         colorElements.base.style.backgroundColor = baseHex;
         hexElements.base.textContent = baseHex;
-        hexElements.base.onclick = () => copyToClipboard(hexElements.base, baseHex);
+        const copyBase = () => copyToClipboard(hexElements.base, baseHex);
+        hexElements.base.onclick = copyBase;
+        colorElements.base.onclick = copyBase;
         
         // Complementary
         const compHex = hslToHex(complementary, baseHSL.s, baseHSL.l);
         colorElements.complementary.style.backgroundColor = compHex;
         hexElements.complementary.textContent = compHex;
-        hexElements.complementary.onclick = () => copyToClipboard(hexElements.complementary, compHex);
+        const copyComp = () => copyToClipboard(hexElements.complementary, compHex);
+        hexElements.complementary.onclick = copyComp;
+        colorElements.complementary.onclick = copyComp;
         
         // Analogous 1
         const analogHex1 = hslToHex(analogous1, baseHSL.s, baseHSL.l);
         colorElements.analogous1.style.backgroundColor = analogHex1;
         hexElements.analogous1.textContent = analogHex1;
-        hexElements.analogous1.onclick = () => copyToClipboard(hexElements.analogous1, analogHex1);
+        const copyAnalog1 = () => copyToClipboard(hexElements.analogous1, analogHex1);
+        hexElements.analogous1.onclick = copyAnalog1;
+        colorElements.analogous1.onclick = copyAnalog1;
         
         // Analogous 2
         const analogHex2 = hslToHex(analogous2, baseHSL.s, baseHSL.l);
         colorElements.analogous2.style.backgroundColor = analogHex2;
         hexElements.analogous2.textContent = analogHex2;
-        hexElements.analogous2.onclick = () => copyToClipboard(hexElements.analogous2, analogHex2);
+        const copyAnalog2 = () => copyToClipboard(hexElements.analogous2, analogHex2);
+        hexElements.analogous2.onclick = copyAnalog2;
+        colorElements.analogous2.onclick = copyAnalog2;
     }
     
     /**
