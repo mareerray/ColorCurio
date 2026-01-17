@@ -7,7 +7,6 @@
 }
 
 .color-controls {
-  /* display: flex; */
     display: grid;
     grid-template-rows: repeat(2, auto);
     justify-items: center;
@@ -105,19 +104,6 @@
     margin-top: -5px; /* center thumb */
 }
 
-.color-hex-pair {
-    display: inline-block;
-    text-align: center;
-    margin-right: 10px;
-}
-
-.color-box {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #ccc;
-    margin-bottom: 5px; /* Small space between box and hex */
-}
-
 .harmony-display {
     display: flex;
     justify-content: space-between;
@@ -196,11 +182,6 @@
     text-align: center;
     line-height: 1.4;
 }
-
-/* #color-harmony-notes p {
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-} */
 
 /* ========== HARMONY PALETTES (CLEAN) ========== */
 .color-lab-palettes .input-group {

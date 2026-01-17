@@ -4,7 +4,7 @@ header {
     top: 0;
     z-index: 1000;
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
-    linear-gradient(180deg, #0f172a 0%, #051b40 50%, #0f172a 100%);
+        linear-gradient(180deg, #2d2d2d, #2d2d2d);
     background-size: 20px 20px, 100% 100%;
     padding: 2rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -118,7 +118,7 @@ nav {
 
 main {
     position: relative;
-    min-height: auto !important;;
+    min-height: auto !important;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
@@ -159,7 +159,7 @@ main {
 
 footer {
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
-    linear-gradient(180deg, #0f172a 0%, #051b40 50%, #0f172a 100%);
+    linear-gradient(180deg, #2d2d2d, #2d2d2d);
     background-size: 20px 20px, 100% 100%;
     text-align: center;
     padding: 1.5rem 0;
