@@ -19,12 +19,13 @@
     background-position: 0 0, 18px 18px;
     border-bottom: 1px solid var(--border);
     box-shadow: none;
+    font-size: 1.05rem;
 }
 
 .site-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     color: var(--text);
     font-size: 1.6rem;
     font-weight: 800;
@@ -36,6 +37,10 @@
     border: none;
     box-shadow: none;
     padding: 0;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    font-weight: 800;
 }
 
 .site-nav {
@@ -64,6 +69,19 @@
     background: var(--accent-soft);
 }
 
+.site-brand__logo {
+    display: block;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.site-brand span {
+    white-space: nowrap;
+    font-size: 1.25rem;
+}
+
 /* Smaller screens: brand above, navigation below */
 @media (max-width: 800px) {
     .site-header {
@@ -76,7 +94,7 @@
     }
 
     .site-header .site-brand {
-        align-self: flex-start;
+        align-self: center;
         min-width: 0;
         font-size: 1.35rem;
     }
@@ -101,20 +119,24 @@
         font-size: 0.9rem;
         white-space: normal;
     }
+
+    .site-header .site-brand__logo {
+        width: 44px;
+        height: 44px;
+    }
 }
 
 @media (max-width: 600px) {
     .site-header {
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 0;
         width: 100%;
-        padding: 10px 12px;
+        padding: 8px 10px;
     }
 
     .site-header .site-brand {
-        align-self: flex-start;
-        gap: 6px;
+        align-self: center;
         font-size: 1.15rem;
     }
 
@@ -123,17 +145,12 @@
 
         /* Home icon, Color Lab, Studio, Mood Board, Archive */
         grid-template-columns:
-            36px
-            minmax(0, 1fr)
-            minmax(0, 0.8fr)
-            minmax(0, 1.2fr)
-            minmax(0, 1fr);
+            36px minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr);
 
         gap: 2px;
         width: 100%;
         min-width: 0;
         margin: 0;
-        padding: 4px 0;
     }
 
     .site-header .site-nav .tab-btn {
