@@ -1,0 +1,53 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1920"
+    width="1080"
+    height="1920"
+>
+    <title>A warm sun above soft green hills</title>
+
+    <!-- Background -->
+    <rect
+        id="wallpaper-background"
+        width="1080"
+        height="1920"
+        fill="#fff7ed"
+    />
+
+    <!-- Sun -->
+    <circle
+        id="wallpaper-sun"
+        cx="770"
+        cy="600"
+        r="150"
+        fill="#f3d68a"
+    />
+
+    <!-- Distant hills -->
+    <path
+        id="wallpaper-hills-back"
+        d="
+            M0 1180
+            Q260 850 540 1140
+            Q810 900 1080 1100
+            L1080 1920
+            L0 1920
+            Z
+        "
+        fill="#a8c5ae"
+    />
+
+    <!-- Foreground hills -->
+    <path
+        id="wallpaper-hills-front"
+        d="
+            M0 1430
+            Q290 1140 600 1410
+            Q850 1210 1080 1350
+            L1080 1920
+            L0 1920
+            Z
+        "
+        fill="#789c83"
+    />
+</svg>
