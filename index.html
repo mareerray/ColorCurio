@@ -1,130 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- ADD THIS FIRST -->
-        <script>
-            window.history.scrollRestoration = 'manual';
-        </script>
-        <title>Color Palette & Mood Board</title>
-        <link rel="icon" type="image/x-icon" href="assets/images/palette.ico">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-            rel="stylesheet">
-        <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    </head>
-    <body onload="window.scrollTo(0, 0)">
-        <header>
-            <h1 class="title">Color Curio</h1>
-            <p class="page-decription">A creative hub for organizing color palettes and mood board inspirations.</p>
-            <div class="creator">
-                <p class="creator-name">By Mayuree Reunsati</p>
-                <a href="https://github.com/mareerray" target="_blank" aria-label="GitHub">
-                    <i class="bi bi-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/mayuree-reunsati" target="_blank" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ADD THIS FIRST -->
+    <script>
+        window.history.scrollRestoration = 'manual';
+    </script>
+    <title>Color Palette & Mood Board</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/palette.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body id="page-top" onload="window.scrollTo(0, 0)">
+    <header class="site-header">
+        <a href="#" class="site-brand tab-btn" data-tab="home">
+            <i class="bi bi-palette2"></i>
+            <span>Color Curio</span>
+        </a>
+        <nav class="site-nav">
+            <button type="button" class="tab-btn active" data-tab="home" aria-label="Home">
+                <i class="bi bi-house-heart-fill" aria-hidden="true"></i>
+            </button>
+            <button class="tab-btn" data-tab="colorlab">Color Lab</button>
+            <button class="tab-btn" data-tab="palettes">Studio</button>
+            <button class="tab-btn" data-tab="moodboard">Mood Board</button>
+            <button class="tab-btn" data-tab="archive">Archive</button>
+        </nav>
+    </header>
+    <main>
+        <!-- HOME -->
+        <section id="home" class="tab-content active">
+            <div class="home-intro">
+                <p class="section-eyebrow">Harmony in every hue</p>
+                <h1>Welcome to Color Curio.</h1>
+                <p class="home-sub">Pick a color, explore palettes, and turn them into wallpapers.</p>
             </div>
-            <nav class="navbar navbar-expand-sm navbar-light">
-                <div class="container-fluid">
-                    <button class="navbar-brand tab-btn active" data-tab="home" aria-label="Home">
-                        <i class="bi bi-house-heart-fill fs-4"></i>
-                    </button>
-                    <!-- <div class="d-flex gap-2 ms-auto"> -->
-                    <div class="tab-btn-group">
-                        <button class="btn btn-link tab-btn" data-tab="colorlab">
-                            <!-- Lab -->
-                            <i class="bi bi-eyedropper fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="palettes">
-                            <!-- Palettes -->
-                            <i class="bi bi-palette fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="moodboard">
-                            <!-- Board -->
-                            <i class="bi bi-palette2 fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="archive">
-                            <!-- Archive -->
-                            <i class="bi bi-grid-3x3-gap fs-4"></i> 
-                        </button>
-                    </div>
-                </div>
-            </nav>
 
-        </header>
-        <main>
-            <!-- HOME -->
-            <section id="home" class="tab-content active">
-                <div class="hero">
-                    <div class="hero-content">
-                        <h1>ColorCurio</h1>
-                        <p class="hero-motto">"Harmony in Every Hue" 🌈</p>
-                        <p class="hero-subtitle">
-                            Design palettes that feel magical.<br>
-                            Generate harmonies in one click.<br>
-                            <span class="highlight">Create faster. Save forever.</span>
-                        </p>                        
-                        <div class="hero-buttons">
-                            <button class="btn btn-primary-link btn-lg tab-btn" data-tab="colorlab">
-                                <i class="bi bi-eyedropper"></i> Color Lab
-                            </button>
-                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="palettes">
-                                <i class="bi bi-palette"></i> Color Palettes
-                            </button>
-                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="moodboard">
-                                <i class="bi bi-palette2"></i> Mood Board
-                            </button>
-                            <button class="btn btn-outline-light btn-lg tab-btn" data-tab="archive">
-                                <i class="bi bi-grid-3x3-gap"></i> Browse Archive
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- COLOR LAB -->
-            <section id="colorlab" class="tab-content"> 
-                <h2>Color Lab - Color Harmonies</h2>
-                <div class="color-lab-grid">
-                    <p class="color-lab-text">Explore color harmonies (complementary and analogous) to find balanced palettes.</p>
-                    <div class="color-controls">
-                        <div class="control-group">
-                            <label for="base-color">Select Base Color:</label>
-                            <div class="color-circle-container">
+            <div id="studio-illustration" class="studio-scene" aria-hidden="true"></div>
+
+            <div class="home-cards">
+                <button type="button" class="home-card home-card--sage tab-btn" data-tab="colorlab">
+                    <i class="bi bi-eyedropper" aria-hidden="true"></i>
+                    <span class="home-card__title">Color Lab</span>
+                    <span class="home-card__description">
+                        Find colors that go well together.
+                    </span>
+                </button>
+
+                <button type="button" class="home-card home-card--pink tab-btn" data-tab="palettes">
+                    <i class="bi bi-brush" aria-hidden="true"></i>
+                    <span class="home-card__title">Studio</span>
+                    <span class="home-card__description">
+                        Turn your colors into something lovely.
+                    </span>
+                </button>
+
+                <button type="button" class="home-card home-card--lavender tab-btn" data-tab="moodboard">
+                    <i class="bi bi-images" aria-hidden="true"></i>
+                    <span class="home-card__title">Mood Board</span>
+                    <span class="home-card__description">
+                        Collect little sparks of inspiration.
+                    </span>
+                </button>
+
+                <button type="button" class="home-card home-card--sand tab-btn" data-tab="archive">
+                    <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+                    <span class="home-card__title">Archive</span>
+                    <span class="home-card__description">
+                        Browse palettes for your next idea.
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- COLOR LAB -->
+        <section id="colorlab" class="tab-content">
+            <h2>Color Lab - Color Harmonies</h2>
+            <div class="color-lab-grid">
+                <p class="color-lab-text">Explore color harmonies (complementary and analogous) to find balanced
+                    palettes.</p>
+                <div class="color-controls">
+                    <div class="control-group">
+                        <label for="base-color">Select Base Color:</label>
+                        <div class="color-circle-container">
                             <input type="color" id="base-color" value="#3498db">
                             <div class="color-circle-preview"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="control-group">
-                            <label for="color-range">Select Hue:</label>
-                            <input type="range" id="color-range" min="0" max="360" step="1" value="210" />
                         </div>
                     </div>
-                    <div class="harmony-display">
-                        <div>
-                            <h3>Base Color</h3>
-                            <p class="color-desc">Your starting color for harmony generation</p>
-                            <div id="color-base" class="color-box">
-                                <span id="hex-base" class="hex-label"></span>
-                            </div>
+
+                    <div class="control-group">
+                        <label for="color-range">Select Hue:</label>
+                        <input type="range" id="color-range" min="0" max="360" step="1" value="210" />
+                    </div>
+                </div>
+                <div class="harmony-display">
+                    <div>
+                        <h3>Base Color</h3>
+                        <p class="color-desc">Your starting color for harmony generation</p>
+                        <div id="color-base" class="color-box">
+                            <span id="hex-base" class="hex-label"></span>
                         </div>
-                        <div>
-                            <h3>Complementary Color</h3>
-                            <p class="color-desc">Opposite on color wheel - maximum contrast</p>
-                            <div id="color-complementary" class="color-box">
-                                <span id="hex-complementary" class="hex-label"></span>
-                            </div>
+                    </div>
+                    <div>
+                        <h3>Complementary Color</h3>
+                        <p class="color-desc">Opposite on color wheel - maximum contrast</p>
+                        <div id="color-complementary" class="color-box">
+                            <span id="hex-complementary" class="hex-label"></span>
                         </div>
-                        <div>
-                            <h3>Analogous Colors</h3>
-                            <p class="color-desc">Neighbors on color wheel - harmonious blends</p>
-                            <div class="analogous">
+                    </div>
+                    <div>
+                        <h3>Analogous Colors</h3>
+                        <p class="color-desc">Neighbors on color wheel - harmonious blends</p>
+                        <div class="analogous">
                             <div class="color-hex-pair">
                                 <div id="color-analogous1" class="color-box">
                                     <span id="hex-analogous1" class="hex-label"></span>
@@ -135,94 +129,121 @@
                                     <span id="hex-analogous2" class="hex-label"></span>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
-                    <section class="color-lab-palettes">
-                        <h2>Harmony Palettes</h2>
-                        <div id="paletteSwatches" class="harmony-grid"></div>
-                    </section>
                 </div>
-            </section>
-            <!-- MY PALETTES (Coming Soon) -->
-            <section id="palettes" class="tab-content">
+                <section class="color-lab-palettes">
+                    <h2>Harmony Palettes</h2>
+                    <div id="paletteSwatches" class="harmony-grid"></div>
+                </section>
+            </div>
+        </section>
+        <!-- MY PALETTES (Coming Soon) -->
+        <section id="palettes" class="tab-content">
             <div style="text-align: center; padding: 4rem 2rem;">
                 <div class="coming-soon">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #DE5D83); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Custom Palette Creator</h2>
-                <p style="font-size: 1.3rem; color: #64748b; margin-bottom: 2rem; max-width: 500px; margin-inline: auto;">
-                    Build, save, and preview your own palettes with live mockups
-                </p>
-                <div style="font-size: 6rem; margin-bottom: 1rem;">🚧</div>
-                <h3 style="color: #DE5D83; margin-bottom: 1rem;">Coming Soon!</h3>
-                <p style="color: #6b7280; font-size: 1.1rem;">
-                    Check back soon for full palette creation tools ✨
-                </p>
+                    <h2
+                        style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #DE5D83); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Custom Palette Creator</h2>
+                    <p
+                        style="font-size: 1.3rem; color: #64748b; margin-bottom: 2rem; max-width: 500px; margin-inline: auto;">
+                        Build, save, and preview your own palettes with live mockups
+                    </p>
+                    <div style="font-size: 6rem; margin-bottom: 1rem;">🚧</div>
+                    <h3 style="color: #DE5D83; margin-bottom: 1rem;">Coming Soon!</h3>
+                    <p style="color: #6b7280; font-size: 1.1rem;">
+                        Check back soon for full palette creation tools ✨
+                    </p>
                 </div>
             </div>
-            </section>
-            <!-- COLOR PALETTES -->
-            <!-- <section id="palettes" class="tab-content">
+        </section>
+        <!-- COLOR PALETTES -->
+        <!-- <section id="palettes" class="tab-content">
                 <h2>Color Palettes</h2>
                 <div class="palette-grid">
                     <!-- Color palettes will be dynamically added here -->
-                <!-- </div>
+        <!-- </div>
                 <div class="palette-controls">
                     <button class="action-btn" id="add-palette">+ Add New Palette</button>
                     <button class="action-btn" id="save-json">Export as JSON</button>
                     <input type="file" id="import-json" accept="application/json" style="display:none;">
                     <button class="action-btn" id="import-json-btn">Import JSON file</button>
                 </div>
-            </section> --> 
+            </section> -->
 
-            <!-- MOOD BOARD -->
-            <section id="moodboard" class="tab-content">
-                <h2>Mood Board</h2>
-                <div class="mood-grid">
-                    <!-- Mood board items will be added here -->
-                </div>
-                <div id="storage-info">0/15 images uploaded</div>
-                <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
-            </section>
+        <!-- MOOD BOARD -->
+        <section id="moodboard" class="tab-content">
+            <h2>Mood Board</h2>
+            <div class="mood-grid">
+                <!-- Mood board items will be added here -->
+            </div>
+            <div id="storage-info">0/15 images uploaded</div>
+            <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
+        </section>
 
-            <!-- Color Palette ARCHIVE (Read-only samples + search)-->
-            <section id="archive" class="tab-content">
-                <div class="section-header">
-                    <div>
+        <!-- Color Palette ARCHIVE (Read-only samples + search)-->
+        <section id="archive" class="tab-content">
+            <div class="section-header">
+                <div>
                     <h2>Color Palette Archive</h2>
                     <p><i class="bi bi-grid-3x3-gap fs-4"></i> 30+ curated professional palettes</p>
-                    </div>
                 </div>
+            </div>
 
-                <!-- Search Bar -->
-                <input 
-                    type="text" 
-                    id="archive-search" 
-                    placeholder="🔍 Search by name, mood, style..." 
-                    class="full-search"
-                >
-                <!-- Archive Grid -->
-                <div class="palette-grid">
-                    <!-- Sample palettes loaded dynamically here -->
-                </div>
-                <!-- Stats Footer -->
-                <div class="archive-stats">
-                    <span>Total: <span id="archive-count">0</span> palettes</span>
-                    <button class="action-btn secondary" id="clear-search">Clear Search</button>
-                </div>
-            </section>
-        </main>
+            <!-- Search Bar -->
+            <input type="text" id="archive-search" placeholder="🔍 Search by name, mood, style..." class="full-search">
+            <!-- Archive Grid -->
+            <div class="palette-grid">
+                <!-- Sample palettes loaded dynamically here -->
+            </div>
+            <!-- Stats Footer -->
+            <div class="archive-stats">
+                <span>Total: <span id="archive-count">0</span> palettes</span>
+                <button class="action-btn secondary" id="clear-search">Clear Search</button>
+            </div>
+        </section>
+    </main>
 
-        <!-- Lightbox Overlay -->
-        <div id="lightbox-overlay" style="display: none;">
-            <span id="lightbox-close">&times;</span>
-            <img id="lightbox-img" src="" alt="Mood Board Full Image">
-            <div id="lightbox-content"></div>
-            <div id="lightbox-caption"></div>
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" style="display: none;">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Mood Board Full Image">
+        <div id="lightbox-content"></div>
+        <div id="lightbox-caption"></div>
+    </div>
+    <footer class="site-footer">
+        <div class="site-footer__intro">
+            <p class="site-footer__brand">Color Curio</p>
+            <p>A little space for colors and creativity.</p>
         </div>
-        <footer>
-            <p>© 2025 Color Curio. All rights reserved. Created by <a href="https://github.com/mareerray" target="_blank" rel="noopener">Mayuree Reunsati</a>.</p>
-        </footer>
-        <script type="module" src="app.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+
+        <div class="site-footer__meta">
+            <div class="site-footer__author">
+                <p>Built by Mayuree Reunsati</p>
+
+                <div class="site-footer__socials">
+                    <a href="https://www.linkedin.com/in/mayuree-reunsati/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Mayuree on LinkedIn (opens in a new tab)">
+                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="https://github.com/mareerray" target="_blank" rel="noopener noreferrer"
+                        aria-label="Mayuree on GitHub (opens in a new tab)">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <p>© 2026 Color Curio</p>
+
+            <a class="site-footer__top" href="#page-top">
+                Back to top
+                <i class="bi bi-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+    </footer>
+    <script type="module" src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

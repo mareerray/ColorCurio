@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('tokens.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 @import url('home.css');
 @import url('colorlab.css');
 @import url('palettes.css');
@@ -17,21 +19,22 @@
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
     overscroll-behavior: none;
-    height: auto !important;  
+    height: auto !important;
     min-height: 100% !important;
 }
 
 body {
-    font-family: 'Poppins','Arial', sans-serif;
-    font-weight: 600;
-    background: linear-gradient(135deg, #F5F5F5 0%, #F0F0F0 50%, #E8E8E8 100%);
-    background: #F8F9FA;
+    font-family: var(--font-main);
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--text);
 }
 
 .container {
@@ -41,31 +44,26 @@ body {
 }
 
 h2 {
-    background: linear-gradient(135deg, #667eea, #DE5D83);
-    background-clip: text;
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent;
-    font-size: 2.5rem; 
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 800;
     margin-bottom: 1rem;
 }
 
 /* Global responsive */
 
- /* --------- Phones --------- */
+/* --------- Phones --------- */
 
 @media (max-width: 700px) {
-    .container { 
-        padding: 0 0.75rem; 
+    .container {
+        padding: 0 0.75rem;
     }
 }
 
 /* ---------- Tablets and small laptops ----------- */
 
 @media (min-width: 900px) {
-    .container { 
-        padding: 0 1.5rem; 
+    .container {
+        padding: 0 1.5rem;
     }
 }
-
-
-

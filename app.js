@@ -75,7 +75,7 @@ export function generateSoftPalette(baseColor = '#0066cc') {
     console.log('Generating soft palette from:', baseColor);
     const hsl = hexToHSL(baseColor);
     const baseHue = hsl.h;
-    
+
     return [
         hslToHex(baseHue, hsl.s * 0.5, hsl.l * 0.9),
         hslToHex((baseHue + 30) % 360, hsl.s * 0.4, hsl.l * 0.85),
@@ -89,45 +89,45 @@ export function generateAllSchemes(baseColor = '#0066cc') {
     console.log('Generating schemes from:', baseColor);
     const hsl = hexToHSL(baseColor);
     const baseHue = hsl.h;
-    
+
     const schemes = {
         'Analogous': [
-        baseColor,
-        hslToHex((baseHue + 30) % 360, hsl.s, hsl.l),
-        hslToHex((baseHue - 30 + 360) % 360, hsl.s, hsl.l),
-        hslToHex(baseHue, hsl.s * 0.8, hsl.l * 1.1)
+            baseColor,
+            hslToHex((baseHue + 30) % 360, hsl.s, hsl.l),
+            hslToHex((baseHue - 30 + 360) % 360, hsl.s, hsl.l),
+            hslToHex(baseHue, hsl.s * 0.8, hsl.l * 1.1)
         ],
         'Complementary': [
-        baseColor,
-        hslToHex((baseHue + 180) % 360, hsl.s, hsl.l)
+            baseColor,
+            hslToHex((baseHue + 180) % 360, hsl.s, hsl.l)
         ],
         'Triadic': [
-        baseColor,
-        hslToHex((baseHue + 120) % 360, hsl.s, hsl.l),
-        hslToHex((baseHue + 240) % 360, hsl.s, hsl.l)
+            baseColor,
+            hslToHex((baseHue + 120) % 360, hsl.s, hsl.l),
+            hslToHex((baseHue + 240) % 360, hsl.s, hsl.l)
         ],
         'Tetradic': [
-        baseColor,
-        hslToHex((baseHue + 90) % 360, hsl.s, hsl.l),
-        hslToHex((baseHue + 180) % 360, hsl.s, hsl.l),
-        hslToHex((baseHue + 270) % 360, hsl.s, hsl.l)
+            baseColor,
+            hslToHex((baseHue + 90) % 360, hsl.s, hsl.l),
+            hslToHex((baseHue + 180) % 360, hsl.s, hsl.l),
+            hslToHex((baseHue + 270) % 360, hsl.s, hsl.l)
         ],
         'Monochromatic': [
-        baseColor,
-        hslToHex(baseHue, hsl.s * 0.7, hsl.l * 0.7),
-        hslToHex(baseHue, hsl.s * 0.5, hsl.l * 0.5),
-        hslToHex(baseHue, hsl.s * 0.3, hsl.l * 1.2)
+            baseColor,
+            hslToHex(baseHue, hsl.s * 0.7, hsl.l * 0.7),
+            hslToHex(baseHue, hsl.s * 0.5, hsl.l * 0.5),
+            hslToHex(baseHue, hsl.s * 0.3, hsl.l * 1.2)
         ],
         'Soft': generateSoftPalette(baseColor)
     };
-    
+
     displayAllSchemes(schemes);
 }
 
 export function displayAllSchemes(schemes) {
     const container = document.getElementById('paletteSwatches');
     if (!container) return;
-    
+
     container.innerHTML = Object.entries(schemes).map(([name, colors]) => {
         const tooltip = schemeDescriptions[name] || 'Color harmony scheme';
         return `
@@ -142,30 +142,51 @@ export function displayAllSchemes(schemes) {
                     </div>
                 </div>
                 <div class="scheme-swatches">
-                    ${colors.map(color => 
-                        `<div class="swatch" style="background: ${color}" onclick="window.copyToClipboard(this, '${color}')">
+                    ${colors.map(color =>
+            `<div class="swatch" style="background: ${color}" onclick="window.copyToClipboard(this, '${color}')">
                             <span>${color}</span>
                         </div>`
-                    ).join('')}
+        ).join('')}
                 </div>
             </div>
         `;
     }).join('');
-    
+
     initColorLabTooltips();
 }
 
 function initColorLabTooltips() {
-  // Tooltips already work with CSS hover - no JS needed!
+    // Tooltips already work with CSS hover - no JS needed!
     console.log('✅ Color Lab tooltips initialized');
 }
+
+async function loadStudioIllustration() {
+    const container = document.querySelector("#studio-illustration");
+
+    if (!container) return;
+
+    try {
+        const response = await fetch("./assets/illustrations/art-studio.svg");
+
+        if (!response.ok) {
+            throw new Error(`Could not load illustration: ${response.status}`);
+        }
+
+        const svg = await response.text();
+        container.innerHTML = svg;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+loadStudioIllustration();
 
 
 /**
  * Global copy-to-clipboard for swatches
  * Used by onclick in generated HTML
  */
-window.copyToClipboard = function(element, hexValue) {
+window.copyToClipboard = function (element, hexValue) {
     navigator.clipboard.writeText(hexValue).then(() => {
         // Show "Copied!" feedback
         const span = element.querySelector('span');
