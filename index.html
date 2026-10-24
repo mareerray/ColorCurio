@@ -151,38 +151,59 @@
                 </section>
             </div>
         </section>
-        <!-- MY PALETTES (Coming Soon) -->
+
+        <!-- STUDIO -->
         <section id="palettes" class="tab-content">
-            <div style="text-align: center; padding: 4rem 2rem;">
-                <div class="coming-soon">
-                    <h2
-                        style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #DE5D83); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                        Custom Palette Creator</h2>
-                    <p
-                        style="font-size: 1.3rem; color: #64748b; margin-bottom: 2rem; max-width: 500px; margin-inline: auto;">
-                        Build, save, and preview your own palettes with live mockups
+            <div class="studio-intro">
+                <p class="section-eyebrow">Your little art studio</p>
+                <h2>Wallpaper Studio</h2>
+                <p>Create a little landscape in your favorite colors.</p>
+            </div>
+
+            <div class="wallpaper-studio">
+                <aside class="studio-controls" aria-label="Wallpaper options">
+                    <div class="studio-control">
+                        <h3>Color palette</h3>
+                        <p>A soft landscape to start with.</p>
+
+                        <div class="studio-palette" aria-label="Cream, yellow, light sage, and dark sage">
+                            <span style="--swatch-color: #fff7ed;"></span>
+                            <span style="--swatch-color: #f3d68a;"></span>
+                            <span style="--swatch-color: #a8c5ae;"></span>
+                            <span style="--swatch-color: #789c83;"></span>
+                        </div>
+                    </div>
+
+                    <div class="studio-control">
+                        <h3>Wallpaper format</h3>
+                        <p>Phone · 1080 × 1920</p>
+                    </div>
+
+                    <a class="studio-download" id="download-wallpaper" href="./assets/wallpapers/landscape.svg"
+                        download="colorcurio-landscape.svg">
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                        Download SVG
+                    </a>
+
+                    <p class="studio-note">
+                        Download this landscape as an SVG. Palette controls are coming next.
                     </p>
-                    <div style="font-size: 6rem; margin-bottom: 1rem;">🚧</div>
-                    <h3 style="color: #DE5D83; margin-bottom: 1rem;">Coming Soon!</h3>
-                    <p style="color: #6b7280; font-size: 1.1rem;">
-                        Check back soon for full palette creation tools ✨
+                </aside>
+
+                <div class="studio-preview-panel">
+                    <h3>Preview</h3>
+
+                    <div class="wallpaper-preview">
+                        <img id="wallpaper-image" src="./assets/wallpapers/landscape.svg"
+                            alt="A warm sun above soft green hills" width="1080" height="1920">
+                    </div>
+
+                    <p class="studio-preview-caption">
+                        A quiet little landscape, made with color.
                     </p>
                 </div>
             </div>
         </section>
-        <!-- COLOR PALETTES -->
-        <!-- <section id="palettes" class="tab-content">
-                <h2>Color Palettes</h2>
-                <div class="palette-grid">
-                    <!-- Color palettes will be dynamically added here -->
-        <!-- </div>
-                <div class="palette-controls">
-                    <button class="action-btn" id="add-palette">+ Add New Palette</button>
-                    <button class="action-btn" id="save-json">Export as JSON</button>
-                    <input type="file" id="import-json" accept="application/json" style="display:none;">
-                    <button class="action-btn" id="import-json-btn">Import JSON file</button>
-                </div>
-            </section> -->
 
         <!-- MOOD BOARD -->
         <section id="moodboard" class="tab-content">
