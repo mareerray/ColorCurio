@@ -1,4 +1,5 @@
 @import url('tokens.css');
+@import url('layout.css');
 @import url('header.css');
 @import url('footer.css');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
@@ -6,7 +7,6 @@
 @import url('colorlab.css');
 @import url('palettes.css');
 @import url('moodboard.css');
-@import url('layout.css');
 @import url('archive.css');
 
 
@@ -35,35 +35,4 @@ body {
     font-weight: 400;
     background: var(--bg);
     color: var(--text);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-h2 {
-    color: var(--text);
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-}
-
-/* Global responsive */
-
-/* --------- Phones --------- */
-
-@media (max-width: 700px) {
-    .container {
-        padding: 0 0.75rem;
-    }
-}
-
-/* ---------- Tablets and small laptops ----------- */
-
-@media (min-width: 900px) {
-    .container {
-        padding: 0 1.5rem;
-    }
 }

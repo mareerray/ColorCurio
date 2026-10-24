@@ -14,4 +14,15 @@
     --radius: 18px;
     --shadow: 0 8px 24px rgba(249, 168, 212, 0.25);
     --font-main: "Nunito", system-ui, sans-serif;
+
+    --font-body: 0.95rem;
+    --font-small: 0.85rem;
+    --font-label: 0.9rem;
+    --font-card-title: 1rem;
+
+    --panel-padding: 1.25rem;
+    --card-padding: 1rem;
+    --layout-gap: 1rem;
+    --section-gap: 1.5rem;
+    --panel-radius: 16px;
 }
