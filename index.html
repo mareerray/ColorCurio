@@ -19,47 +19,19 @@
         <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     </head>
     <body onload="window.scrollTo(0, 0)">
-        <header>
-            <h1 class="title">Color Curio</h1>
-            <p class="page-decription">A creative hub for organizing color palettes and mood board inspirations.</p>
-            <div class="creator">
-                <p class="creator-name">By Mayuree Reunsati</p>
-                <a href="https://github.com/mareerray" target="_blank" aria-label="GitHub">
-                    <i class="bi bi-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/mayuree-reunsati" target="_blank" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-            </div>
-            <nav class="navbar navbar-expand-sm navbar-light">
-                <div class="container-fluid">
-                    <button class="navbar-brand tab-btn active" data-tab="home" aria-label="Home">
-                        <i class="bi bi-house-heart-fill fs-4"></i>
-                    </button>
-                    <!-- <div class="d-flex gap-2 ms-auto"> -->
-                    <div class="tab-btn-group">
-                        <button class="btn btn-link tab-btn" data-tab="colorlab">
-                            <!-- Lab -->
-                            <i class="bi bi-eyedropper fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="palettes">
-                            <!-- Palettes -->
-                            <i class="bi bi-palette fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="moodboard">
-                            <!-- Board -->
-                            <i class="bi bi-palette2 fs-4"></i>
-                        </button>
-                        <button class="btn btn-link tab-btn" data-tab="archive">
-                            <!-- Archive -->
-                            <i class="bi bi-grid-3x3-gap fs-4"></i> 
-                        </button>
-                    </div>
-                </div>
-            </nav>
-
-        </header>
-        <main>
+<header class="site-header">
+  <a href="#" class="site-brand tab-btn" data-tab="home">
+    <i class="bi bi-palette2"></i>
+    <span>Color Curio</span>
+  </a>
+  <nav class="site-nav">
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="colorlab">Color Lab</button>
+    <button class="tab-btn" data-tab="palettes">Studio</button>
+    <button class="tab-btn" data-tab="moodboard">Mood Board</button>
+    <button class="tab-btn" data-tab="archive">Archive</button>
+  </nav>
+</header>        <main>
             <!-- HOME -->
             <section id="home" class="tab-content active">
                 <div class="hero">
