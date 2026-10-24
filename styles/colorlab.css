@@ -1,9 +1,10 @@
 /* ----------- COLOR LAB SECTION ------------- */
 
 .color-lab-text {
-    color: #333;
-    font-size: 1.1rem;
-    margin: 1rem 0 2rem 0;
+    color: var(--text, #4a3f6b);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 1rem 0 2rem;
 }
 
 .color-controls {
@@ -13,10 +14,11 @@
     gap: 2rem;
     align-items: end;
     margin: 2rem 0;
-    background: rgba(255,255,255,0.1);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: var(--surface, #fdf6f0);
+    border-radius: 20px;
+    border: 1px solid var(--border, #e8ddd2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem 1.5rem;
 }
 
 .control-group {
@@ -30,8 +32,8 @@
 
 .control-group label {
     font-size: 0.95rem;
-    font-weight: 500;
-    color: #555;
+    font-weight: 600;
+    color: var(--muted, #8b8399);
     text-align: center;
     margin-bottom: 0.25rem;
 }
@@ -57,20 +59,20 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 6px solid rgba(255,255,255,0.8);
+    border: 5px solid var(--surface, #fdf6f0);
     box-shadow: 
-        0 8px 25px rgba(0,0,0,0.3),
-        inset 0 2px 4px rgba(255,255,255,0.4);
+        0 4px 12px rgba(0, 0, 0, 0.12),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
-    background: #3498db; /* Default */
+    background: #a8c5a0; /* sage green default */
 }
 
 #base-color:hover + .color-circle-preview,
 .color-circle-preview:hover {
     transform: scale(1.05);
     box-shadow: 
-        0 12px 35px rgba(0,0,0,0.4),
-        inset 0 3px 6px rgba(255,255,255,0.5);
+        0 6px 16px rgba(0, 0, 0, 0.15),
+        inset 0 3px 6px rgba(255, 255, 255, 0.5);
 }
 
 /* Hue Slider */
@@ -95,13 +97,14 @@
 #color-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 28px;
-    height: 28px;
-    background: #fff;
+    width: 26px;
+    height: 26px;
+    background: var(--accent, #d98c8c);
     cursor: pointer;
     border-radius: 50%;
-    border: 2px solid #666;
-    margin-top: -5px; /* center thumb */
+    border: 3px solid var(--accent, #d98c8c);
+    margin-top: -4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .harmony-display {
@@ -114,29 +117,38 @@
 }
 
 /* Each harmony group container */
+.harmony-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 1rem 0 2rem;
+}
+
 .harmony-display > div {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;      /* Push content to bottom */
     align-items: center;
-    flex: 1 1 200px;
+    justify-content: flex-start;
+    flex: 1 1 240px;
+    min-width: 0;
+    padding: 1.5rem 1rem;
     text-align: center;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    cursor: default;
+    background: var(--card-surface, #fbf8fa);
+    border: 1px solid var(--border, #f5e1ec);
+    border-radius: 20px;
+    box-shadow: 0 3px 12px rgba(74, 63, 107, 0.04);
+    transition: box-shadow 0.2s ease;
 }
 
 .harmony-display > div:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 16px rgba(74, 63, 107, 0.08);
 }
 
 .harmony-display h3 {
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #222;
+    color: var(--text, #4a3f6b);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
 }
 
 /* Color box styling */
@@ -144,43 +156,41 @@
     position: relative;
     width: 120px;
     height: 120px;
-    border-radius: 12px;
-    border: 2px solid #ccc;
-    margin: 0 auto 10px auto;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
-    transition: border-color 0.3s ease, transform 0.2s ease;
+    margin: 0 auto 10px;
+    border: 3px solid var(--surface, #ffffff);
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px var(--border, #f5e1ec);
     overflow: hidden;
+    transition: transform 0.2s ease;
 }
 
 .color-box:hover {
-    border-color: #888;
     transform: translateY(-2px);
 }
 
-/* Hex code overlay inside box */
 .hex-label {
     position: absolute;
     left: 50%;
     bottom: 10px;
     transform: translateX(-50%);
     display: inline-block;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #0f172a;
-    background: transparent;
-    padding: 6px 12px;
+    padding: 5px 8px;
     border-radius: 8px;
+    color: #4a3f6b;
+    font-family: 'Nunito', Courier, monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-shadow: none;
     user-select: text;
     cursor: pointer;
-    transition: all 0.2s ease;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+    transition: background-color 0.2s ease;
 }
 
 .hex-label:hover {
-    background: transparent;
-    transform: translateX(-50%) scale(1.05);
-    border-color: #028391;
+    background: #fff7ed;
+    cursor: pointer;
 }
 
 /* For the analogous colors container */
@@ -192,24 +202,24 @@
 
 .hex-code {
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Nunito', Courier, monospace;
     font-size: 0.9rem;
     color: #555;
     user-select: text;
 }
 
 .color-lab-palettes h3 {
-    color: #333;
+    color: var(--text, #4a3f6b);
     margin-top: 1rem;
 }
 
 .color-desc {
     font-size: 0.85rem;
-    color: #666;
-    margin: 0.5rem 0 1rem 0;
-    font-style: italic;
+    color: var(--muted, #8b8399);
+    margin: 0.5rem 0 1rem;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.5;
+    font-style: normal;
 }
 
 /* ========== HARMONY PALETTES (CLEAN) ========== */
@@ -226,12 +236,14 @@
     flex-direction: column;
     gap: 1rem;
     margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(0,0,0,0.1);
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    flex: 1 1 200px;  /* Matches harmony-display > div */
+    padding: 1.25rem;
+    background: var(--surface, #ffffff);
+    border: 1px solid var(--border, #f5e1ec);
+    border-radius: 20px;
+    box-shadow: 0 3px 12px rgba(74, 63, 107, 0.04);
+    flex: 1 1 200px;
+    min-width: 0;
+    transition: box-shadow 0.2s ease;
 }
 
 .color-lab-palettes .scheme-row:hover {
@@ -248,13 +260,15 @@
 
 .color-lab-palettes .scheme-swatches {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     gap: 0;
     height: 60px;
     border-radius: 8px;
     overflow: hidden;
     width: 100%;
-} 
+}
 
 .color-lab-palettes .swatch {
     height: 100%;
@@ -438,5 +452,160 @@
 @media (max-width: 700px) {
     .swatch span {
         font-size: 0.7rem;
+    }
+}
+
+
+/* ---------- Compact Color Lab ---------- */
+
+.color-lab-text {
+    font-size: var(--font-body);
+    line-height: 1.5;
+    margin: 0.5rem 0 1.25rem;
+}
+
+/* Controls panel */
+.color-controls {
+    gap: 1.25rem;
+    margin: 1.25rem 0;
+    padding: var(--panel-padding);
+    border-radius: var(--panel-radius);
+}
+
+.control-group {
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-size: var(--font-label);
+    margin-bottom: 0;
+}
+
+/* Keep the invisible picker aligned with its visible circle */
+.color-circle-container {
+    width: 72px;
+    height: 72px;
+}
+
+#base-color {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.color-circle-preview {
+    box-sizing: border-box;
+    width: 72px;
+    height: 72px;
+    border-width: 4px;
+}
+
+/* Keep the existing slider styling */
+#color-range {
+    width: min(220px, 100%);
+}
+
+/* Result cards */
+.harmony-display {
+    gap: var(--layout-gap);
+    margin: 1rem 0 var(--section-gap);
+}
+
+.harmony-display > div {
+    padding: var(--card-padding);
+    border-radius: var(--panel-radius);
+}
+
+.harmony-display h3 {
+    font-size: var(--font-card-title);
+    margin-bottom: 0.35rem;
+}
+
+.color-desc {
+    font-size: var(--font-small);
+    line-height: 1.45;
+    margin: 0.35rem 0 0.75rem;
+}
+
+/* Resize the swatch and its wrapper together */
+.color-box {
+    box-sizing: border-box;
+    width: 104px;
+    height: 104px;
+    margin-bottom: 0.35rem;
+    border-radius: 12px;
+}
+
+.color-hex-pair {
+    width: 104px;
+    margin: 0 4px;
+}
+
+/* Harmony palette panels */
+.color-lab-palettes .input-group {
+    gap: var(--layout-gap);
+    margin-bottom: var(--section-gap);
+}
+
+.color-lab-palettes .scheme-row {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: var(--card-padding);
+    border-radius: var(--panel-radius);
+}
+
+.color-lab-palettes .scheme-row h4 {
+    font-size: var(--font-card-title);
+}
+
+.scheme-header {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    .color-controls {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .harmony-display {
+        gap: 0.75rem;
+    }
+
+    .harmony-display > div {
+        padding: 0.875rem;
+    }
+
+    .color-lab-palettes .scheme-row {
+        padding: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ---------- Compact controls layout ---------- */
+
+.color-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.color-controls .control-group {
+    width: 100%;
+    min-width: 0;
+}
+
+#color-range {
+    width: 220px;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .color-controls {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 }
