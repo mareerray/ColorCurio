@@ -10,7 +10,7 @@
         window.history.scrollRestoration = 'manual';
     </script>
     <title>Color Palette & Mood Board</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/palette.ico">
+    <link rel="icon" href="assets/logo/colorcurio-icon.ico">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -20,18 +20,31 @@
 
 <body id="page-top" onload="window.scrollTo(0, 0)">
     <header class="site-header">
-        <a href="#" class="site-brand tab-btn" data-tab="home">
-            <i class="bi bi-palette2"></i>
-            <span>Color Curio</span>
+        <a href="#home" class="site-brand tab-btn" data-tab="home">
+            <img src="./assets/logo/colorcurio-icon.ico" alt="" class="site-brand__logo" width="56" height="56">
+            <span>ColorCurio</span>
         </a>
-        <nav class="site-nav">
+
+        <nav class="site-nav" aria-label="Main navigation">
             <button type="button" class="tab-btn active" data-tab="home" aria-label="Home">
                 <i class="bi bi-house-heart-fill" aria-hidden="true"></i>
             </button>
-            <button class="tab-btn" data-tab="colorlab">Color Lab</button>
-            <button class="tab-btn" data-tab="palettes">Studio</button>
-            <button class="tab-btn" data-tab="moodboard">Mood Board</button>
-            <button class="tab-btn" data-tab="archive">Archive</button>
+
+            <button type="button" class="tab-btn" data-tab="colorlab">
+                Color Lab
+            </button>
+
+            <button type="button" class="tab-btn" data-tab="palettes">
+                Studio
+            </button>
+
+            <button type="button" class="tab-btn" data-tab="moodboard">
+                Mood Board
+            </button>
+
+            <button type="button" class="tab-btn" data-tab="archive">
+                Archive
+            </button>
         </nav>
     </header>
     <main>

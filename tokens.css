@@ -1,5 +1,6 @@
 :root {
     --bg: #fff7ed;
+    --sand: #e1d0b8;
     --surface: #ffffff;
     --card-surface: #fbf8fa;
     --accent: #f9a8d4;
@@ -9,6 +10,7 @@
     --muted: #8b8399;
     --border: #f5e1ec;
     --eyebrow: #7a2b52;
+
     --radius: 18px;
     --shadow: 0 8px 24px rgba(249, 168, 212, 0.25);
     --font-main: "Nunito", system-ui, sans-serif;
