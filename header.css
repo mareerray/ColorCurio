@@ -63,6 +63,7 @@
 
 .site-nav .tab-btn:hover {
     background: var(--accent-soft);
+    color: var(--text);
 }
 
 .site-nav .tab-btn.active {
