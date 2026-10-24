@@ -10,7 +10,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     // Activate new tab
     btn.classList.add('active');
     document.getElementById(tabId).classList.add('active');
-    
+
+    // Start the selected tab at the top
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+      
     // Lazy load tab content
     if (tabId === 'archive') {
       window.loadArchive?.();  // Archive samples
@@ -22,5 +29,20 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// Footer: back to top
+const backToTop = document.querySelector(".site-footer__top");
 
+backToTop?.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: reduceMotion ? "instant" : "smooth",
+  });
+});
 

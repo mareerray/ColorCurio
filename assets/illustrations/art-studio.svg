@@ -1,0 +1,152 @@
+<svg
+    class="studio-scene__svg"
+    viewBox="0 0 760 420"
+    xmlns="http://www.w3.org/2000/svg"
+>
+<!-- Soft backdrop -->
+<ellipse cx="380" cy="220" rx="285" ry="175" fill="#fce7f3" opacity=".4" />
+
+<!-- Easel legs and support -->
+<g
+    fill="none"
+    stroke="#b59272"
+    stroke-width="12"
+    stroke-linecap="round"
+>
+    <path d="M355 110 L307 365" />
+    <path d="M405 110 L453 365" />
+    <path d="M330 310 H430" />
+</g>
+
+<!-- Painting frame -->
+<rect
+    x="275" y="120" width="210" height="160"
+    rx="9" fill="#c8ab89"
+/>
+
+<!-- Clip the landscape inside the canvas -->
+<defs>
+    <clipPath id="curio-canvas-clip">
+    <rect x="286" y="131" width="188" height="138" rx="3" />
+    </clipPath>
+</defs>
+
+<g clip-path="url(#curio-canvas-clip)">
+    <rect x="286" y="131" width="188" height="138" fill="#e5eeea" />
+    <circle cx="428" cy="161" r="17" fill="#f4d58d" />
+
+    <path
+    d="M280 235 Q330 175 386 225 Q435 180 480 220 V280 H280 Z"
+    fill="#a6bfaa"
+    />
+
+    <path
+    d="M280 255 Q345 207 405 250 Q450 222 480 240 V280 H280 Z"
+    fill="#789d83"
+    />
+</g>
+
+<!-- Easel ledge -->
+<rect x="261" y="281" width="238" height="12" rx="6" fill="#b59272" />
+
+<!-- Brush pot -->
+<g stroke-linecap="round">
+    <path d="M180 302 L166 221" stroke="#b59272" stroke-width="8" />
+    <path d="M199 302 L202 205" stroke="#b59272" stroke-width="8" />
+    <path d="M216 302 L233 233" stroke="#b59272" stroke-width="8" />
+
+    <path d="M166 222 Q148 199 162 183 Q179 197 166 222" fill="#789d83" />
+    <path d="M202 207 Q187 182 202 169 Q218 184 202 207" fill="#d797b0" />
+    <path d="M233 235 Q221 214 237 200 Q250 219 233 235" fill="#c3b4d7" />
+
+    <path d="M159 282 H232 L224 352 H167 Z" fill="#e6b4c5" />
+    <path d="M175 294 L179 337" stroke="#f6dce5" stroke-width="5" />
+</g>
+
+<!-- Plant: animate the leaves, not the pot -->
+<g class="studio-leaves">
+    <path
+    d="M565 305 Q560 263 577 215"
+    fill="none" stroke="#789d83" stroke-width="5"
+    stroke-linecap="round"
+    />
+
+    <path d="M568 276 Q522 279 530 244 Q558 244 568 276" fill="#96b69a" />
+    <path d="M568 262 Q609 265 606 230 Q577 231 568 262" fill="#789d83" />
+    <path d="M575 235 Q548 221 560 194 Q585 205 575 235" fill="#a6bfaa" />
+</g>
+
+<path d="M540 299 H593 L585 352 H548 Z" fill="#c8ab89" />
+<rect x="535" y="294" width="63" height="12" rx="5" fill="#b59272" />
+
+<!-- Desk surface -->
+<rect x="106" y="352" width="548" height="14" rx="7" fill="#b59272" />
+<rect x="133" y="366" width="494" height="7" rx="3" fill="#e4ceb5" />
+
+<!-- Small sketchbook -->
+<g transform="rotate(-7 286 344)">
+    <rect x="252" y="327" width="68" height="25" rx="4" fill="#c3b4d7" />
+    <path d="M262 332 H312 M262 338 H312" stroke="#fbf8fa" stroke-width="2" />
+</g>
+
+<!-- Paint palette -->
+<g>
+    <path
+    d="M443 326
+        C415 322 397 337 407 350
+        C419 365 473 358 484 346
+        C493 335 481 325 468 329
+        C459 332 455 327 443 326 Z"
+    fill="#ead4b7"
+    />
+
+    <circle cx="420" cy="341" r="5" fill="#d797b0" />
+    <circle cx="436" cy="335" r="5" fill="#789d83" />
+    <circle cx="453" cy="340" r="5" fill="#c3b4d7" />
+    <circle cx="469" cy="345" r="5" fill="#f4d58d" />
+</g>
+
+<!-- Little sparkles -->
+<!-- Reusable tapered sparkle -->
+<defs>
+    <g id="curio-sparkle-art">
+        <!-- Soft light behind the star -->
+        <circle r="13" fill="#f4d58d" opacity=".12" />
+
+        <!-- Four pointed rays with curved sides -->
+        <path
+        d="
+            M0 -12
+            Q2 -2 8 0
+            Q2 2 0 12
+            Q-2 2 -8 0
+            Q-2 -2 0 -12
+            Z
+        "
+        fill="#c3a368"
+        />
+
+        <!-- Small bright centre -->
+        <circle r="1.6" fill="#fffaf0" />
+    </g>
+    </defs>
+
+    <!-- Position outside; animate inside -->
+    <g transform="translate(245 160)">
+    <g class="studio-glint studio-glint--one">
+        <use href="#curio-sparkle-art" />
+    </g>
+    </g>
+
+    <g transform="translate(520 193) scale(.7)">
+    <g class="studio-glint studio-glint--two">
+        <use href="#curio-sparkle-art" />
+    </g>
+    </g>
+
+    <g transform="translate(495 315) scale(.45)">
+    <g class="studio-glint studio-glint--three">
+        <use href="#curio-sparkle-art" />
+    </g>
+</g>
+</svg>

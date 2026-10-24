@@ -1,112 +1,261 @@
-#home .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* --------- Home page styles ---------- */
+.home-intro {
     text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #DE5D83 100%);
-    color: white;
-    border-radius: 20px;
-    padding: 4rem 2rem;
+    padding: 32px 16px 0;
 }
 
-.hero-content {
-    max-width: 600px;
-    padding: 2rem;
+.section-eyebrow {
+    margin: 0 0 8px;
+    color: var(--eyebrow);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.home-intro h1 {
+    margin: 0 0 12px;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--text);
+}
+
+.home-sub {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+/* --------- Home navigation cards ---------- */
+.home-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+
+    width: min(100%, 1000px);
+    margin: 16px auto 40px;
+    padding: 0 20px;
+}
+
+/* Colors inspired by the illustration */
+.home-card--sage {
+    --card-bg: #edf2e9;
+    --card-border: #cbdacb;
+    --card-icon: #4e7058;
+}
+
+.home-card--pink {
+    --card-bg: #faedf1;
+    --card-border: #e9cbd6;
+    --card-icon: #97546e;
+}
+
+.home-card--lavender {
+    --card-bg: #f1edf6;
+    --card-border: #d8cde5;
+    --card-icon: #77618f;
+}
+
+.home-card--sand {
+    --card-bg: #f5eddf;
+    --card-border: #e1d0b8;
+    --card-icon: #876747;
+}
+
+/* Extra specificity keeps shared tab styles from taking over */
+.home-cards .home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
     width: 100%;
-    animation: fadeInUp 1s ease-in-out;
+    max-width: none;
+    min-width: 0;
+    justify-self: stretch;
+    margin: 0;
+
+    height: 100%;
+    padding: 22px 18px;
+
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    background-image: none;
+    box-shadow: 0 4px 12px rgba(74, 63, 107, 0.04);
+
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.home-card i {
+    display: grid;
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--card-icon);
+    font-size: 1.35rem;
 }
 
-.hero h1 { 
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1rem; 
-    letter-spacing: -0.02em;
-}
-
-.hero-motto {
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
-    font-weight: 200;
-    font-style: italic;
-    margin: 1rem 0 2rem;
-    opacity: 0.95;
-    letter-spacing: 0.1em;
+.home-card__title {
+    font-size: 1.05rem;
+    font-weight: 800;
     line-height: 1.3;
 }
 
-.hero-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.4rem);
-    line-height: 1.7;
-    margin: 0 0 3rem;
-    max-width: 100%;
-}
-
-.highlight {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    padding: 0 0.5rem;
-    border-radius: 4px;
-}
-
-.hero-stats {
+.home-card__description {
+    color: #746a80;
     font-size: 0.9rem;
-    opacity: 0.9;
-    margin-top: 2rem;
-    font-weight: 500;
+    line-height: 1.6;
 }
 
-.hero-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;  /* ← 2x2 GRID */
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 3rem;
-    max-width: 700px;  /* ← Container width */
-    width: 100%;
+/* Keyboard focus */
+.home-cards .home-card:focus-visible {
+    outline: 3px solid var(--card-icon);
+    outline-offset: 4px;
 }
 
-.btn-primary-link {
-    background: #DE5D83 !important;
-    color: #333;
-    border: none;
-    padding: 0.6rem 0.8rem;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-
-.btn-primary-link:hover, .btn-outline-light:hover {
-    color: white;
-    background: #BFA2DB !important;
-    transform: translateY(-2px);
-    transform: scale(1.05);
-}
-
-/* Mobile stacking */
-@media (max-width: 768px) {
-    .hero-buttons {
-        grid-template-columns: 1fr;  /* ← Single column mobile */
-        gap: 1rem;
+/* Hover only on devices that support it */
+@media (hover: hover) {
+    .home-cards .home-card:hover {
+        border-color: var(--card-icon);
+        box-shadow: 0 8px 18px rgba(74, 63, 107, 0.08);
     }
+}
 
-    .hero-buttons .btn-lg {
+/* Optional gentle lift */
+@media (prefers-reduced-motion: no-preference) {
+    .home-cards .home-card {
+        transition:
+            transform 180ms ease,
+            box-shadow 180ms ease,
+            border-color 180ms ease;
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .home-cards .home-card:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Tablets: two cards per row */
+@media (max-width: 900px) {
+    .home-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Phones: one full-width card per row */
+@media (max-width: 600px) {
+    .home-cards {
+        grid-template-columns: minmax(0, 1fr);
         width: 100%;
-        max-width: 320px;  /* Slightly wider */
-        margin: 0 auto;
+        padding: 0 16px;
+        gap: 10px;
+        margin: 12px auto 28px;
     }
-    
-    .hero-subtitle br {
-        display: none;  /* Stack lines naturally */
+
+    .home-cards .home-card {
+        width: 100%;
+        max-width: none;
+        padding: 16px;
+        gap: 6px;
+        border-radius: 14px;
     }
+
+    .home-card i {
+        width: 34px;
+        height: 34px;
+        border-radius: 11px;
+        font-size: 1.1rem;
+    }
+
+    .home-card__title {
+        font-size: 1rem;
+    }
+
+    .home-card__description {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+}
+
+/* --------- Cozy art studio illustration ---------- */
+.studio-scene {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.studio-scene__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Pivot the leaves around their own bottom edge */
+.studio-leaves {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+}
+
+.studio-glint {
+    opacity: 0.65;
+}
+
+/* Movement only when the visitor has not requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+
+    .studio-leaves {
+        animation: curio-leaf-sway 5s ease-in-out infinite;
+    }
+
+    .studio-glint {
+        animation: curio-glint 6s ease-in-out infinite;
+    }
+
+    .studio-glint--two {
+        animation-delay: -2s;
+    }
+
+    .studio-glint--three {
+        animation-delay: -4s;
+    }
+
+    @keyframes curio-leaf-sway {
+
+        0%,
+        100% {
+            transform: rotate(-2deg);
+        }
+
+        50% {
+            transform: rotate(2deg);
+        }
+    }
+
+    @keyframes curio-glint {
+
+        0%,
+        100% {
+            opacity: 0.2;
+            transform: scale(0.75);
+        }
+
+        45% {
+            opacity: 0.9;
+            transform: scale(1.08);
+        }
+
+        65% {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+    }
+
 }

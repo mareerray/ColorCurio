@@ -157,7 +157,7 @@ main {
 
 /* ----------- FOOTER ------------- */
 
-footer {
+/* footer {
     background-image: radial-gradient(ellipse, #ffffff2b 7%, transparent 5%),
     linear-gradient(180deg, #2d2d2d, #2d2d2d);
     background-size: 20px 20px, 100% 100%;
@@ -182,7 +182,7 @@ footer a {
 footer a:hover {
     color: #028391;
     text-decoration: underline;
-}
+} */
 
  /* --------- Phones --------- */
 
