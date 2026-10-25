@@ -1,14 +1,6 @@
-/* ----------- MOOD BORD SECTION ------------- */
-.mood-item[data-is-sample] .delete-mood-item {
-    display: none !important;
-    /* Hide delete button for samples */
-}
+/* ================= MOOD BOARD ================= */
 
-.mood-item:not([data-is-sample]) .delete-mood-item {
-    display: flex;
-    /* Show only for custom */
-}
-
+/* ---------- Grid ---------- */
 .mood-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -17,7 +9,9 @@
     margin: var(--section-gap) 0;
 }
 
+/* ---------- Card ---------- */
 .mood-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: var(--card-surface);
@@ -25,6 +19,7 @@
     border-radius: var(--panel-radius);
     overflow: hidden;
     box-shadow: 0 3px 12px rgba(74, 63, 107, 0.06);
+    cursor: context-menu;
     transition: transform 0.2s ease;
 }
 
@@ -47,56 +42,116 @@
     color: var(--text);
 }
 
-.delete-mood-item {
+/* ---------- Hint: top right, every card ---------- */
+.mood-item::after {
+    content: 'Right-click to export';
     position: absolute;
     top: 8px;
-    right: 12px;
-    background: #DE5D83;
+    right: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 10px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ---------- Bin: bottom right ---------- */
+.delete-mood-item {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    width: 30px;
+    height: 30px;
     border: none;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    background: #DE5D83;
+    color: white;
+    font-size: 0.95rem;
     cursor: pointer;
+    opacity: 0.8;
     z-index: 10;
-    opacity: 0.6;
-    transition: background 0.2s;
+    transition: background 0.2s, opacity 0.2s;
 }
 
 .delete-mood-item:hover {
     background: #BFA2DB;
+    opacity: 1;
 }
 
-.mood-item {
-    position: relative;
-    /* Needed for absolute positioning of delete button */
+/* Sample cards cannot be deleted */
+.mood-item.sample-item .delete-mood-item {
+    display: none;
 }
 
-.palette-controls {
+/* ---------- Color swatches ---------- */
+.mood-colors {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 3px;
+    max-width: 100%;
+    margin-top: 8px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
 }
 
+.mini-swatch {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mini-swatch:hover {
+    transform: scale(1.15);
+    border-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Scoped, so it does not clash with .hex-label in colorlab.css */
+.mini-swatch .hex-label {
+    position: static;
+    transform: none;
+    margin-bottom: 2px;
+    padding: 2px 3px;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: whitesmoke;
+    text-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.9),
+        0 -1px 1px rgba(0, 0, 0, 0.9),
+        1px 0 1px rgba(0, 0, 0, 0.9),
+        -1px 0 1px rgba(0, 0, 0, 0.9),
+        0 0 3px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+/* ---------- Lightbox ---------- */
 #lightbox-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
     z-index: 1000;
 }
 
@@ -124,137 +179,42 @@
 }
 
 #lightbox-caption {
-    color: white;
+    max-width: 80vw;
     margin-top: 1rem;
+    color: white;
     font-size: 1.2rem;
     text-align: center;
-    max-width: 80vw;
 }
 
-/* --------- Phones --------- */
+/* ---------- Other ---------- */
+.palette-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
 
+#storage-info {
+    margin: 0.5rem 0 1rem;
+    color: var(--muted);
+    font-size: var(--font-small);
+    text-align: center;
+}
+
+/* ---------- Phones ---------- */
 @media (max-width: 700px) {
     .mood-grid {
         grid-template-columns: 1fr;
     }
 
-    .lightbox-close {
+    #lightbox-close {
         top: 16px;
         right: 20px;
         font-size: 2.2rem;
     }
 
-    .lightbox-caption {
-        font-size: 1rem;
+    #lightbox-caption {
         max-width: 90vw;
+        font-size: 1rem;
     }
 }
-
-/* ========== COLOR-CONNECTED MOOD BOARD STYLES ========== */
-
-/* Color palette display */
-/* Updated for 10 color swatches */
-/* Color swatches with hex codes */
-.mood-colors {
-    display: flex;
-    gap: 3px;
-    margin-top: 8px;
-    padding: 6px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 4px;
-    flex-wrap: wrap;
-    max-width: 100%;
-}
-
-.mini-swatch {
-    width: 50px;
-    /* Wider to fit hex code */
-    height: 50px;
-    /* Taller to fit hex code */
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.2s;
-    flex-shrink: 0;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.mini-swatch:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-    border-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Hex code label */
-.hex-label {
-    font-size: 0.7rem;
-    font-family: 'Courier New', monospace;
-    /* color: rgba(0, 0, 0, 0.7); */
-    /* background: rgba(17, 17, 17, 0.283); */
-    padding: 2px 3px;
-    border-radius: 2px;
-    margin-bottom: 2px;
-    color: whitesmoke;
-    text-shadow:
-        0 1px 1px rgba(0, 0, 0, 0.9),
-        0 -1px 1px rgba(0, 0, 0, 0.9),
-        1px 0 1px rgba(0, 0, 0, 0.9),
-        -1px 0 1px rgba(0, 0, 0, 0.9),
-        0 0 3px rgba(0, 0, 0, 0.7);
-    pointer-events: none;
-}
-
-/* Make text more readable on dark colors */
-.mini-swatch[data-color^="#0"] .hex-label,
-.mini-swatch[data-color^="#1"] .hex-label,
-.mini-swatch[data-color^="#2"] .hex-label,
-.mini-swatch[data-color^="#3"] .hex-label {
-    color: rgba(255, 255, 255, 0.95);
-    /* background: rgba(0, 0, 0, 0.7); */
-    text-shadow:
-        0 1px 1px rgba(0, 0, 0, 0.9),
-        0 -1px 1px rgba(0, 0, 0, 0.9),
-        1px 0 1px rgba(0, 0, 0, 0.9),
-        -1px 0 1px rgba(0, 0, 0, 0.9),
-        0 0 3px rgba(0, 0, 0, 0.7);
-}
-
-/* Mood item context menu hint */
-.mood-item {
-    position: relative;
-    cursor: context-menu;
-}
-
-.mood-item::after {
-    content: 'Right-click to export';
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 10px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    z-index: 5;
-}
-
-.mood-item:hover::after {
-    opacity: 1;
-}
-
-/* Storage info */
-#storage-info {
-    font-size: var(--font-small);
-    color: var(--muted);
-    margin: 0.5rem 0 1rem;
-    text-align: center;
-}
-
