@@ -255,7 +255,7 @@
     .studio-preview-panel {
         padding: 1rem;
     }
-   .studio-preview-panel {
+    .studio-preview-panel {
         order: -1;
         position: sticky;
         top: 0;
@@ -284,8 +284,10 @@
     max-width: 100%;
 }
 
-.wallpaper-preview[data-preview="landscape"] svg {
-    width: auto;
-    height: 480px;
-    max-width: 100%;
+@media (min-width: 601px) {
+    .wallpaper-preview[data-preview="landscape"] svg {
+        width: auto;
+        height: 480px;
+        max-width: 100%;
+    }
 }
