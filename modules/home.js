@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Update active button
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+      document
+      .querySelectorAll(`.tab-btn[data-tab="${targetTab}"]`)
+      .forEach(b => b.classList.add("active"));
     });
   });
 });

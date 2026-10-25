@@ -8,7 +8,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     
     // Activate new tab
-    btn.classList.add('active');
+    document
+      .querySelectorAll(`.tab-btn[data-tab="${tabId}"]`)
+      .forEach(b => b.classList.add('active'));
     document.getElementById(tabId).classList.add('active');
 
     // Start the selected tab at the top

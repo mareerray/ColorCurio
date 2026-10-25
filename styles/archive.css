@@ -30,11 +30,6 @@
     margin-top: 2rem;
 }
 
-.action-btn.secondary {
-    background: #6b7280;
-    color: white;
-}
-
 .palette-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));    
@@ -97,7 +92,7 @@
 
  /* --------- Phones --------- */
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
     .palette-grid { 
         grid-template-columns: 1fr; 
         gap: 1.5rem; 
@@ -106,12 +101,53 @@
         flex-wrap: wrap;
         height: auto;
     }
-}
+} */
 
 /* ---------- Tablets and small laptops ----------- */
 
-@media (min-width: 900px) {
+/* @media (min-width: 900px) {
     .palette-grid { 
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
     }
+} */
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: var(--layout-gap);
+    margin: var(--section-gap) 0;
+}
+
+.palette-card {
+    background: var(--card-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--panel-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 3px 12px rgba(74, 63, 107, 0.06);
+}
+
+.palette-card h3 {
+    font-size: var(--font-card-title);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.color-swatch {
+    font-size: 0.75rem;
+    min-width: 0;
+    overflow: hidden;
+}
+
+#archive .full-search {
+    font-size: var(--font-body);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+#archive .archive-stats {
+    background: var(--accent-soft);
+    font-size: var(--font-small);
+    color: var(--text);
 }
