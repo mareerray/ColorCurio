@@ -1,0 +1,80 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1760"
+    width="1080"
+    height="1760"
+>
+    <title>A warm sun and clouds above soft hills</title>
+
+    <!-- Color 1: Base / background -->
+    <rect
+        id="preview-base"
+        width="1080"
+        height="1920"
+        fill="#fff7ed"
+    />
+
+    <!-- Color 2: Accent / sun -->
+    <circle
+        id="preview-accent"
+        cx="770"
+        cy="600"
+        r="150"
+        fill="#f3d68a"
+    />
+
+    <!-- Color 5: Extra / clouds -->
+    <g id="preview-extra" fill="#e6dfd5">
+        <path
+            d="
+                M180 480
+                A60 60 0 0 1 240 420
+                A85 85 0 0 1 405 420
+                A60 60 0 0 1 405 540
+                H240
+                A60 60 0 0 1 180 480
+                Z
+            "
+        />
+
+        <path
+            d="
+                M700 300
+                A45 45 0 0 1 745 255
+                A65 65 0 0 1 875 255
+                A45 45 0 0 1 875 345
+                H745
+                A45 45 0 0 1 700 300
+                Z
+            "
+        />
+    </g>
+
+    <!-- Color 3: Support / distant hills -->
+    <path
+        id="preview-support"
+        d="
+            M0 1180
+            Q260 850 540 1140
+            Q810 900 1080 1100
+            L1080 1920
+            L0 1920
+            Z
+        "
+        fill="#a8c5ae"
+    />
+
+    <!-- Color 4: Deep support / foreground hills -->
+    <path
+        id="preview-deep"
+        d="
+            M0 1430
+            Q290 1140 600 1410
+            Q850 1210 1080 1350
+            L1080 1920
+            L0 1920
+            Z
+        "
+        fill="#789c83"
+    />
+</svg>

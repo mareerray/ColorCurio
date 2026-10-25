@@ -1,0 +1,291 @@
+/* ---------- Wallpaper Studio ---------- */
+
+.studio-intro {
+    margin-bottom: var(--section-gap, 1.5rem);
+}
+
+.studio-intro>p:last-child {
+    color: var(--muted);
+    font-size: var(--font-body, 0.95rem);
+    line-height: 1.5;
+}
+
+/* Options beside preview */
+.wallpaper-studio {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    align-items: start;
+    gap: 1.25rem;
+}
+
+.studio-controls,
+.studio-preview-panel {
+    min-width: 0;
+    padding: var(--panel-padding, 1.25rem);
+    border: 1px solid var(--border);
+    border-radius: var(--panel-radius, 16px);
+    background: var(--surface);
+    box-shadow: 0 3px 12px rgba(74, 63, 107, 0.04);
+}
+
+/* Options */
+.studio-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.studio-control h3,
+.studio-preview-panel>h3 {
+    margin: 0 0 0.5rem;
+    color: var(--text);
+    font-size: var(--font-card-title, 1rem);
+    font-weight: 800;
+}
+
+.studio-control p {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--font-small, 0.85rem);
+    line-height: 1.5;
+}
+
+.studio-palette {
+    display: flex;
+    gap: 8px;
+    margin-top: 0.75rem;
+}
+
+.studio-palette span {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(74, 63, 107, 0.12);
+    border-radius: 50%;
+    background: var(--swatch-color);
+}
+
+/* Palette choices */
+.studio-palette-list {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.studio-palette-option {
+    display: grid;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.studio-palette-option:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.studio-palette-option:focus-visible {
+    outline: 3px solid var(--accent-strong);
+    outline-offset: 3px;
+}
+
+.studio-palette-option.is-selected {
+    border-color: var(--accent-strong);
+    background: var(--accent-soft);
+}
+
+.studio-palette-name {
+    font-size: var(--font-small, 0.85rem);
+    font-weight: 800;
+}
+
+/* Smaller swatches inside each palette option */
+.studio-palette-option .studio-palette {
+    margin-top: 0;
+}
+
+.studio-palette-option .studio-palette span {
+    width: 20px;
+    height: 20px;
+}
+
+/* Download button: inactive until we add JavaScript */
+.studio-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: var(--font-label, 0.9rem);
+    font-weight: 800;
+}
+
+.studio-download {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.studio-download:hover {
+    background: var(--accent);
+    color: var(--text);
+}
+
+.studio-download:focus-visible {
+    outline: 3px solid var(--accent-strong);
+    outline-offset: 3px;
+}
+
+.studio-note,
+.studio-preview-caption {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--font-small, 0.85rem);
+    line-height: 1.5;
+}
+
+/* Preview */
+.studio-preview-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wallpaper-preview {
+    width: min(100%, 320px);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(74, 63, 107, 0.08);
+}
+
+.wallpaper-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wallpaper-preview svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+}
+
+.studio-preview-caption {
+    text-align: center;
+}
+
+/* Preview type selector */
+.studio-preview-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.studio-preview-type {
+    padding: 0.5rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: var(--font-small, 0.85rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.studio-preview-type:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.studio-preview-type:focus-visible {
+    outline: 3px solid var(--accent-strong);
+    outline-offset: 3px;
+}
+
+.studio-preview-type.is-selected {
+    border-color: var(--accent-strong);
+    background: var(--accent);
+}
+
+.wallpaper-preview[data-preview="web"],
+.wallpaper-preview[data-preview="brand"] {
+    width: min(100%, 520px);
+}
+
+.wallpaper-preview[data-preview="poster"] {
+    width: min(100%, 300px);
+}
+
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 600px) {
+    .wallpaper-studio {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .studio-controls {
+        gap: 1rem;
+    }
+
+    .studio-controls,
+    .studio-preview-panel {
+        padding: 1rem;
+    }
+   .studio-preview-panel {
+        order: -1;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: var(--surface);
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .wallpaper-preview[data-preview="landscape"],
+    .wallpaper-preview[data-preview="poster"] {
+        width: auto;
+        max-width: 100%;
+    }
+
+    .wallpaper-preview[data-preview="landscape"] svg,
+    .wallpaper-preview[data-preview="poster"] svg {
+        width: auto;
+        height: min(280px, 35svh);
+        max-width: 100%;
+    }
+}
+
+.wallpaper-preview[data-preview="landscape"] {
+    width: auto;
+    max-width: 100%;
+}
+
+.wallpaper-preview[data-preview="landscape"] svg {
+    width: auto;
+    height: 480px;
+    max-width: 100%;
+}

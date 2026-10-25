@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720">
+  <rect
+    id="preview-base"
+    width="1080"
+    height="720"
+    fill="#FFF7ED"
+  />
+
+  <rect
+    id="preview-support"
+    x="90"
+    y="120"
+    width="900"
+    height="480"
+    rx="32"
+    fill="#A8C5AE"
+  />
+
+<g id="preview-deep">
+  <rect
+    x="150"
+    y="190"
+    width="420"
+    height="44"
+    rx="10"
+    fill="#789C83"
+  />
+
+  <rect
+    x="150"
+    y="270"
+    width="520"
+    height="14"
+    rx="7"
+    fill="#789C83"
+  />
+
+  <rect
+    x="150"
+    y="306"
+    width="460"
+    height="14"
+    rx="7"
+    fill="#789C83"
+  />
+</g>
+
+  <rect
+    id="preview-accent"
+    x="150"
+    y="400"
+    width="220"
+    height="64"
+    rx="32"
+    fill="#F3D68A"
+  />
+
+  <rect
+    id="preview-extra"
+    x="790"
+    y="170"
+    width="140"
+    height="44"
+    rx="22"
+    fill="#F3D68A"
+  />
+</svg>

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 @import url('home.css');
 @import url('colorlab.css');
-@import url('palettes.css');
+@import url('studio.css');
 @import url('moodboard.css');
 @import url('archive.css');
 
@@ -23,18 +23,29 @@ html,
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     scroll-behavior: smooth;
     overscroll-behavior: none;
-    height: auto !important;
-    min-height: 100% !important;
 }
 
 body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
     font-family: var(--font-main);
     font-weight: 400;
     background: var(--bg);
     color: var(--text);
+}
+
+.app-main {
+    flex: 1 0 auto;
+}
+
+.site-header,
+.site-footer {
+    flex-shrink: 0;
 }
 
 /* Shared button styles */
