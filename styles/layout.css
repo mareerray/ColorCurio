@@ -28,7 +28,7 @@
 
 @media (max-width: 600px) {
     .app-main {
-        padding: 20px 16px 28px;
+        padding: 20px 16px 16px;
     }
 
     .app-main h2 {

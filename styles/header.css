@@ -83,6 +83,25 @@
     font-size: 1.25rem;
 }
 
+/* Desktop/tablet: retain the existing text navigation */
+.site-nav .tab-btn > i {
+    display: none;
+}
+
+/* Keep the existing Home icon on desktop/tablet */
+.site-nav .tab-btn[data-tab="home"] > i {
+    display: inline-block;
+}
+
+.site-nav .tab-btn[data-tab="home"] .nav-label {
+    display: none;
+}
+
+.site-nav .tab-btn:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+}
+
 /* Smaller screens: brand above, navigation below */
 @media (max-width: 800px) {
     .site-header {
@@ -127,10 +146,18 @@
     }
 }
 
-@media (max-width: 600px) {
+/* ---------- Phone and tablet bottom navigation ---------- */
+@media (max-width: 1024px) {
+    body {
+        /* Leave space so the nav does not cover the footer */
+        padding-bottom: calc(
+            80px + env(safe-area-inset-bottom, 0px)
+        );
+    }
+
     .site-header {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         gap: 0;
         width: 100%;
         padding: 8px 10px;
@@ -142,35 +169,58 @@
     }
 
     .site-header .site-nav {
+        position: fixed;
+        inset: auto 0 0;
+        z-index: 100;
+
         display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px;
 
-        /* Home icon, Color Lab, Studio, Mood Board, Archive */
-        grid-template-columns:
-            36px minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr);
-
-        gap: 2px;
         width: 100%;
         min-width: 0;
         margin: 0;
+        padding: 8px 6px;
+        padding-bottom: calc(
+            8px + env(safe-area-inset-bottom, 0px)
+        );
+
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 16px rgba(74, 63, 107, 0.06);
     }
 
     .site-header .site-nav .tab-btn {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 4px;
 
         width: 100%;
         min-width: 0;
-        min-height: 44px;
+        min-height: 56px;
         margin: 0;
         padding: 6px 2px;
 
-        font-size: 0.8rem;
+        border-radius: 12px;
+        font-size: 0.7rem;
         line-height: 1.2;
         white-space: nowrap;
     }
 
-    .site-header .site-nav .tab-btn i {
-        font-size: 1.1rem;
+    .site-header .site-nav .tab-btn > i {
+        display: inline-block;
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    .site-header .site-nav .tab-btn .nav-label {
+        display: block;
+    }
+
+    .site-header .site-nav .tab-btn.active {
+        background: var(--accent-soft);
+        color: var(--accent-strong);
     }
 }

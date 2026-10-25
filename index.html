@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ADD THIS FIRST -->
     <script>
@@ -26,27 +26,33 @@
         </a>
 
         <nav class="site-nav" aria-label="Main navigation">
-            <button type="button" class="tab-btn active" data-tab="home" aria-label="Home">
+            <button type="button" class="tab-btn active" data-tab="home">
                 <i class="bi bi-house-heart-fill" aria-hidden="true"></i>
+                <span class="nav-label">Home</span>
             </button>
 
             <button type="button" class="tab-btn" data-tab="colorlab">
-                Color Lab
+                <i class="bi bi-palette" aria-hidden="true"></i>
+                <span class="nav-label">Color Lab</span>
             </button>
 
             <button type="button" class="tab-btn" data-tab="palettes">
-                Studio
+                <i class="bi bi-brush" aria-hidden="true"></i>
+                <span class="nav-label">Studio</span>
             </button>
 
             <button type="button" class="tab-btn" data-tab="moodboard">
-                Mood Board
+                <i class="bi bi-images" aria-hidden="true"></i>
+                <span class="nav-label">Mood Board</span>
             </button>
 
             <button type="button" class="tab-btn" data-tab="archive">
-                Archive
+                <i class="bi bi-collection" aria-hidden="true"></i>
+                <span class="nav-label">Archive</span>
             </button>
         </nav>
     </header>
+
     <main class="app-main">
         <!-- HOME -->
         <section id="home" class="tab-content active">
