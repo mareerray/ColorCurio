@@ -1,0 +1,176 @@
+// Color Curio - Wallpaper Studio
+
+let studioPalettes = [];
+let selectedPalette = null;
+let currentPreview = "landscape";
+
+const previewTypes = {
+    landscape: {
+        file: "./assets/previews/landscape.svg",
+        caption: "A quiet little landscape, made with color."
+    },
+    web: {
+        file: "./assets/previews/web-page.svg",
+        caption: "See your palette as a calm little web page."
+    },
+    poster: {
+        file: "./assets/previews/poster.svg",
+        caption: "Turn your palette into a bold little poster."
+    },
+    brand: {
+        file: "./assets/previews/brand-card.svg",
+        caption: "Preview your palette as a small brand card."
+    }
+};
+
+async function loadStudioPalettes() {
+    const paletteList = document.querySelector("#studio-palette-list");
+
+    if (!paletteList) return;
+
+    try {
+        const response = await fetch("./assets/palettes/samplePalettes.studio.json");
+
+        if (!response.ok) {
+            throw new Error(`Could not load palettes: ${response.status}`);
+        }
+
+        studioPalettes = await response.json();
+
+        renderStudioPalettes();
+    } catch (error) {
+        console.error(error);
+        paletteList.innerHTML = "<p>Sorry, palettes could not load.</p>";
+    }
+}
+
+function renderStudioPalettes() {
+    const paletteList = document.querySelector("#studio-palette-list");
+
+    if (!paletteList) return;
+
+    paletteList.innerHTML = studioPalettes
+        .map((palette, index) => {
+            const colors = palette.colors
+                .map(
+                    (color) =>
+                        `<span style="--swatch-color: ${color};"></span>`
+                )
+                .join("");
+
+            return `
+        <button
+            class="studio-palette-option"
+            type="button"
+            data-palette-index="${index}"
+            aria-label="Use ${palette.name} palette"
+            >
+            <span class="studio-palette-name">${palette.name}</span>
+            <span class="studio-palette">${colors}</span>
+            </button>
+        `;
+        })
+        .join("");
+
+    paletteList.addEventListener("click", handlePaletteClick);
+}
+
+function handlePaletteClick(event) {
+    const button = event.target.closest(".studio-palette-option");
+
+    if (!button) return;
+
+    document
+        .querySelectorAll(".studio-palette-option")
+        .forEach((option) => option.classList.remove("is-selected"));
+
+    button.classList.add("is-selected");
+
+    const index = Number(button.dataset.paletteIndex);
+    selectedPalette = studioPalettes[index];
+
+    applyPaletteToPreview();
+}
+
+function initPreviewTypes() {
+    const buttons = document.querySelectorAll(".studio-preview-type");
+
+    if (!buttons.length) return;
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const previewName = button.dataset.preview;
+            const preview = previewTypes[previewName];
+
+            if (!preview) return;
+
+            currentPreview = previewName;
+
+            buttons.forEach((item) =>
+                item.classList.remove("is-selected")
+            );
+
+            button.classList.add("is-selected");
+
+            showPreview(previewName);
+        });
+    });
+
+    showPreview(currentPreview);
+}
+
+async function showPreview(previewName) {
+    const preview = previewTypes[previewName];
+    const container = document.querySelector("#studio-preview");
+    const caption = document.querySelector("#studio-preview-caption");
+
+    if (!preview || !container || !caption) return;
+
+    try {
+        const response = await fetch(preview.file);
+
+        if (!response.ok) {
+            throw new Error(`Could not load preview: ${response.status}`);
+        }
+
+        const svgText = await response.text();
+
+        container.innerHTML = svgText;
+        container.dataset.preview = previewName;
+        caption.textContent = preview.caption;
+
+        applyPaletteToPreview();
+    } catch (error) {
+        console.error(error);
+        container.innerHTML = "<p>Sorry, this preview could not load.</p>";
+    }
+}
+
+function applyPaletteToPreview() {
+    if (!selectedPalette) return;
+
+    const colors = selectedPalette.colors;
+
+    const colorMap = {
+        "preview-base": colors[0],
+        "preview-accent": colors[1],
+        "preview-support": colors[2],
+        "preview-deep": colors[3],
+        "preview-extra": colors[4] || colors[1]
+    };
+
+    Object.entries(colorMap).forEach(([id, color]) => {
+        const element = document.querySelector(`#studio-preview #${id}`);
+
+        if (!element) return;
+
+        element.setAttribute("fill", color);
+
+        element.querySelectorAll("[fill]").forEach((shape) => {
+            shape.setAttribute("fill", color);
+        });
+    });
+}
+
+initPreviewTypes();
+loadStudioPalettes();

@@ -11,7 +11,7 @@ window.loadArchive = async function() {
   
   // Load samples
   try {
-    const response = await fetch('assets/palettes/samplePalettes.json');
+    const response = await fetch('assets/palettes/samplePalettes.studio.json');
     samplePalettes = await response.json();
     renderArchive(samplePalettes);
     updateCount(samplePalettes.length);

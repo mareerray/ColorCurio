@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#e1d0b8">
 
-    <!-- ADD THIS FIRST -->
     <script>
         window.history.scrollRestoration = 'manual';
     </script>
@@ -36,7 +36,7 @@
                 <span class="nav-label">Color Lab</span>
             </button>
 
-            <button type="button" class="tab-btn" data-tab="palettes">
+            <button type="button" class="tab-btn" data-tab="studio">
                 <i class="bi bi-brush" aria-hidden="true"></i>
                 <span class="nav-label">Studio</span>
             </button>
@@ -73,7 +73,7 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--pink tab-btn" data-tab="palettes">
+                <button type="button" class="home-card home-card--pink tab-btn" data-tab="studio">
                     <i class="bi bi-brush" aria-hidden="true"></i>
                     <span class="home-card__title">Studio</span>
                     <span class="home-card__description">
@@ -159,7 +159,7 @@
         </section>
 
         <!-- STUDIO -->
-        <section id="palettes" class="tab-content">
+        <section id="studio" class="tab-content">
             <div class="studio-intro">
                 <p class="section-eyebrow">Your little art studio</p>
                 <h2>Wallpaper Studio</h2>
@@ -181,8 +181,11 @@
                     </div>
 
                     <div class="studio-control">
-                        <h3>Wallpaper format</h3>
-                        <p>Phone · 1080 × 1920</p>
+                        <h3>Color palette</h3>
+                        <p>Choose a palette for your landscape.</p>
+
+                        <div id="studio-palette-list" class="studio-palette-list" aria-label="Available color palettes">
+                        </div>
                     </div>
 
                     <a class="studio-download" id="download-wallpaper" href="./assets/wallpapers/landscape.svg"
@@ -199,12 +202,27 @@
                 <div class="studio-preview-panel">
                     <h3>Preview</h3>
 
-                    <div class="wallpaper-preview">
-                        <img id="wallpaper-image" src="./assets/wallpapers/landscape.svg"
-                            alt="A warm sun above soft green hills" width="1080" height="1920">
+                    <div class="studio-preview-types" role="tablist" aria-label="Preview type">
+                        <button class="studio-preview-type is-selected" type="button" data-preview="landscape">
+                            Landscape
+                        </button>
+
+                        <button class="studio-preview-type" type="button" data-preview="web">
+                            Web page
+                        </button>
+
+                        <button class="studio-preview-type" type="button" data-preview="poster">
+                            Poster
+                        </button>
+
+                        <button class="studio-preview-type" type="button" data-preview="brand">
+                            Brand
+                        </button>
                     </div>
 
-                    <p class="studio-preview-caption">
+                    <div class="wallpaper-preview" id="studio-preview" aria-live="polite"></div>
+
+                    <p class="studio-preview-caption" id="studio-preview-caption">
                         A quiet little landscape, made with color.
                     </p>
                 </div>

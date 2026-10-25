@@ -23,7 +23,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     // Lazy load tab content
     if (tabId === 'archive') {
       window.loadArchive?.();  // Archive samples
-    } else if (tabId === 'palettes') {
+    } else if (tabId === 'studio') {
       window.loadSamplePalettes?.().then(() => window.loadPalettes?.());
     } else if (tabId === 'moodboard') {
       window.loadMoodBoard?.();

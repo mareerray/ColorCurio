@@ -1,0 +1,62 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1080 1440"
+>
+    <title>A geometric poster with a circle and text blocks</title>
+
+    <!-- Color 1: Base / background -->
+    <rect
+        id="preview-base"
+        width="1080"
+        height="1440"
+        fill="#FFF7ED"
+    />
+
+    <!-- Color 2: Accent / focal shape -->
+    <circle
+        id="preview-accent"
+        cx="780"
+        cy="330"
+        r="180"
+        fill="#F3D68A"
+    />
+
+    <!-- Color 3: Support / subtitle -->
+    <g id="preview-support" fill="#A8C5AE">
+        <rect
+            x="120" y="800"
+            width="480" height="24"
+            rx="12"
+        />
+        <rect
+            x="120" y="850"
+            width="360" height="24"
+            rx="12"
+        />
+    </g>
+
+    <!-- Color 4: Deep support / title -->
+    <g id="preview-deep" fill="#789C83">
+        <rect
+            x="120" y="580"
+            width="620" height="72"
+            rx="16"
+        />
+        <rect
+            x="120" y="680"
+            width="460" height="72"
+            rx="16"
+        />
+    </g>
+
+    <!-- Color 5: Extra / footer detail -->
+    <rect
+        id="preview-extra"
+        x="120"
+        y="1180"
+        width="840"
+        height="90"
+        rx="24"
+        fill="#5C7A66"
+    />
+</svg>
