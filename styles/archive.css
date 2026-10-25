@@ -1,153 +1,141 @@
-/* ----------- PALETTE ARCHIVE SECTION ------------- */
-/* Minimal additions for archive */
+/* ================= PALETTE ARCHIVE ================= */
+
+/* ---------- Section header ---------- */
 #archive .section-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    gap: 0.75rem;
+    margin-bottom: var(--section-gap);
 }
 
+/* ---------- Search ---------- */
 #archive .full-search {
+    display: block;
     width: 100%;
     max-width: 500px;
-    padding: 1rem 1.5rem;
-    border: 2px solid #e2e8f0;
+    margin: 0 auto var(--section-gap);
+    padding: 0.875rem 1.25rem;
+
+    border: 1px solid var(--border);
     border-radius: 50px;
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: var(--font-main);
+    font-size: var(--font-body);
 }
 
-#archive .archive-stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: rgba(0,0,0,0.05);
-    border-radius: 12px;
-    margin-top: 2rem;
+#archive .full-search:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
 }
 
-.palette-grid {
+/* ---------- Palette grid ---------- */
+#archive .palette-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));    
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.palette-card {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.color-row {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 60px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 1rem 0;
-    width: 100%;
-}
-
-.color-swatch {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    color: whitesmoke;
-    text-shadow: 
-    0 1px 1px rgba(0,0,0,0.9),
-    0 -1px 1px rgba(0,0,0,0.9),
-    1px 0 1px rgba(0,0,0,0.9),
-    -1px 0 1px rgba(0,0,0,0.9),
-    0 0 3px rgba(0,0,0,0.7);
-    cursor: pointer;
-    min-height: 40px;
-}
-
-.delete-palette-btn {
-    background: #DE5D83;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.85;
-    transition: background 0.2s;
-}
-.delete-palette-btn:hover {
-    background: #BFA2DB;
-}
-
- /* --------- Phones --------- */
-
-/* @media (max-width: 700px) {
-    .palette-grid { 
-        grid-template-columns: 1fr; 
-        gap: 1.5rem; 
-    }
-    .color-row {
-        flex-wrap: wrap;
-        height: auto;
-    }
-} */
-
-/* ---------- Tablets and small laptops ----------- */
-
-/* @media (min-width: 900px) {
-    .palette-grid { 
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); 
-    }
-} */
-
-.palette-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns:
+        repeat(auto-fill, minmax(min(100%, 380px), 1fr));
     gap: var(--layout-gap);
+    min-width: 0;
     margin: var(--section-gap) 0;
 }
 
-.palette-card {
+/* ---------- Palette card ---------- */
+#archive .palette-card {
+    min-width: 0;
+    padding: var(--card-padding);
+
     background: var(--card-surface);
     border: 1px solid var(--border);
     border-radius: var(--panel-radius);
-    padding: var(--card-padding);
     box-shadow: 0 3px 12px rgba(74, 63, 107, 0.06);
 }
 
-.palette-card h3 {
+#archive .palette-card h3 {
+    min-width: 0;
+    margin: 0;
+    color: var(--text);
     font-size: var(--font-card-title);
     font-weight: 700;
-    color: var(--text);
-    margin: 0;
+    overflow-wrap: anywhere;
 }
 
-.color-swatch {
-    font-size: 0.75rem;
-    min-width: 0;
+/* ---------- Color swatches ---------- */
+#archive .color-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1rem 0;
+
+    border-radius: 10px;
     overflow: hidden;
 }
 
-#archive .full-search {
-    font-size: var(--font-body);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
+#archive .color-swatch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Wrap when a readable hex code no longer fits */
+    flex: 1 0 64px;
+    min-width: 0;
+    min-height: 60px;
+    padding: 4px;
+
+    color: whitesmoke;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+
+    text-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.9),
+        0 -1px 1px rgba(0, 0, 0, 0.9),
+        1px 0 1px rgba(0, 0, 0, 0.9),
+        -1px 0 1px rgba(0, 0, 0, 0.9),
+        0 0 3px rgba(0, 0, 0, 0.7);
 }
 
+/* ---------- Archive summary ---------- */
 #archive .archive-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+
+    margin-top: var(--section-gap);
+    padding: 1rem;
+
     background: var(--accent-soft);
-    font-size: var(--font-small);
+    border-radius: 12px;
     color: var(--text);
+    font-size: var(--font-small);
+}
+
+/* ---------- Delete button ---------- */
+#archive .delete-palette-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+    border-radius: 50%;
+    background: #DE5D83;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: background 0.2s;
+}
+
+#archive .delete-palette-btn:hover {
+    background: #BFA2DB;
 }
