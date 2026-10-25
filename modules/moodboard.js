@@ -21,7 +21,7 @@ function loadMoodBoardItems() {
   return saved ? JSON.parse(saved) : [];
 }
 
-window.loadMoodBoard = async function() {
+window.loadMoodBoard = async function () {
   // 1) Try localStorage
   moodBoardItems = loadMoodBoardItems();
 
@@ -38,30 +38,35 @@ window.loadMoodBoard = async function() {
   }
 
   // 3) Ensure some items are marked as samples (safe if JSON already has isSample)
-  if (!moodBoardItems.some(item => item.isSample)) {
-    moodBoardItems.slice(0, 3).forEach(item => { item.isSample = true; });
-    saveMoodBoardItems(moodBoardItems);
-  }
+  // Samples come from the JSON file and have a filename. Uploads have imageData.
+  let changed = false;
+  moodBoardItems.forEach(item => {
+    if (!item.imageData && !item.isSample) {
+      item.isSample = true;
+      changed = true;
+    }
+  });
+  if (changed) saveMoodBoardItems(moodBoardItems);
 
   renderMoodBoard();
   updateStorageInfo();
 };
 
 
-window.renderMoodBoard = function() {
+window.renderMoodBoard = function () {
   const moodGrid = document.querySelector('.mood-grid');
   if (!moodGrid) return;
   moodGrid.innerHTML = '';
-  
+
   moodBoardItems.forEach((item, index) => {
     const div = document.createElement('div');
     div.className = `mood-item ${item.isSample ? 'sample-item' : 'custom-item'}`;
     div.setAttribute('data-index', index);
-    
-    const imageSrc = item.imageData 
-      ? item.imageData 
+
+    const imageSrc = item.imageData
+      ? item.imageData
       : `assets/images/${item.filename}`;
-    
+
     div.innerHTML = `
       <img class="mood-image" src="${imageSrc}" alt="${item.caption || ''}" crossorigin="anonymous">
       <div class="mood-content">${item.caption || ''}</div>
@@ -76,13 +81,12 @@ window.renderMoodBoard = function() {
         </div>
       ` : ''}
       
-      <button class="delete-mood-item" data-index="${index}" title="Delete this image">&times;</button>
-    `;
-    
+      <button class="delete-mood-item" data-index="${index}" title="Delete this image" aria-label="Delete this image"><i class="bi bi-trash"></i></button>    `;
+
     moodGrid.appendChild(div);
-    
+
     // Add right-click context menu for export
-    div.addEventListener('contextmenu', function(e) {
+    div.addEventListener('contextmenu', function (e) {
       e.preventDefault();
       exportImageWithPalette(index);
     });
@@ -90,15 +94,15 @@ window.renderMoodBoard = function() {
 
   // Delete buttons
   document.querySelectorAll('.delete-mood-item').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       e.stopPropagation();
       const idx = parseInt(btn.getAttribute('data-index'));
-      
+
       if (moodBoardItems[idx] && moodBoardItems[idx].isSample) {
         alert('Sample images cannot be deleted. Add your own images to customize!');
         return;
       }
-      
+
       if (confirm('Delete this image?')) {
         moodBoardItems.splice(idx, 1);
         saveMoodBoardItems(moodBoardItems);
@@ -107,19 +111,19 @@ window.renderMoodBoard = function() {
       }
     });
   });
-  
+
   // Click to copy hex code
   document.querySelectorAll('.mini-swatch').forEach(swatch => {
-    swatch.addEventListener('click', function(e) {
+    swatch.addEventListener('click', function (e) {
       e.stopPropagation();
       const color = swatch.getAttribute('data-color');
       copyToClipboard(color);
-      
+
       // Visual feedback
       const originalContent = swatch.innerHTML;
       swatch.innerHTML = '<span class="hex-label">Copied!</span>';
       swatch.style.transform = 'scale(1.2)';
-      
+
       setTimeout(() => {
         swatch.innerHTML = originalContent;
         swatch.style.transform = '';
@@ -133,7 +137,7 @@ async function exportImageWithPalette(index) {
   if (!item) return;
 
   const download = confirm('Download image with palette?\n\nOK = Download exact display\nCancel = Copy colors');
-  
+
   if (!download) {
     if (item.colors?.length > 0) {
       copyToClipboard(item.colors.join(', '));
@@ -210,28 +214,28 @@ function trimWhiteSpace(canvas) {
 
   // Find crop bounds
   let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
-  
+
   for (let y = 0; y < canvas.height; y++) {
     for (let x = 0; x < canvas.width; x++) {
       const i = (y * canvas.width + x) * 4;
-      const r = data[i], g = data[i+1], b = data[i+2];
-      if (r > 255-tolerance && g > 255-tolerance && b > 255-tolerance) continue;
-      
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      if (r > 255 - tolerance && g > 255 - tolerance && b > 255 - tolerance) continue;
+
       minX = Math.min(minX, x);
       minY = Math.min(minY, y);
       maxX = Math.max(maxX, x);
       maxY = Math.max(maxY, y);
     }
   }
-  
+
   if (minX > maxX) return canvas; // All white
-  
+
   // Crop canvas
   const cropped = document.createElement('canvas');
   cropped.width = maxX - minX + 1;
   cropped.height = maxY - minY + 1;
   cropped.getContext('2d').drawImage(canvas, -minX, -minY);
-  
+
   return cropped;
 }
 
@@ -273,48 +277,48 @@ function addMoodItemWithUpload() {
     alert(`Storage limit reached! You can upload maximum ${MAX_IMAGES} images.\n\nTip: Delete some images to add new ones.`);
     return;
   }
-  
+
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
   fileInput.accept = 'image/*';
-  
-  fileInput.addEventListener('change', function(event) {
+
+  fileInput.addEventListener('change', function (event) {
     const file = event.target.files[0];
     if (!file) return;
-    
+
     if (file.size > 2 * 1024 * 1024) {
       alert('Image is too large! Please use an image under 2MB.\n\nTip: Resize or compress your image before uploading.');
       return;
     }
-    
+
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       const imageData = e.target.result;
       const caption = prompt('Enter a caption (optional):') || '';
-      
-      extractColorsFromImage(imageData, function(colors) {
-        moodBoardItems.push({ 
+
+      extractColorsFromImage(imageData, function (colors) {
+        moodBoardItems.push({
           imageData: imageData,
           caption: caption,
           colors: colors,
           isSample: false
         });
-        
+
         saveMoodBoardItems(moodBoardItems);
         renderMoodBoard();
         updateStorageInfo();
       });
     };
-    
+
     reader.readAsDataURL(file);
   });
-  
+
   fileInput.click();
 }
 
 function extractColorsFromImage(imageData, callback) {
   const img = new Image();
-  img.onload = function() {
+  img.onload = function () {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -415,11 +419,11 @@ function colorDistance(hex1, hex2) {
   const r1 = parseInt(hex1.slice(1, 3), 16);
   const g1 = parseInt(hex1.slice(3, 5), 16);
   const b1 = parseInt(hex1.slice(5, 7), 16);
-  
+
   const r2 = parseInt(hex2.slice(1, 3), 16);
   const g2 = parseInt(hex2.slice(3, 5), 16);
   const b2 = parseInt(hex2.slice(5, 7), 16);
-  
+
   // Manhattan distance - simple and effective
   return Math.abs(r1 - r2) + Math.abs(g1 - g2) + Math.abs(b1 - b2);
 }
@@ -429,7 +433,7 @@ function rgbToHex(r, g, b) {
   r = Math.max(0, Math.min(255, r));
   g = Math.max(0, Math.min(255, g));
   b = Math.max(0, Math.min(255, b));
-  
+
   return "#" + [r, g, b].map(x => {
     const hex = Math.round(x).toString(16);
     return hex.length === 1 ? "0" + hex : hex;
@@ -439,10 +443,10 @@ function rgbToHex(r, g, b) {
 function updateStorageInfo() {
   const customImages = moodBoardItems.filter(item => !item.isSample);
   const storageInfo = document.getElementById('storage-info');
-  
+
   if (storageInfo) {
     storageInfo.textContent = `${customImages.length}/${MAX_IMAGES} images uploaded`;
-    
+
     if (customImages.length >= MAX_IMAGES - 2) {
       storageInfo.style.color = '#ff6b35';
       storageInfo.style.fontWeight = 'bold';
@@ -453,7 +457,7 @@ function updateStorageInfo() {
   }
 }
 
-window.setupLightbox = function() {
+window.setupLightbox = function () {
   const overlay = document.getElementById('lightbox-overlay');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -474,23 +478,23 @@ window.setupLightbox = function() {
     lightboxCaption.parentNode.insertBefore(contentDiv, lightboxCaption.nextSibling);
   }
 
-  document.querySelector('.mood-grid')?.addEventListener('click', function(e) {
+  document.querySelector('.mood-grid')?.addEventListener('click', function (e) {
     if (e.target.classList.contains('mood-image')) {
       const moodItem = e.target.closest('.mood-item');
       const index = Array.from(document.querySelectorAll('.mood-item')).indexOf(moodItem);
-      
+
       if (index === -1 || !moodBoardItems[index]) return;
-      
+
       const item = moodBoardItems[index];
-      
+
       // Set image
       lightboxImg.src = e.target.src;
       lightboxImg.style.maxWidth = '100%';
       lightboxImg.style.borderRadius = '8px';
-      
+
       // Set caption
       lightboxCaption.textContent = item.caption || '';
-      
+
       // NEW: Build palette HTML
       // Only show palette if NOT a sample and colors exist
       if (!item.isSample && item.colors?.length) {
@@ -520,9 +524,9 @@ window.setupLightbox = function() {
             </div>
           </div>
         `;
-      lightboxContent.innerHTML = paletteHtml;
+        lightboxContent.innerHTML = paletteHtml;
       } else {
-      lightboxContent.innerHTML = '';
+        lightboxContent.innerHTML = '';
       }
       overlay.style.display = 'flex';
     }
