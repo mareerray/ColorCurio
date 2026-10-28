@@ -92,6 +92,40 @@ function handlePaletteClick(event) {
     applyPaletteToPreview();
 }
 
+function downloadCurrentSvg() {
+    const svg = document.querySelector("#studio-preview svg");
+
+    if (!svg) return;
+
+    // 1. Turn the SVG on screen into text
+    const svgText = new XMLSerializer().serializeToString(svg);
+
+    // 2. Put the text into a file-like object
+    const blob = new Blob([svgText], { type: "image/svg+xml" });
+
+    // 3. Make a temporary link to that file
+    const url = URL.createObjectURL(blob);
+
+    // 4. Build a good file name
+    const paletteName = selectedPalette
+        ? selectedPalette.name.toLowerCase().replace(/\s+/g, "-")
+        : "original";
+    const fileName = `colorcurio-${currentPreview}-${paletteName}.svg`;
+
+    // 5. Click an invisible link to start the download
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    link.click();
+
+    // 6. Clean up
+    URL.revokeObjectURL(url);
+}
+
+document
+    .querySelector("#download-wallpaper")
+    ?.addEventListener("click", downloadCurrentSvg);
+
 function initPreviewTypes() {
     const buttons = document.querySelectorAll(".studio-preview-type");
 

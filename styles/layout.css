@@ -36,3 +36,10 @@
         margin-bottom: 0.625rem;
     }
 }
+
+/* Keep the footer below the initial screen on phone and tablet */
+@media (max-width: 1024px) {
+    .app-main {
+        min-height: calc(100dvh - 72px);
+    }
+}
