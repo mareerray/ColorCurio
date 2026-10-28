@@ -44,6 +44,15 @@
 }
 
 .site-nav {
+    background-color: var(--bg);
+
+    background-image:
+        radial-gradient(circle, var(--border) 2.5px, transparent 2.5px),
+        radial-gradient(circle, var(--border) 2.5px, transparent 2.5px);
+
+    background-size: 36px 36px;
+    background-position: 0 0, 18px 18px;
+
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -185,7 +194,6 @@
             8px + env(safe-area-inset-bottom, 0px)
         );
 
-        background: var(--surface);
         border-top: 1px solid var(--border);
         box-shadow: 0 -4px 16px rgba(74, 63, 107, 0.06);
     }
