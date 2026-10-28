@@ -49,8 +49,7 @@ body {
 }
 
 /* Shared button styles */
-.action-btn,
-.studio-download {
+.action-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -68,20 +67,17 @@ body {
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.action-btn:hover,
-.studio-download:hover {
+.action-btn:hover {
     background: var(--eyebrow);
     transform: translateY(-1px);
 }
 
-.action-btn:focus-visible,
-.studio-download:focus-visible {
+.action-btn:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
 }
 
-.action-btn:disabled,
-.studio-download[disabled] {
+.action-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
@@ -94,4 +90,13 @@ body {
 
 .action-btn.secondary:hover {
     background: var(--border);
+}
+
+/* Allow the footer to scroll fully above the fixed bottom navigation */
+@media (max-width: 1024px) {
+    body {
+        padding-bottom: calc(
+            80px + env(safe-area-inset-bottom, 0px)
+        );
+    }
 }

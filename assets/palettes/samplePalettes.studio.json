@@ -100,6 +100,16 @@
     ]
   },
   {
+    "name": "Lavender Honey",
+    "colors": [
+      "#FAF7F2",
+      "#E9BD62",
+      "#CEC4DF",
+      "#827296",
+      "#51445F"
+    ]
+  },
+  {
     "name": "Modern Metallics",
     "colors": [
       "#F6E7CE",
@@ -162,11 +172,11 @@
   {
     "name": "Ocean Breeze",
     "colors": [
-      "#f0f8ff",
-      "#00a8cc",
-      "#87ceeb",
-      "#40e0d0",
-      "#0077be"
+      "#F0F8FF",
+      "#00A8CC",
+      "#87CEEB",
+      "#40E0D0",
+      "#0077BE"
     ]
   },
   {
@@ -240,6 +250,16 @@
     ]
   },
   {
+    "name": "Soft Meadow",
+    "colors": [
+      "#FFF7ED",
+      "#F3D68A",
+      "#A8C5AE",
+      "#789C83",
+      "#5C7A66"
+    ]
+  },
+  {
     "name": "Soft Neutrals",
     "colors": [
       "#F5F5F5",
@@ -262,11 +282,11 @@
   {
     "name": "Sunset Vibes",
     "colors": [
-      "#ffd23f",
-      "#06ffa5",
-      "#f7931e",
-      "#ff6b35",
-      "#118ab2"
+      "#FFD23F",
+      "#06FFA5",
+      "#F7931E",
+      "#FF6B35",
+      "#118AB2"
     ]
   },
   {

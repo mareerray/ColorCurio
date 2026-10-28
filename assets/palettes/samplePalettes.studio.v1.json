@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Autumn Leaves",
+    "colors": [
+      "#FFD700",
+      "#FFA500",
+      "#FF8C00",
+      "#FF6347",
+      "#FF4500"
+    ]
+  },
+  {
+    "name": "Bold Primaries",
+    "colors": [
+      "#FFFF00",
+      "#00FF00",
+      "#FF00FF",
+      "#FF0000",
+      "#0000FF"
+    ]
+  },
+  {
+    "name": "Bright Yellows",
+    "colors": [
+      "#FFFACD",
+      "#FFEFD5",
+      "#FAFAD2",
+      "#FFFF00",
+      "#FFD700"
+    ]
+  },
+  {
+    "name": "Classic 80s Retro",
+    "colors": [
+      "#FEFF38",
+      "#FF2941",
+      "#FE18D3",
+      "#871A85",
+      "#270245"
+    ]
+  },
+  {
+    "name": "Cool Blues",
+    "colors": [
+      "#87CEFA",
+      "#00BFFF",
+      "#5F9EA0",
+      "#1E90FF",
+      "#4682B4"
+    ]
+  },
+  {
+    "name": "Cool Grays",
+    "colors": [
+      "#D3D3D3",
+      "#2F4F4F",
+      "#A9A9A9",
+      "#808080",
+      "#696969"
+    ]
+  },
+  {
+    "name": "Cool Purples",
+    "colors": [
+      "#9370DB",
+      "#4B0082",
+      "#6A5ACD",
+      "#8A2BE2",
+      "#483D8B"
+    ]
+  },
+  {
+    "name": "Deep Blues",
+    "colors": [
+      "#1E90FF",
+      "#0000FF",
+      "#4169E1",
+      "#0000CD",
+      "#00008B"
+    ]
+  },
+  {
+    "name": "Earthy Greens",
+    "colors": [
+      "#98FB98",
+      "#32CD32",
+      "#8FBC8F",
+      "#2E8B57",
+      "#228B22"
+    ]
+  },
+  {
+    "name": "Earthy Tones",
+    "colors": [
+      "#F4A460",
+      "#8B4513",
+      "#CD853F",
+      "#D2691E",
+      "#A0522D"
+    ]
+  },
+  {
+    "name": "Lavender Honey",
+    "colors": [
+      "#FAF7F2",
+      "#E9BD62",
+      "#CEC4DF",
+      "#827296",
+      "#51445F"
+    ]
+  },
+  {
+    "name": "Modern Metallics",
+    "colors": [
+      "#F6E7CE",
+      "#D69A6D",
+      "#A3A8A3",
+      "#6E7580",
+      "#2F343B"
+    ]
+  },
+  {
+    "name": "Muted Earth Tones",
+    "colors": [
+      "#FFF8DC",
+      "#F0E68C",
+      "#F5DEB3",
+      "#D2B48C",
+      "#8B4513"
+    ]
+  },
+  {
+    "name": "Muted Monochrome",
+    "colors": [
+      "#696969",
+      "#4B4B4B",
+      "#3C3C3C",
+      "#2D2D2D",
+      "#1E1E1E"
+    ]
+  },
+  {
+    "name": "Muted Pastels",
+    "colors": [
+      "#F0FFF0",
+      "#FFF0F5",
+      "#F5F5DC",
+      "#E6E6FA",
+      "#D8BFD8"
+    ]
+  },
+  {
+    "name": "Muted Reds",
+    "colors": [
+      "#E9967A",
+      "#FF6347",
+      "#FA8072",
+      "#F08080",
+      "#CD5C5C"
+    ]
+  },
+  {
+    "name": "Neon Glow",
+    "colors": [
+      "#00FFFF",
+      "#39FF14",
+      "#FF8C00",
+      "#8A2BE2",
+      "#FF073A"
+    ]
+  },
+  {
+    "name": "Ocean Breeze",
+    "colors": [
+      "#f0f8ff",
+      "#00a8cc",
+      "#87ceeb",
+      "#40e0d0",
+      "#0077be"
+    ]
+  },
+  {
+    "name": "Pastel Dreams",
+    "colors": [
+      "#FFF4E6",
+      "#AEEBFF",
+      "#A7C7E7",
+      "#FFB782",
+      "#BFA2DB"
+    ]
+  },
+  {
+    "name": "Pastel Pinks",
+    "colors": [
+      "#FFB6C1",
+      "#FF69B4",
+      "#DB7093",
+      "#FF1493",
+      "#C71585"
+    ]
+  },
+  {
+    "name": "Retro Futurism",
+    "colors": [
+      "#FFFF00",
+      "#00FFFF",
+      "#32CD32",
+      "#FF4500",
+      "#FF00FF"
+    ]
+  },
+  {
+    "name": "Retro Pop",
+    "colors": [
+      "#FFD700",
+      "#00BFFF",
+      "#32CD32",
+      "#FF4500",
+      "#FF1493"
+    ]
+  },
+  {
+    "name": "Rose Accents",
+    "colors": [
+      "#ECC5C0",
+      "#DE5D83",
+      "#DEA193",
+      "#B76E79",
+      "#8C4A5A"
+    ]
+  },
+  {
+    "name": "Soft Blues",
+    "colors": [
+      "#B0E0E6",
+      "#87CEFA",
+      "#ADD8E6",
+      "#5F9EA0",
+      "#4682B4"
+    ]
+  },
+  {
+    "name": "Soft Greens",
+    "colors": [
+      "#98FB98",
+      "#90EE90",
+      "#8FBC8F",
+      "#3CB371",
+      "#2E8B57"
+    ]
+  },
+  {
+    "name": "Soft Meadow",
+    "colors": [
+      "#FFF7ED",
+      "#F3D68A",
+      "#A8C5AE",
+      "#789C83",
+      "#5C7A66"
+    ]
+  },
+  {
+    "name": "Soft Neutrals",
+    "colors": [
+      "#F5F5F5",
+      "#DCDCDC",
+      "#C0C0C0",
+      "#A9A9A9",
+      "#808080"
+    ]
+  },
+  {
+    "name": "Soft Purples",
+    "colors": [
+      "#E6E6FA",
+      "#9370DB",
+      "#D8BFD8",
+      "#DDA0DD",
+      "#BA55D3"
+    ]
+  },
+  {
+    "name": "Sunset Vibes",
+    "colors": [
+      "#ffd23f",
+      "#06ffa5",
+      "#f7931e",
+      "#ff6b35",
+      "#118ab2"
+    ]
+  },
+  {
+    "name": "Vibrant Tropics",
+    "colors": [
+      "#FFD700",
+      "#FF69B4",
+      "#32CD32",
+      "#FF6347",
+      "#1E90FF"
+    ]
+  },
+  {
+    "name": "Vintage Americana",
+    "colors": [
+      "#E4D8B4",
+      "#E2CD6D",
+      "#C2B28F",
+      "#83B799",
+      "#272324"
+    ]
+  },
+  {
+    "name": "Warm Neutrals",
+    "colors": [
+      "#FFF8DC",
+      "#FFEFD5",
+      "#FAFAD2",
+      "#F5F5DC",
+      "#FFE4B5"
+    ]
+  },
+  {
+    "name": "Warm Reds",
+    "colors": [
+      "#FF6347",
+      "#FF4500",
+      "#DC143C",
+      "#B22222",
+      "#FF0000"
+    ]
+  },
+  {
+    "name": "Warm Retro Palette",
+    "colors": [
+      "#F6DCAC",
+      "#01204E",
+      "#FAA968",
+      "#F85525",
+      "#028391"
+    ]
+  }
+]
