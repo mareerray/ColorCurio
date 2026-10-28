@@ -1,44 +1,60 @@
-# Color Curio : "Harmony in Every Hue" 🌈
+# ColorCurio — Harmony in Every Hue 🌈
 
-Live demo: [mareerray.github.io/ColorCurio/](http://mareerray.github.io/ColorCurio/)
+Live demo: [mareerray.github.io/ColorCurio](https://mareerray.github.io/ColorCurio/)
 
-Color Curio is a creative hub for organising color palettes and mood board inspirations. Designed by Mayuree Reunsati, it allows users to design palettes that feel magical and generate harmonious color schemes in a single click
+ColorCurio is a creative hub for exploring colour harmonies, organising palettes, and collecting mood-board inspiration. Enter a base colour to generate complementary or analogous suggestions, preview palettes in different visual contexts, and extract colour palettes from inspiration images.
+
+<h2>Preview</h2>
+
+<img
+  src="docs/ColorCurio-demo.gif"
+  alt="ColorCurio demo showing how to use this app"
+  width="700"
+/>
 
 ## Features
 
-### Color Lab — Color Harmonies
-- Explore Harmonies: Find balanced palettes by exploring complementary (maximum contrast) and analogous (harmonious blends) colors based on a starting base color.
-- Design Inspiration: Input any color to receive immediate suggested matching colors to kickstart your creative process.
+### Colour Lab
+- Generate complementary and analogous colour harmonies from a base colour.
+- Enter any colour to receive immediate matching-colour suggestions.
+- Explore balanced palettes for design and creative work.
 
-### Color Palette Archive
-- Browse 30+ curated professional sample palettes
-- Instant search by name, mood, or style
-- Copy individual colors to clipboard
-- Read-only inspiration library
+### Colour Palette Archive
+- Browse 30+ curated sample palettes.
+- Search by palette name, mood, or style.
+- Click a colour to copy its hex code.
+- Use the read-only archive as a reliable source of inspiration.
 
-### Color Palette Organizer
-- Add, view, and manage custom color palettes (up to 6 colors per palette)
-- Copy hex codes to clipboard with a click
-- Export and import palettes as JSON files for easy sharing and backup
-- Delete palettes you no longer need
+### Studio
+- Preview a selected palette in four frame styles: landscape, web page, poster, and brand.
+- Choose from palettes preloaded from the Color Palette Archive.
+- Switch between palettes to compare how each one works in different visual contexts.
+- Download the generated palette preview (in progress).
+- Wallpaper Builder: create custom wallpapers from a selected palette (coming soon).
 
 ### Mood Board
-- Upload inspiration images with automatic 10-color palette extraction
-- Diverse color detection - finds gold, purple, red, pink, and accents even if small
-- Hex codes displayed on each swatch with click-to-copy
-- Right-click export: Download image with palette OR copy all colors
-- Responsive grid layout with fullscreen lightbox
-- Storage limit: Max 15 custom images with warnings
-- Delete custom images (samples protected)
+- Upload inspiration images and automatically extract a 10-colour palette.
+- Detect diverse colours, including gold, purple, red, pink, and accent shades.
+- Click a swatch to copy its hex code.
+- Download an image with its palette or copy all extracted colours.
+- View images in a responsive grid and fullscreen lightbox.
+- Store up to 15 custom images, with warnings as the limit approaches.
+- Delete custom images; built-in sample images remain protected.
 
-### Sample Palettes
-- Curated sample palettes are loaded from a JSON file for inspiration
+## Tech Stack
 
----
+- HTML5
+- CSS3
+- Bootstrap
+- Vanilla JavaScript with modular files
+- Google Fonts
+- Font Awesome
+- LocalStorage for saving mood-board items
+- JSON for sample palettes and sample mood-board content
 
 ## Project Structure
 
-```
+```text
 ├── index.html
 ├── style.css
 ├── home.css
@@ -48,103 +64,47 @@ Color Curio is a creative hub for organising color palettes and mood board inspi
 ├── moodboard.css
 ├── app.js
 ├── modules/
-│   ├── layout.js              
+│   ├── layout.js
 │   ├── home.js
-│   ├── colorlab.js   
-│   ├── archive.js           
+│   ├── colorlab.js
+│   ├── archive.js
 │   ├── palettes.js
-│   └── moodboard.js  
+│   └── moodboard.js
 ├── assets/
-│   ├── images/                # Mood board images
-│   ├── palettes/              # JSON files for palettes
+│   ├── images/
+│   ├── palettes/
 │   │   └── samplePalettes.json
-│   └── moodboard/             # Mood board JSON files
+│   └── moodboard/
 │       └── sampleMoodBoard.json
 └── README.md
 ```
 
-- `index.html` – Main webpage
-- `style.css` – Stylesheet for the app
-- `app.js` – JavaScript logic and interactivity
-- `assets/images/` – Folder for all mood board image files
-- `assets/palettes/` – Folder for palette JSON files, including `samplePalettes.json`
-- `assets/moodboard/` – Folder for moodboard JSON files, including `sampleMoodBoard.json`
-- `README.md` – Project documentation
-
----
-
 ## Getting Started
 
-1. **Clone or Download** this repository.
-2. **Add Images:** Place your mood board images in `assets/images/`.
-3. **Open the App:** Open `index.html` in your browser (use a local server for full functionality).
-4. **Create & Manage:** Add palettes and mood board items using the interface.
-5. **Export/Import:** Use the export/import buttons to back up or transfer your data.
-
----
+1. Clone or download the repository.
+2. Open `index.html` in a modern browser.
+3. For full functionality, run the project through a local server.
+4. Explore the Colour Lab, Archive, Studio, and Mood Board.
 
 ## Usage
 
-- **Browse Archive:** → Search and copy colors from curated sample palettes
-
-- **Use Color Lab:** Experiment with colors interactively and save your favorite experiments.
-
-- **Add Image to Mood Board:** → Click "Add Inspiration" button, select image file (< 2MB), add optional caption - auto-generates 10 diverse colors
-
-- **Click swatch** → Copy hex code to clipboard (shows "Copied!" feedback)
-
-- **Right-click image** → Choose "Download image with palette" OR "Copy all colors"
-
-- **Click image** → Fullscreen lightbox view
-- **Storage Counter**: Shows "X/15 images uploaded" - warns when nearing limit
-
-- **Delete:** Use the "×" button on custom palettes or mood board images to remove them. (samples protected)
-
----
+- **Colour Lab:** Enter a base colour to explore complementary and analogous harmonies.
+- **Archive:** Search curated palettes and click a swatch to copy its hex code.
+- **Studio:** Preview archive palettes in landscape, web-page, poster, and brand frames.
+- **Mood Board:** Upload an image, review its generated palette, copy colours, or download the image with its palette.
+- **Storage:** Custom palettes and mood-board images are saved in the browser using LocalStorage.
 
 ## Notes
 
-- **Local Storage**: Custom palettes and mood board items saved in browser. Export/import to move between devices.
-
-- **Image Upload**: Supports JPG/PNG (< 2MB). Auto-extracts 10 diverse colors (gold, purple, red/pink, accents detected).
-
-- **Color Diversity**: Algorithm ensures unique colors - no duplicates or similar shades.
-
-- **Sample Content**: Sample palettes from assets/palettes/samplePalettes.json, sample moodboard from assets/moodboard/sampleMoodBoard.json.
-
-- **Storage Limit**: Maximum 15 custom images. Delete to add more.
-
-- **Browser Support**: Works best on modern browsers (Chrome, Firefox, Safari, Edge).
-
----
-
-## Example Palettes
-
-| Palette Name      | Example Colors                                  |
-|-------------------|-------------------------------------------------|
-| Ocean Breeze      | #0077be, #00a8cc, #40e0d0, #87ceeb, ...         |
-| Sunset Vibes      | #ff6b35, #f7931e, #ffd23f, #06ffa5, ...         |
-| Modern Metallics  | #D69A6D, #A3A8A3, #F6E7CE, #2F343B, ...         |
-
----
-
-## Usage
-
-- **Browse Archive:** Search and copy colors from curated sample palettes.
-- **Use Color Lab:** Interactively experiment with color combinations and harmonies.
-
-
----
-
+- Custom palettes and mood-board images are stored locally in the browser.
+- Studio palette previews can currently be explored using palettes from the archive.
+- Studio preview downloads and the Wallpaper Builder are under development.
+- Mood-board image uploads support JPG and PNG files under 2 MB.
+- The app works best in current versions of Chrome, Firefox, Safari, and Edge.
 
 ## License
 
-This project is for personal and educational use.  
-Feel free to customize and expand it for your own inspiration hub!
+This project is for personal and educational use.
 
-
-**Creator:**
-[Mayuree Reunsati](https://github.com/mareerray) 
-
-[Project Repo : github.com/mareerray/ColorCurio](https://github.com/mareerray/ColorCurio)
-
+**Creator:** [Mayuree Reunsati](https://github.com/mareerray)  
+**Repository:** [github.com/mareerray/ColorCurio](https://github.com/mareerray/ColorCurio)
