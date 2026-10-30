@@ -107,21 +107,14 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.harmony-display {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
+/* ---------- Harmony result layout ---------- */
 
-/* Each harmony group container */
 .harmony-display {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    margin: 1rem 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--layout-gap, 1.25rem);
+    align-items: start;
+    margin: 1rem 0 var(--section-gap, 2rem);
 }
 
 .harmony-display > div {
@@ -129,13 +122,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    flex: 1 1 240px;
     min-width: 0;
-    padding: 1.5rem 1rem;
+    padding: var(--card-padding, 1.5rem 1rem);
     text-align: center;
     background: var(--card-surface, #fbf8fa);
     border: 1px solid var(--border, #f5e1ec);
-    border-radius: 20px;
+    border-radius: var(--panel-radius, 20px);
     box-shadow: 0 3px 12px rgba(74, 63, 107, 0.04);
     transition: box-shadow 0.2s ease;
 }
@@ -144,12 +136,11 @@
     box-shadow: 0 5px 16px rgba(74, 63, 107, 0.08);
 }
 
-.harmony-display h3 {
-    color: var(--text, #4a3f6b);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
+/* Analogous Colors takes the full width below Base + Complementary */
+.harmony-display > div:nth-child(3) {
+    grid-column: 1 / -1;
 }
+
 
 /* Color box styling */
 .color-box {
@@ -176,13 +167,18 @@
     display: inline-block;
     padding: 5px 8px;
     border-radius: 8px;
-    color: #4a3f6b;
+    color: var(--surface, #ffffff);
     font-family: 'Nunito', Courier, monospace;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     line-height: 1.3;
     white-space: nowrap;
-    text-shadow: none;
+    text-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.9),
+        0 -1px 1px rgba(0, 0, 0, 0.9),
+        1px 0 1px rgba(0, 0, 0, 0.9),
+        -1px 0 1px rgba(0, 0, 0, 0.9),
+        0 0 3px rgba(0, 0, 0, 0.7);
     user-select: text;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -506,22 +502,6 @@
     width: min(220px, 100%);
 }
 
-/* Result cards */
-.harmony-display {
-    gap: var(--layout-gap);
-    margin: 1rem 0 var(--section-gap);
-}
-
-.harmony-display > div {
-    padding: var(--card-padding);
-    border-radius: var(--panel-radius);
-}
-
-.harmony-display h3 {
-    font-size: var(--font-card-title);
-    margin-bottom: 0.35rem;
-}
-
 .color-desc {
     font-size: var(--font-small);
     line-height: 1.45;
@@ -564,27 +544,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Smaller screens */
-@media (max-width: 600px) {
-    .color-controls {
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .harmony-display {
-        gap: 0.75rem;
-    }
-
-    .harmony-display > div {
-        padding: 0.875rem;
-    }
-
-    .color-lab-palettes .scheme-row {
-        padding: 0.875rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
 /* ---------- Compact controls layout ---------- */
 
 .color-controls {
@@ -608,5 +567,114 @@
     .color-controls {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+    }
+}
+
+
+/* ---------- Compact harmony layout ---------- */
+
+.harmony-display {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    align-items: start;
+    margin: 0.75rem 0 1.25rem;
+}
+
+.harmony-display > div {
+    min-width: 0;
+    padding: 0.625rem 0.5rem;
+}
+
+/* Analogous Colors stays full width below the first row */
+.harmony-display > div:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+/* Compact color previews */
+.color-box {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0.25rem;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+.color-hex-pair {
+    width: 72px;
+    margin: 0 2px;
+}
+
+/* Compact text */
+.harmony-display h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.color-desc {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    margin: 0.2rem 0 0.5rem;
+}
+
+.hex-label {
+    font-size: 0.75rem;
+    padding: 3px 5px;
+    bottom: 6px;
+}
+
+/* ---------- Compact Harmony Palettes ---------- */
+
+.color-lab-palettes .input-group {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.color-lab-palettes .scheme-row {
+    gap: 0.4rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.625rem 0.5rem;
+    border-radius: 12px;
+}
+
+.color-lab-palettes .scheme-row h4 {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.scheme-header {
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.color-lab-palettes .scheme-swatches {
+    height: 40px;
+    border-radius: 6px;
+}
+
+.color-lab-palettes .swatch span {
+    bottom: 0.2rem;
+    padding: 0.1rem 0.3rem;
+    font-size: 0.75rem;
+    border-radius: 3px;
+}
+
+.info-btn {
+    padding: 0.2rem;
+    font-size: 0.85rem;
+}
+
+/* On phones, let palette rows use the full width
+   but keep their inner content compact. */
+@media (max-width: 700px) {
+    .color-lab-palettes .scheme-row {
+        flex: 1 1 100%;
+        margin-bottom: 0.4rem;
+    }
+
+    .color-lab-palettes .swatch span {
+        font-size: 0.75rem;
+        padding: 0.1rem 0.2rem;
     }
 }
