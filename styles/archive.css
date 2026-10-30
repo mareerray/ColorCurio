@@ -139,3 +139,96 @@
 #archive .delete-palette-btn:hover {
     background: #BFA2DB;
 }
+
+/* ---------- Palette card copy ---------- */
+.palette-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.palette-tag {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.palette-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.palette-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border, #e3d2bb);
+    border-radius: 999px;
+    background: var(--card, #fffaf2);
+    color: var(--text, #51402e);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.palette-action:hover {
+    background: var(--accent-soft, #f8e4dd);
+}
+
+.palette-action:focus-visible {
+    outline: 2px solid var(--accent-strong, #875047);
+    outline-offset: 2px;
+}
+
+/* ---------- Favorite button ---------- */
+.archive-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.archive-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--border, #e3d2bb);
+    border-radius: 999px;
+    background: var(--card, #fffaf2);
+    color: var(--text, #51402e);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.archive-filter.is-active {
+    background: var(--accent-soft, #f8e4dd);
+    border-color: var(--accent, #dfa294);
+    font-weight: 600;
+}
+
+.favorite-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--muted, #78634e);
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.favorite-button:hover {
+    color: var(--accent-strong, #875047);
+    transform: scale(1.08);
+}
+
+.favorite-button.is-favorite {
+    color: #c2554b;
+}

@@ -50,6 +50,16 @@
     ]
   },
   {
+    "name": "Cottage Sage",
+    "colors": [
+      "#FFF3DD",
+      "#F6CE75",
+      "#99AA83",
+      "#927453",
+      "#BC8C58"
+    ]
+  },
+  {
     "name": "Cool Grays",
     "colors": [
       "#D3D3D3",
@@ -67,6 +77,16 @@
       "#6A5ACD",
       "#8A2BE2",
       "#483D8B"
+    ]
+  },
+  {
+    "name": "Cozy Cream Rose",
+    "colors": [
+      "#FFF7ED",
+      "#DFA294",
+      "#F8E4DD",
+      "#875047",
+      "#51402E"
     ]
   },
   {
@@ -170,6 +190,16 @@
     ]
   },
   {
+    "name": "Oat and Sage",
+    "colors": [
+      "#F8ECD9",
+      "#BE9568",
+      "#E9EDDB",
+      "#EAD5B6",
+      "#DFA294"
+    ]
+  },
+  {
     "name": "Ocean Breeze",
     "colors": [
       "#F0F8FF",
@@ -230,6 +260,16 @@
     ]
   },
   {
+    "name": "Rose Meadow",
+    "colors": [
+      "#FFF7ED",
+      "#DFA294",
+      "#DCE2CF",
+      "#586D47",
+      "#51402E"
+    ]
+  },
+  {
     "name": "Soft Blues",
     "colors": [
       "#B0E0E6",
@@ -287,6 +327,36 @@
       "#F7931E",
       "#FF6B35",
       "#118AB2"
+    ]
+  },
+  {
+    "name": "Terracotta Clay",
+    "colors": [
+      "#FFFAF2",
+      "#A64B38",
+      "#E8C3AD",
+      "#586D47",
+      "#382C26"
+    ]
+  },
+  {
+    "name": "Terracotta Meadow",
+    "colors": [
+      "#FFF7ED",
+      "#A64B38",
+      "#DCE2CF",
+      "#586D47",
+      "#382C26"
+    ]
+  },
+  {
+    "name": "Terracotta Sage",
+    "colors": [
+      "#FFFAF2",
+      "#A64B38",
+      "#DCE2CF",
+      "#586D47",
+      "#382C26"
     ]
   },
   {
