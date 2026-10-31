@@ -300,6 +300,8 @@
 .color-lab-palettes .swatch:hover {
     transform: scale(1.02);
     box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+    background: #fff7ed;
+    cursor: pointer;
 }
 
 /* PERFECT GLASS TOOLTIP - Matches your Color Lab */
@@ -658,6 +660,12 @@
     padding: 0.1rem 0.3rem;
     font-size: 0.75rem;
     border-radius: 3px;
+}
+
+.swatch:hover span {
+    background: #fff7ed;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 .info-btn {
