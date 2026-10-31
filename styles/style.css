@@ -95,8 +95,15 @@ body {
 /* Allow the footer to scroll fully above the fixed bottom navigation */
 @media (max-width: 1024px) {
     body {
-        padding-bottom: calc(
-            80px + env(safe-area-inset-bottom, 0px)
-        );
+        padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
     }
+}
+
+/* Show only the active tab from the first paint */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
