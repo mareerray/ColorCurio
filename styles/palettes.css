@@ -253,3 +253,41 @@ button.mini-swatch {
 .favorite-button.is-favorite {
     color: #c2554b;
 }
+
+/* ---------- Archive pagination ---------- */
+.palette-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.pagination-btn,
+.page-number {
+    border: 1px solid var(--color-primary, #a6bede);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #364152);
+    border-radius: 999px;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.page-number.is-active {
+    background: var(--color-primary, #a6bede);
+    color: var(--color-surface, #ffffff);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
