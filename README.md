@@ -22,15 +22,16 @@ ColorCurio is a creative hub for exploring colour harmonies, organising palettes
 ### Colour Palette Archive
 - Browse 30+ curated sample palettes.
 - Search by palette name, mood, or style.
+- Save palettes to Favourites.
 - Click a colour to copy its hex code.
-- Use the read-only archive as a reliable source of inspiration.
+- Copy a palette as CSS variables or JSON.
 
 ### Studio
 - Preview a selected palette in four frame styles: landscape, web page, poster, and brand.
 - Choose from palettes preloaded from the Color Palette Archive.
 - Switch between palettes to compare how each one works in different visual contexts.
-- Download the generated palette preview (in progress).
-- Wallpaper Builder: create custom wallpapers from a selected palette (coming soon).
+- Download the preview as an SVG.
+- Wallpaper Builder: create custom wallpapers from a selected palette (planned).
 
 ### Mood Board
 - Upload inspiration images and automatically extract a 10-colour palette.
@@ -56,24 +57,29 @@ ColorCurio is a creative hub for exploring colour harmonies, organising palettes
 
 ```text
 ├── index.html
-├── style.css
-├── home.css
-├── colorlab.css
-├── archive.css
-├── palettes.css
-├── moodboard.css
 ├── app.js
 ├── modules/
 │   ├── layout.js
 │   ├── home.js
 │   ├── colorlab.js
-│   ├── archive.js
+│   ├── studio.js
 │   ├── palettes.js
 │   └── moodboard.js
+├── styles/
+│   ├── theme.css
+│   ├── styles.css
+│   ├── header.css
+│   ├── footer.css
+│   ├── layout.css
+│   ├── home.css
+│   ├── colorlab.css
+│   ├── studio.css
+│   ├── palettes.css
+│   └── moodboard.css
 ├── assets/
 │   ├── images/
 │   ├── palettes/
-│   │   └── samplePalettes.json
+│   │   └── samplePalettes.studio.json
 │   └── moodboard/
 │       └── sampleMoodBoard.json
 └── README.md
@@ -83,13 +89,13 @@ ColorCurio is a creative hub for exploring colour harmonies, organising palettes
 
 1. Clone or download the repository.
 2. Open `index.html` in a modern browser.
-3. For full functionality, run the project through a local server.
-4. Explore the Colour Lab, Archive, Studio, and Mood Board.
+3. For full functionality, run the project through a local server, for example with the Live Server extension in VS Code.
+4. Explore the Colour Lab, Palette Archive, Studio, and Mood Board.
 
 ## Usage
 
 - **Colour Lab:** Enter a base colour to explore complementary and analogous harmonies.
-- **Archive:** Search curated palettes and click a swatch to copy its hex code.
+- **Palette archive:** Search curated palettes and click a swatch to copy its hex code.
 - **Studio:** Preview archive palettes in landscape, web-page, poster, and brand frames.
 - **Mood Board:** Upload an image, review its generated palette, copy colours, or download the image with its palette.
 - **Storage:** Custom palettes and mood-board images are saved in the browser using LocalStorage.
@@ -97,14 +103,13 @@ ColorCurio is a creative hub for exploring colour harmonies, organising palettes
 ## Notes
 
 - Custom palettes and mood-board images are stored locally in the browser.
-- Studio palette previews can currently be explored using palettes from the archive.
-- Studio preview downloads and the Wallpaper Builder are under development.
+- The Wallpaper Builder is planned for a future version.
 - Mood-board image uploads support JPG and PNG files under 2 MB.
 - The app works best in current versions of Chrome, Firefox, Safari, and Edge.
 
 ## License
 
-This project is for personal and educational use.
+This project is for personal and educational use. You may view and learn from this code, but may not redistribute or reuse it without permission.
 
 **Creator:** [Mayuree Reunsati](https://github.com/mareerray)  
 **Repository:** [github.com/mareerray/ColorCurio](https://github.com/mareerray/ColorCurio)

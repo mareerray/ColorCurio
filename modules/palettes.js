@@ -1,4 +1,3 @@
-// ARCHIVE.JS - Uses your existing palette-grid styling
 let samplePalettes = [];
 const FAVORITES_STORAGE_KEY = 'colorcurio-favorites-palettes';
 
