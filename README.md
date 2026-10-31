@@ -53,6 +53,16 @@ ColorCurio is a creative hub for exploring colour harmonies, organising palettes
 - LocalStorage for saving mood-board items
 - JSON for sample palettes and sample mood-board content
 
+## Quality
+
+Lighthouse results for the live site:
+
+- Accessibility: 100
+- Performance: 98
+- Cumulative Layout Shift: 0.003
+
+Tested with Chrome Lighthouse on the deployed GitHub Pages site.
+
 ## Project Structure
 
 ```text

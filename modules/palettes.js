@@ -1,3 +1,11 @@
+import {
+  resetPagination,
+  paginate,
+  renderPagination
+} from './pagination.js';
+
+import { loadPalettes } from './paletteData.js';
+
 let samplePalettes = [];
 const FAVORITES_STORAGE_KEY = 'colorcurio-favorites-palettes';
 
@@ -81,8 +89,10 @@ function getVisiblePalettes() {
 
 function updateArchiveView() {
   const visiblePalettes = getVisiblePalettes();
+  const { items, totalPages } = paginate(visiblePalettes);
 
-  renderArchive(visiblePalettes);
+  renderArchive(items);
+  renderPagination(visiblePalettes.length, totalPages, updateArchiveView);
   updateCount(visiblePalettes.length);
 }
 
@@ -96,22 +106,23 @@ window.loadArchive = async function () {
 
   // Load the palette data
   try {
-    const response = await fetch('assets/palettes/samplePalettes.studio.json');
-    samplePalettes = await response.json();
-
-    renderArchive(samplePalettes);
-    updateCount(samplePalettes.length);
+    samplePalettes = await loadPalettes();
+    updateArchiveView();
   } catch (error) {
     console.error('Archive failed:', error);
     grid.innerHTML = '<p>No palettes found</p>';
   }
-
+  
   // Search palettes by name
-  search.addEventListener('input', updateArchiveView);
+  search.addEventListener('input', () => {
+    resetPagination();
+    updateArchiveView();
+  });
 
   // Clear the search box
   clearBtn.addEventListener('click', () => {
     search.value = '';
+    resetPagination();
     updateArchiveView();
   })
 
@@ -127,6 +138,7 @@ window.loadArchive = async function () {
       );
 
       button.classList.add('is-active');
+      resetPagination();
       updateArchiveView();
     });
   });

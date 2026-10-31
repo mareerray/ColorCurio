@@ -69,7 +69,8 @@
             <div id="studio-illustration" class="studio-scene" aria-hidden="true"></div>
 
             <div class="home-cards">
-                <button type="button" class="home-card home-card--sage tab-btn" data-tab="colorlab" aria-label="Go to Color Lab">
+                <button type="button" class="home-card home-card--sage tab-btn" data-tab="colorlab"
+                    aria-label="Go to Color Lab">
                     <i class="bi bi-eyedropper" aria-hidden="true"></i>
                     <span class="home-card__title">Color Lab</span>
                     <span class="home-card__description">
@@ -77,7 +78,8 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--pink tab-btn" data-tab="studio" aria-label="Go to Studio">
+                <button type="button" class="home-card home-card--pink tab-btn" data-tab="studio"
+                    aria-label="Go to Studio">
                     <i class="bi bi-brush" aria-hidden="true"></i>
                     <span class="home-card__title">Studio</span>
                     <span class="home-card__description">
@@ -85,7 +87,8 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--sand tab-btn" data-tab="archive" aria-label="Go to Palette Archive">
+                <button type="button" class="home-card home-card--sand tab-btn" data-tab="archive"
+                    aria-label="Go to Palette Archive">
                     <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
                     <span class="home-card__title">Palettes</span>
                     <span class="home-card__description">
@@ -93,7 +96,8 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--lavender tab-btn" data-tab="moodboard" aria-label="Go to Mood Board">
+                <button type="button" class="home-card home-card--lavender tab-btn" data-tab="moodboard"
+                    aria-label="Go to Mood Board">
                     <i class="bi bi-images" aria-hidden="true"></i>
                     <span class="home-card__title">Mood Board</span>
                     <span class="home-card__description">
@@ -194,7 +198,8 @@
                         </div>
                     </div>
 
-                    <button class="studio-download" id="download-wallpaper" type="button" aria-label="Download image as SVG">
+                    <button class="studio-download" id="download-wallpaper" type="button"
+                        aria-label="Download image as SVG">
                         <i class="bi bi-download" aria-hidden="true"></i>
                         Download SVG
                     </button>
@@ -208,19 +213,23 @@
                     <h3>Preview</h3>
 
                     <div class="studio-preview-types" role="tablist" aria-label="Preview type">
-                        <button class="studio-preview-type is-selected" type="button" data-preview="landscape" aria-label="Preview as Landscape">
+                        <button class="studio-preview-type is-selected" type="button" data-preview="landscape"
+                            aria-label="Preview as Landscape">
                             Landscape
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="web" aria-label="Preview as Web page">
+                        <button class="studio-preview-type" type="button" data-preview="web"
+                            aria-label="Preview as Web page">
                             Web page
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="poster" aria-label="Preview as Poster">
+                        <button class="studio-preview-type" type="button" data-preview="poster"
+                            aria-label="Preview as Poster">
                             Poster
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="brand" aria-label="Preview as Brand card">
+                        <button class="studio-preview-type" type="button" data-preview="brand"
+                            aria-label="Preview as Brand card">
                             Brand
                         </button>
                     </div>
@@ -241,7 +250,8 @@
                 <!-- Mood board items will be added here -->
             </div>
             <div id="storage-info">0/15 images uploaded</div>
-            <button class="action-btn" id="add-mood-item" aria-label="Add a new inspiration item">+ Add Inspiration</button>
+            <button class="action-btn" id="add-mood-item" aria-label="Add a new inspiration item">+ Add
+                Inspiration</button>
         </section>
 
         <!-- Color Palette ARCHIVE (Read-only samples + search)-->
@@ -249,7 +259,7 @@
             <div class="section-header">
                 <div>
                     <h2>Color Palette Archive</h2>
-                    <p><i class="bi bi-grid-3x3-gap fs-4"></i> 30+ curated professional palettes</p>
+                    <p><i class="bi bi-grid-3x3-gap fs-4"></i> 50+ curated color palettes</p>
                 </div>
             </div>
 
@@ -259,7 +269,8 @@
                     All palettes
                 </button>
 
-                <button type="button" class="archive-filter" data-filter="favorites" aria-label="Show favorite palettes">
+                <button type="button" class="archive-filter" data-filter="favorites"
+                    aria-label="Show favorite palettes">
                     <i class="bi bi-heart-fill" aria-hidden="true"></i>
                     My favorites
                 </button>
@@ -276,6 +287,18 @@
                 <span>Total: <span id="archive-count">0</span> palettes</span>
                 <button class="action-btn secondary" id="clear-search" aria-label="Clear search">Clear Search</button>
             </div>
+            <!-- Pagination -->
+            <nav class="palette-pagination" aria-label="Palette pages">
+                <button type="button" id="prev-page" class="pagination-btn" aria-label="Previous page">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <div id="page-numbers" class="page-numbers"></div>
+
+                <button type="button" id="next-page" class="pagination-btn" aria-label="Next page">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </nav>
         </section>
     </main>
 

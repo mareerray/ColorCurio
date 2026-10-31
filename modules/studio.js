@@ -1,6 +1,7 @@
 // Color Curio - Wallpaper Studio
 
-let studioPalettes = [];
+import { loadPalettes, getPalettes } from './paletteData.js';
+
 let selectedPalette = null;
 let currentPreview = "landscape";
 
@@ -24,32 +25,25 @@ const previewTypes = {
 };
 
 async function loadStudioPalettes() {
-    const paletteList = document.querySelector("#studio-palette-list");
+    const paletteList = document.querySelector('#studio-palette-list');
 
     if (!paletteList) return;
 
     try {
-        const response = await fetch("./assets/palettes/samplePalettes.studio.json");
-
-        if (!response.ok) {
-            throw new Error(`Could not load palettes: ${response.status}`);
-        }
-
-        studioPalettes = await response.json();
-
-        renderStudioPalettes();
+        const palettes = await loadPalettes();
+        renderStudioPalettes(palettes);
     } catch (error) {
         console.error(error);
-        paletteList.innerHTML = "<p>Sorry, palettes could not load.</p>";
+        paletteList.innerHTML = '<p>Sorry, palettes could not load.</p>';
     }
 }
 
-function renderStudioPalettes() {
+function renderStudioPalettes(palettes) {
     const paletteList = document.querySelector("#studio-palette-list");
 
     if (!paletteList) return;
 
-    paletteList.innerHTML = studioPalettes
+    paletteList.innerHTML = palettes
         .map((palette, index) => {
             const colors = palette.colors
                 .map(
@@ -87,7 +81,7 @@ function handlePaletteClick(event) {
     button.classList.add("is-selected");
 
     const index = Number(button.dataset.paletteIndex);
-    selectedPalette = studioPalettes[index];
+    selectedPalette = getPalettes()[index];
 
     applyPaletteToPreview();
 }

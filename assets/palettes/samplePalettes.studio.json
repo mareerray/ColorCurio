@@ -1,5 +1,15 @@
 [
   {
+    "name": "Aqua Coral",
+    "colors": [
+      "#F5FBFC",
+      "#A6DADE",
+      "#FFFFFF",
+      "#41525D",
+      "#DEAAA6"
+    ]
+  },
+  {
     "name": "Autumn Leaves",
     "colors": [
       "#FFD700",
@@ -7,6 +17,16 @@
       "#FF8C00",
       "#FF6347",
       "#FF4500"
+    ]
+  },
+  {
+    "name": "Blush Lilac",
+    "colors": [
+      "#FDF6F8",
+      "#DEA6DA",
+      "#FFFFFF",
+      "#5D4A5C",
+      "#DEAAA6"
     ]
   },
   {
@@ -27,6 +47,26 @@
       "#FAFAD2",
       "#FFFF00",
       "#FFD700"
+    ]
+  },
+  {
+    "name": "Calm Mint Aqua",
+    "colors": [
+      "#F4FBF8",
+      "#A6DADE",
+      "#FFFFFF",
+      "#3F5D55",
+      "#A6DEC6"
+    ]
+  },
+  {
+    "name": "Candy Pastels",
+    "colors": [
+      "#F7F9FC",
+      "#A6BEDE",
+      "#FFFFFF",
+      "#3D4A5C",
+      "#DEAAA6"
     ]
   },
   {
@@ -90,6 +130,16 @@
     ]
   },
   {
+    "name": "Cute Dark Mode",
+    "colors": [
+      "#1F2733",
+      "#A6BEDE",
+      "#2A3442",
+      "#EEF3F8",
+      "#DEAAA6"
+    ]
+  },
+  {
     "name": "Deep Blues",
     "colors": [
       "#1E90FF",
@@ -130,6 +180,16 @@
     ]
   },
   {
+    "name": "Lilac Butter",
+    "colors": [
+      "#FBF6FC",
+      "#DEA6DA",
+      "#FFFFFF",
+      "#54455A",
+      "#DADEA6"
+    ]
+  },
+  {
     "name": "Modern Metallics",
     "colors": [
       "#F6E7CE",
@@ -157,6 +217,26 @@
       "#3C3C3C",
       "#2D2D2D",
       "#1E1E1E"
+    ]
+  },
+  {
+    "name": "Lemon Mint",
+    "colors": [
+      "#FBFDF4",
+      "#A6DEC6",
+      "#FFFFFF",
+      "#55603C",
+      "#DADEA6"
+    ]
+  },
+  {
+    "name": "Minimal Periwinkle",
+    "colors": [
+      "#F8FAFC",
+      "#A6BEDE",
+      "#FFFFFF",
+      "#364152",
+      "#DEAAA6"
     ]
   },
   {
@@ -227,6 +307,36 @@
       "#DB7093",
       "#FF1493",
       "#C71585"
+    ]
+  },
+  {
+    "name": "Pastel Triad Coral",
+    "colors": [
+      "#FFFFFF",
+      "#A6BEDE",
+      "#F7F9FC",
+      "#3D4A5C",
+      "#DEAAA6"
+    ]
+  },
+  {
+    "name": "Pastel Triad Lilac",
+    "colors": [
+      "#FFFFFF",
+      "#DEA6DA",
+      "#FBF6FC",
+      "#4A4A5C",
+      "#DADEA6"
+    ]
+  },
+  {
+    "name": "Pastel Wave",
+    "colors": [
+      "#F7F9FC",
+      "#A6DADE",
+      "#FFFFFF",
+      "#3D4A5C",
+      "#A6DEC6"
     ]
   },
   {
@@ -317,6 +427,16 @@
       "#D8BFD8",
       "#DDA0DD",
       "#BA55D3"
+    ]
+  },
+  {
+    "name": "Soft Rainbow UI",
+    "colors": [
+      "#F7F9FC",
+      "#A6BEDE",
+      "#FFFFFF",
+      "#364152",
+      "#DEA6DA"
     ]
   },
   {
