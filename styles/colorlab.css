@@ -305,6 +305,12 @@
     cursor: pointer;
 }
 
+.color-lab-palettes .swatch:focus-visible span {
+    color: whitesmoke;
+    outline: 3px solid var(--focus-outline, #0d6efd);
+    outline-offset: 2px;
+}
+
 /* PERFECT GLASS TOOLTIP - Matches your Color Lab */
 .scheme-header {
     display: flex;

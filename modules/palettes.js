@@ -207,20 +207,22 @@ function createArchiveCard(palette) {
 
       <div class="color-row">
         ${palette.colors
-      .map(
-        (color) => `
-              <div
+          .map(
+            (color) => `
+              <button
+                type="button"
                 class="color-swatch"
                 data-color="${color}"
                 style="background-color: ${color}"
+                aria-label="Copy ${color}"
               >
-                ${color}
-              </div>
+                <span class="swatch-label">${color}</span>
+              </button>
             `
-      )
-      .join('')}
+          )
+          .join('')}
       </div>
-
+      
       <div class="palette-actions">
         <button
           type="button"
