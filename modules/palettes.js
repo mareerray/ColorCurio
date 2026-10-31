@@ -4,6 +4,8 @@ import {
   renderPagination
 } from './pagination.js';
 
+import { loadPalettes } from './paletteData.js';
+
 let samplePalettes = [];
 const FAVORITES_STORAGE_KEY = 'colorcurio-favorites-palettes';
 
@@ -104,15 +106,13 @@ window.loadArchive = async function () {
 
   // Load the palette data
   try {
-    const response = await fetch('assets/palettes/samplePalettes.studio.json');
-    samplePalettes = await response.json();
+    samplePalettes = await loadPalettes();
     updateArchiveView();
-    updateCount(samplePalettes.length);
   } catch (error) {
     console.error('Archive failed:', error);
     grid.innerHTML = '<p>No palettes found</p>';
   }
-
+  
   // Search palettes by name
   search.addEventListener('input', () => {
     resetPagination();
