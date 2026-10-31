@@ -74,9 +74,15 @@ window.renderMoodBoard = function () {
       ${item.colors ? `
         <div class="mood-colors">
           ${item.colors.map(color => `
-            <div class="mini-swatch" data-color="${color}" style="background-color: ${color}" title="Click to copy ${color}">
+            <button
+              type="button"
+              class="mini-swatch"
+              data-color="${color}"
+              style="background-color: ${color}"
+              aria-label="Copy ${color}"
+            >
               <span class="hex-label">${color}</span>
-            </div>
+            </button>
           `).join('')}
         </div>
       ` : ''}

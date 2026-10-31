@@ -58,22 +58,17 @@ if (baseColorInput && colorCircle && colorRange) {
         navigator.clipboard
             .writeText(hexValue)
             .then(() => {
-                const originalText = hexElement.textContent;
                 hexElement.textContent = 'Copied!';
 
-                setTimeout(() => {
-                    hexElement.textContent = originalText;
-                }, 1000);
+                clearTimeout(hexElement.copyTimeout);
+
+                hexElement.copyTimeout = setTimeout(() => {
+                    hexElement.textContent = hexValue;
+                }, 1200);
             })
             .catch((error) => {
                 console.error('Copy failed:', error);
             });
-            
-        const originalText = hexElement.textContent;
-        hexElement.textContent = 'Copied!';
-        setTimeout(() => {
-            hexElement.textContent = originalText;
-        }, 1000);
     }
 
     /**
@@ -81,38 +76,62 @@ if (baseColorInput && colorCircle && colorRange) {
      */
     function updateColors(baseHex) {
         const baseHSL = hexToHSL(baseHex);
-        const { complementary, analogous1, analogous2 } = calculateHarmonies(baseHSL.h);
+        const harmonies = calculateHarmonies(baseHSL.h);
 
-        // Base color
-        colorElements.base.style.backgroundColor = baseHex;
-        hexElements.base.textContent = baseHex;
-        const copyBase = () => copyToClipboard(hexElements.base, baseHex);
-        hexElements.base.onclick = copyBase;
-        colorElements.base.onclick = copyBase;
+        const colorsToUpdate = [
+            {
+                name: 'base',
+                hex: baseHex,
+            },
+            {
+                name: 'complementary',
+                hex: hslToHex(harmonies.complementary, baseHSL.s, baseHSL.l),
+            },
+            {
+                name: 'analogous1',
+                hex: hslToHex(harmonies.analogous1, baseHSL.s, baseHSL.l),
+            },
+            {
+                name: 'analogous2',
+                hex: hslToHex(harmonies.analogous2, baseHSL.s, baseHSL.l),
+            },
+        ];
 
-        // Complementary
-        const compHex = hslToHex(complementary, baseHSL.s, baseHSL.l);
-        colorElements.complementary.style.backgroundColor = compHex;
-        hexElements.complementary.textContent = compHex;
-        const copyComp = () => copyToClipboard(hexElements.complementary, compHex);
-        hexElements.complementary.onclick = copyComp;
-        colorElements.complementary.onclick = copyComp;
+        colorsToUpdate.forEach((color) => {
+            const colorElement = colorElements[color.name];
+            const hexElement = hexElements[color.name];
 
-        // Analogous 1
-        const analogHex1 = hslToHex(analogous1, baseHSL.s, baseHSL.l);
-        colorElements.analogous1.style.backgroundColor = analogHex1;
-        hexElements.analogous1.textContent = analogHex1;
-        const copyAnalog1 = () => copyToClipboard(hexElements.analogous1, analogHex1);
-        hexElements.analogous1.onclick = copyAnalog1;
-        colorElements.analogous1.onclick = copyAnalog1;
+            colorElement.style.backgroundColor = color.hex;
+            hexElement.textContent = color.hex;
 
-        // Analogous 2
-        const analogHex2 = hslToHex(analogous2, baseHSL.s, baseHSL.l);
-        colorElements.analogous2.style.backgroundColor = analogHex2;
-        hexElements.analogous2.textContent = analogHex2;
-        const copyAnalog2 = () => copyToClipboard(hexElements.analogous2, analogHex2);
-        hexElements.analogous2.onclick = copyAnalog2;
-        colorElements.analogous2.onclick = copyAnalog2;
+            const copyThisColor = () => copyToClipboard(hexElement, color.hex);
+
+            colorElement.onclick = copyThisColor;
+            hexElement.onclick = copyThisColor;
+
+            colorElement.setAttribute('role', 'button');
+            colorElement.setAttribute('tabindex', '0');
+            colorElement.setAttribute('aria-label', `Copy ${color.name} color ${color.hex}`);
+
+            hexElement.setAttribute('role', 'button'); //tells a screen reader: "this is a button"
+            hexElement.setAttribute('tabindex', '0'); //lets you reach it with the Tab key
+            hexElement.setAttribute('aria-label', `Copy ${color.name} color ${color.hex}`); //says exactly what it does, for example: "Copy complementary color #ff0000"
+        });
+
+        // if a user presses Enter or Space while a swatch is focused, click it
+        const allClickableElements = [
+            ...Object.values(colorElements),
+            ...Object.values(hexElements),
+        ];
+
+        allClickableElements.forEach((element) => {
+            element.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    element.click();
+                }
+            });
+        });
     }
 
     /**

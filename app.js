@@ -69,6 +69,14 @@ export function displayAllSchemes(schemes) {
     if (!container) return;
 
     container.innerHTML = Object.entries(schemes).map(([name, colors]) => {
+        container.addEventListener('click', (event) => {
+            const swatch = event.target.closest('.swatch');
+            if (!swatch) return;
+
+            const color = swatch.dataset.color;
+            window.copyToClipboard(swatch, color);
+        });
+        
         const tooltip = schemeDescriptions[name] || 'Color harmony scheme';
         return `
             <div class="scheme-row">
@@ -83,9 +91,15 @@ export function displayAllSchemes(schemes) {
                 </div>
                 <div class="scheme-swatches">
                     ${colors.map(color =>
-            `<div class="swatch" style="background: ${color}" onclick="window.copyToClipboard(this, '${color}')">
-                            <span>${color}</span>
-                        </div>`
+            `<button
+                        type="button"
+                        class="swatch"
+                        style="background: ${color}"
+                        data-color="${color}"
+                        aria-label="Copy ${color}"
+                    >
+                        <span>${color}</span>
+                    </button>`
         ).join('')}
                 </div>
             </div>
