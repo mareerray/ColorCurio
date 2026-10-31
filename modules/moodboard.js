@@ -103,6 +103,7 @@ window.renderMoodBoard = function () {
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       const idx = parseInt(btn.getAttribute('data-index'));
+      btn.setAttribute('aria-label', 'Delete this image');
 
       if (moodBoardItems[idx] && moodBoardItems[idx].isSample) {
         alert('Sample images cannot be deleted. Add your own images to customize!');

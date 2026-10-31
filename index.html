@@ -20,33 +20,33 @@
 
 <body id="page-top" onload="window.scrollTo(0, 0)">
     <header class="site-header">
-        <a href="#home" class="site-brand tab-btn" data-tab="home">
+        <a href="#home" class="site-brand tab-btn" data-tab="home" aria-label="Go to Home">
             <img src="./assets/logo/colorcurio-icon.ico" alt="" class="site-brand__logo" width="56" height="56">
             <span>ColorCurio</span>
         </a>
 
         <nav class="site-nav" aria-label="Main navigation">
-            <button type="button" class="tab-btn active" data-tab="home">
+            <button type="button" class="tab-btn active" data-tab="home" aria-label="Go to Home">
                 <i class="bi bi-house-heart-fill" aria-hidden="true"></i>
                 <span class="nav-label">Home</span>
             </button>
 
-            <button type="button" class="tab-btn" data-tab="colorlab">
+            <button type="button" class="tab-btn" data-tab="colorlab" aria-label="Go to Color Lab">
                 <i class="bi bi-palette" aria-hidden="true"></i>
                 <span class="nav-label">Color Lab</span>
             </button>
 
-            <button type="button" class="tab-btn" data-tab="studio">
+            <button type="button" class="tab-btn" data-tab="studio" aria-label="Go to Studio">
                 <i class="bi bi-brush" aria-hidden="true"></i>
                 <span class="nav-label">Studio</span>
             </button>
 
-            <button type="button" class="tab-btn" data-tab="archive">
+            <button type="button" class="tab-btn" data-tab="archive" aria-label="Go to Palette Archive">
                 <i class="bi bi-collection" aria-hidden="true"></i>
                 <span class="nav-label">Palettes</span>
             </button>
 
-            <button type="button" class="tab-btn" data-tab="moodboard">
+            <button type="button" class="tab-btn" data-tab="moodboard" aria-label="Go to Mood Board">
                 <i class="bi bi-images" aria-hidden="true"></i>
                 <span class="nav-label">Mood Board</span>
             </button>
@@ -67,7 +67,7 @@
             <div id="studio-illustration" class="studio-scene" aria-hidden="true"></div>
 
             <div class="home-cards">
-                <button type="button" class="home-card home-card--sage tab-btn" data-tab="colorlab">
+                <button type="button" class="home-card home-card--sage tab-btn" data-tab="colorlab" aria-label="Go to Color Lab">
                     <i class="bi bi-eyedropper" aria-hidden="true"></i>
                     <span class="home-card__title">Color Lab</span>
                     <span class="home-card__description">
@@ -75,7 +75,7 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--pink tab-btn" data-tab="studio">
+                <button type="button" class="home-card home-card--pink tab-btn" data-tab="studio" aria-label="Go to Studio">
                     <i class="bi bi-brush" aria-hidden="true"></i>
                     <span class="home-card__title">Studio</span>
                     <span class="home-card__description">
@@ -83,7 +83,7 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--sand tab-btn" data-tab="archive">
+                <button type="button" class="home-card home-card--sand tab-btn" data-tab="archive" aria-label="Go to Palette Archive">
                     <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
                     <span class="home-card__title">Palettes</span>
                     <span class="home-card__description">
@@ -91,7 +91,7 @@
                     </span>
                 </button>
 
-                <button type="button" class="home-card home-card--lavender tab-btn" data-tab="moodboard">
+                <button type="button" class="home-card home-card--lavender tab-btn" data-tab="moodboard" aria-label="Go to Mood Board">
                     <i class="bi bi-images" aria-hidden="true"></i>
                     <span class="home-card__title">Mood Board</span>
                     <span class="home-card__description">
@@ -192,7 +192,7 @@
                         </div>
                     </div>
 
-                    <button class="studio-download" id="download-wallpaper" type="button">
+                    <button class="studio-download" id="download-wallpaper" type="button" aria-label="Download image as SVG">
                         <i class="bi bi-download" aria-hidden="true"></i>
                         Download SVG
                     </button>
@@ -206,19 +206,19 @@
                     <h3>Preview</h3>
 
                     <div class="studio-preview-types" role="tablist" aria-label="Preview type">
-                        <button class="studio-preview-type is-selected" type="button" data-preview="landscape">
+                        <button class="studio-preview-type is-selected" type="button" data-preview="landscape" aria-label="Preview as Landscape">
                             Landscape
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="web">
+                        <button class="studio-preview-type" type="button" data-preview="web" aria-label="Preview as Web page">
                             Web page
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="poster">
+                        <button class="studio-preview-type" type="button" data-preview="poster" aria-label="Preview as Poster">
                             Poster
                         </button>
 
-                        <button class="studio-preview-type" type="button" data-preview="brand">
+                        <button class="studio-preview-type" type="button" data-preview="brand" aria-label="Preview as Brand card">
                             Brand
                         </button>
                     </div>
@@ -239,7 +239,7 @@
                 <!-- Mood board items will be added here -->
             </div>
             <div id="storage-info">0/15 images uploaded</div>
-            <button class="action-btn" id="add-mood-item">+ Add Inspiration</button>
+            <button class="action-btn" id="add-mood-item" aria-label="Add a new inspiration item">+ Add Inspiration</button>
         </section>
 
         <!-- Color Palette ARCHIVE (Read-only samples + search)-->
@@ -253,11 +253,11 @@
 
             <!-- Archive Filters -->
             <div class="archive-filters">
-                <button type="button" class="archive-filter is-active" data-filter="all">
+                <button type="button" class="archive-filter is-active" data-filter="all" aria-label="Show all palettes">
                     All palettes
                 </button>
 
-                <button type="button" class="archive-filter" data-filter="favorites">
+                <button type="button" class="archive-filter" data-filter="favorites" aria-label="Show favorite palettes">
                     <i class="bi bi-heart-fill" aria-hidden="true"></i>
                     My favorites
                 </button>
@@ -272,7 +272,7 @@
             <!-- Stats Footer -->
             <div class="archive-stats">
                 <span>Total: <span id="archive-count">0</span> palettes</span>
-                <button class="action-btn secondary" id="clear-search">Clear Search</button>
+                <button class="action-btn secondary" id="clear-search" aria-label="Clear search">Clear Search</button>
             </div>
         </section>
     </main>
