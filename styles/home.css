@@ -190,6 +190,7 @@
     width: min(100%, 760px);
     margin: 0 auto;
     padding: 0 12px;
+    aspect-ratio: 760 / 420;
 }
 
 .studio-scene__svg {

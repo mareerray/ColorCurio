@@ -1,28 +1,19 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // Show only home on load
-  document.querySelectorAll(".tab-content").forEach(tab => {
-    tab.style.display = "none";
-  });
-  document.getElementById("home").style.display = "block";
-
-  // Tab switching - SIMPLE VERSION
+document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", function(e) {
-      e.preventDefault();
+    btn.addEventListener("click", function () {
       const targetTab = btn.dataset.tab;
 
-      // Hide all, show one
       document.querySelectorAll(".tab-content").forEach(tab => {
-        tab.style.display = "none";
+        tab.classList.remove("active");
       });
-      document.getElementById(targetTab).style.display = "block";
 
-      // Update active button
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document
-      .querySelectorAll(`.tab-btn[data-tab="${targetTab}"]`)
-      .forEach(b => b.classList.add("active"));
+      document.getElementById(targetTab).classList.add("active");
+
+      document.querySelectorAll(".tab-btn").forEach(button => {
+        button.classList.remove("active");
+      });
+
+      btn.classList.add("active");
     });
   });
 });
-
