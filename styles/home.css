@@ -108,7 +108,7 @@
 }
 
 .home-card__description {
-    color: #746a80;
+    color: var(--muted);
     font-size: 0.9rem;
     line-height: 1.6;
 }
