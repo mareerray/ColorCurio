@@ -108,6 +108,29 @@ if (baseColorInput && colorCircle && colorRange) {
 
             colorElement.onclick = copyThisColor;
             hexElement.onclick = copyThisColor;
+
+            colorElement.setAttribute('role', 'button');
+            colorElement.setAttribute('tabindex', '0');
+            colorElement.setAttribute('aria-label', `Copy ${color.name} color ${color.hex}`);
+
+            hexElement.setAttribute('role', 'button'); //tells a screen reader: "this is a button"
+            hexElement.setAttribute('tabindex', '0'); //lets you reach it with the Tab key
+            hexElement.setAttribute('aria-label', `Copy ${color.name} color ${color.hex}`); //says exactly what it does, for example: "Copy complementary color #ff0000"
+        });
+
+        // if a user presses Enter or Space while a swatch is focused, click it
+        const allClickableElements = [
+            ...Object.values(colorElements),
+            ...Object.values(hexElements),
+        ];
+
+        allClickableElements.forEach((element) => {
+            element.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    element.click();
+                }
+            });
         });
     }
 
