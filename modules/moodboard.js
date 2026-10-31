@@ -177,8 +177,7 @@ async function exportImageWithPalette(index) {
   }
 
   // Hide buttons temporarily
-  const buttons = displayElement.querySelectorAll('button, .btn, .export');
-  buttons.forEach(btn => btn.style.opacity = '0');
+const buttons = displayElement.querySelectorAll('.delete-mood-item');  buttons.forEach(btn => btn.style.opacity = '0');
 
   try {
     const canvas = await html2canvas(displayElement, {
