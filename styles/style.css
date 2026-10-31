@@ -1,4 +1,4 @@
-@import url('tokens.css');
+@import url('theme.css');
 @import url('layout.css');
 @import url('header.css');
 @import url('footer.css');
@@ -7,7 +7,7 @@
 @import url('colorlab.css');
 @import url('studio.css');
 @import url('moodboard.css');
-@import url('archive.css');
+@import url('palettes.css');
 
 
 

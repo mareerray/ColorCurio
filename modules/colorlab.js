@@ -186,7 +186,6 @@ if (baseColorInput && colorCircle && colorRange) {
         timeoutId = setTimeout(() => {
             if (window.generateAllSchemes) {
                 window.generateAllSchemes(baseHex);
-                console.log('🎨 Auto-generated palettes from:', baseHex);
             }
         }, 300); // 300ms delay = smooth UX
     }
@@ -205,7 +204,6 @@ if (baseColorInput && colorCircle && colorRange) {
     // 🚀 INITIALIZE
     updateColors(baseColorInput.value);
     autoGeneratePalettes(baseColorInput.value); 
-    console.log('✅ Color Lab initialized! Pick a color → watch magic!');
 }
 
 // 🌍 GLOBAL EXPORTS (for app.js functions)

@@ -72,7 +72,6 @@ function hslToHex(h, s, l) {
 
 // Generate soft palettes
 export function generateSoftPalette(baseColor = '#0066cc') {
-    console.log('Generating soft palette from:', baseColor);
     const hsl = hexToHSL(baseColor);
     const baseHue = hsl.h;
 
@@ -86,7 +85,6 @@ export function generateSoftPalette(baseColor = '#0066cc') {
 }
 
 export function generateAllSchemes(baseColor = '#0066cc') {
-    console.log('Generating schemes from:', baseColor);
     const hsl = hexToHSL(baseColor);
     const baseHue = hsl.h;
 
@@ -157,7 +155,6 @@ export function displayAllSchemes(schemes) {
 
 function initColorLabTooltips() {
     // Tooltips already work with CSS hover - no JS needed!
-    console.log('✅ Color Lab tooltips initialized');
 }
 
 async function loadStudioIllustration() {
@@ -224,12 +221,11 @@ import './modules/home.js';
 import './modules/colorlab.js';
 import './modules/studio.js';
 import './modules/moodboard.js';
-import './modules/archive.js';
+import './modules/palettes.js';
 // ---------- INITIALIZATION ----------
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Color Curio loaded!');
     await window.loadSamplePalettes?.();
     window.loadPalettes?.();
     window.setupLightbox?.();

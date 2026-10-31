@@ -160,7 +160,6 @@ async function exportImageWithPalette(index) {
   for (let sel of selectors) {
     displayElement = typeof sel === 'string' ? document.querySelector(sel) : sel;
     if (displayElement) {
-      console.log('Found element with selector:', sel);
       break;
     }
   }
@@ -242,9 +241,7 @@ function trimWhiteSpace(canvas) {
 // Copy to clipboard helper
 function copyToClipboard(text) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => {
-      console.log('Copied:', text);
-    }).catch(err => {
+    navigator.clipboard.writeText(text).catch(err => {
       console.error('Failed to copy:', err);
       fallbackCopy(text);
     });
@@ -263,7 +260,6 @@ function fallbackCopy(text) {
   textarea.select();
   try {
     document.execCommand('copy');
-    console.log('Copied (fallback):', text);
   } catch (err) {
     console.error('Fallback copy failed:', err);
   }
@@ -407,7 +403,6 @@ function extractColorsFromImage(imageData, callback) {
       }
     }
 
-    console.log('FINAL COLORS:', selectedColors);
     callback(selectedColors);
   };
 
